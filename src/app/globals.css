@@ -12,6 +12,18 @@
   --success: #24d3a0;
 }
 
+:root[data-theme="light"] {
+  --background: #ecf6ff;
+  --foreground: #0f2038;
+  --muted: #4b6280;
+  --panel: #f8fcff;
+  --panel-soft: #e7f2ff;
+  --line: #b6c9de;
+  --accent: #1188db;
+  --accent-2: #0e6fb5;
+  --success: #0a9b6f;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -28,6 +40,13 @@ body {
   font-family: var(--font-space-grotesk), sans-serif;
 }
 
+:root[data-theme="light"] body {
+  background:
+    radial-gradient(50rem 50rem at 90% -5%, rgba(17, 136, 219, 0.2), transparent 52%),
+    radial-gradient(55rem 55rem at -15% 110%, rgba(14, 111, 181, 0.14), transparent 54%),
+    var(--background);
+}
+
 .grid-overlay {
   background-image:
     linear-gradient(rgba(144, 166, 197, 0.08) 1px, transparent 1px),
@@ -42,8 +61,41 @@ body {
   backdrop-filter: blur(8px);
 }
 
+:root[data-theme="light"] .glass-panel {
+  background: linear-gradient(165deg, rgba(248, 252, 255, 0.95), rgba(231, 242, 255, 0.9));
+  border: 1px solid rgba(73, 104, 133, 0.2);
+}
+
 .headline-glow {
   text-shadow: 0 0 28px rgba(26, 166, 255, 0.35);
+}
+
+:root[data-theme="light"] .headline-glow {
+  text-shadow: 0 0 26px rgba(17, 136, 219, 0.2);
+}
+
+.menu-chip {
+  border: 1px solid var(--line);
+  background: color-mix(in oklab, var(--panel-soft) 88%, black 12%);
+  color: var(--foreground);
+  border-radius: 9999px;
+  padding: 0.42rem 0.82rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1;
+  transition: border-color 160ms ease, transform 160ms ease;
+}
+
+.menu-chip:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.feature-card {
+  border-radius: 1rem;
+  border: 1px solid color-mix(in oklab, var(--line) 70%, transparent 30%);
+  background: color-mix(in oklab, var(--panel-soft) 82%, transparent 18%);
+  padding: 1rem;
 }
 
 .float-up {
