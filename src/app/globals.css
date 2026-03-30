@@ -91,6 +91,11 @@ body {
   transform: translateY(-1px);
 }
 
+.menu-chip-active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--accent) 50%, transparent 50%);
+}
+
 .feature-card {
   border-radius: 1rem;
   border: 1px solid color-mix(in oklab, var(--line) 70%, transparent 30%);
