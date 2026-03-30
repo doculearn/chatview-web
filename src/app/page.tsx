@@ -1,64 +1,87 @@
 import Image from "next/image";
 
 export default function Home() {
+  const apiUrl = process.env.NEXT_PUBLIC_CHATVIEW_API_URL ?? "https://api.chat-view.xyz/api/v1";
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <div className="grid-overlay flex min-h-screen flex-1 items-center justify-center px-4 py-10 sm:px-8">
+      <main className="mx-auto grid w-full max-w-6xl gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+        <section className="glass-panel float-up rounded-3xl p-6 sm:p-10">
+          <div className="mb-6 flex items-center gap-4">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+              src="/chatview-logo.png"
+              alt="ChatView"
+              width={64}
+              height={64}
+              className="h-14 w-14 rounded-2xl border border-white/10"
+              priority
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+            <div>
+              <p className="text-xs uppercase tracking-[0.28em] text-(--muted)">ChatView Web Frontend</p>
+              <h1 className="headline-glow text-2xl font-bold sm:text-3xl">Vibe Coding From Your Phone</h1>
+            </div>
+          </div>
+
+          <p className="max-w-2xl text-base leading-7 text-(--muted) sm:text-lg">
+            Walk away from your desk and keep shipping. ChatView lets you send prompts from mobile, execute commands on your workstation,
+            and continue coding from anywhere in the world.
+          </p>
+
+          <div className="mt-8 grid gap-3 sm:grid-cols-3">
+            <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
+              <p className="font-mono text-xs text-(--accent-2)">REALTIME</p>
+              <p className="mt-1 text-sm text-(--muted)">Live session updates via Web PubSub</p>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
+              <p className="font-mono text-xs text-(--accent-2)">REMOTE EXEC</p>
+              <p className="mt-1 text-sm text-(--muted)">Run commands and edit files from your phone</p>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
+              <p className="font-mono text-xs text-(--accent-2)">SESSION FLOW</p>
+              <p className="mt-1 text-sm text-(--muted)">Keep context synced between app and IDE</p>
+            </div>
+          </div>
+
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a
+              href="https://marketplace.visualstudio.com/items?itemName=doculearn.chatview-relay"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-xl bg-(--accent) px-5 py-3 font-semibold text-black transition hover:brightness-110"
+            >
+              Install VS Code Extension
+            </a>
+            <a
+              href="https://github.com/doculearn/chatview-mobile/releases"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-xl border border-(--line) bg-(--panel-soft) px-5 py-3 font-semibold text-(--foreground) transition hover:border-(--accent)"
+            >
+              Download Mobile APK
+            </a>
+          </div>
+        </section>
+
+        <aside className="space-y-6">
+          <section className="glass-panel float-up fade-delay-1 rounded-3xl p-6">
+            <p className="text-xs uppercase tracking-[0.28em] text-(--muted)">Connect</p>
+            <h2 className="mt-2 text-xl font-semibold">API Endpoint</h2>
+            <p className="mt-3 rounded-xl border border-white/10 bg-black/20 p-3 font-mono text-sm text-(--accent-2)">{apiUrl}</p>
+            <p className="mt-3 text-sm text-(--muted)">
+              Set a custom backend at build time with <span className="font-mono">NEXT_PUBLIC_CHATVIEW_API_URL</span>.
+            </p>
+          </section>
+
+          <section className="glass-panel float-up fade-delay-2 rounded-3xl p-6">
+            <p className="text-xs uppercase tracking-[0.28em] text-(--muted)">Workflow</p>
+            <ol className="mt-3 space-y-3 text-sm text-(--muted)">
+              <li>1. Start or resume a ChatView session in VS Code.</li>
+              <li>2. Send prompts and actions from your phone.</li>
+              <li>3. Watch commands execute on your workstation in real time.</li>
+            </ol>
+            <p className="mt-4 text-sm font-semibold text-(--success)">Never pause momentum.</p>
+          </section>
+        </aside>
       </main>
     </div>
   );

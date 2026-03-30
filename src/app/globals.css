@@ -1,26 +1,70 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #030911;
+  --foreground: #e8f0ff;
+  --muted: #90a6c5;
+  --panel: #0b1424;
+  --panel-soft: #121f36;
+  --line: #2a3a58;
+  --accent: #1aa6ff;
+  --accent-2: #56ccff;
+  --success: #24d3a0;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-space-grotesk);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
 body {
-  background: var(--background);
+  background:
+    radial-gradient(55rem 55rem at 85% -10%, rgba(26, 166, 255, 0.2), transparent 50%),
+    radial-gradient(60rem 60rem at -10% 110%, rgba(86, 204, 255, 0.16), transparent 52%),
+    var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+.grid-overlay {
+  background-image:
+    linear-gradient(rgba(144, 166, 197, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(144, 166, 197, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-position: center;
+}
+
+.glass-panel {
+  background: linear-gradient(165deg, rgba(18, 31, 54, 0.9), rgba(11, 20, 36, 0.85));
+  border: 1px solid rgba(144, 166, 197, 0.2);
+  backdrop-filter: blur(8px);
+}
+
+.headline-glow {
+  text-shadow: 0 0 28px rgba(26, 166, 255, 0.35);
+}
+
+.float-up {
+  animation: floatUp 700ms ease-out both;
+}
+
+.fade-delay-1 {
+  animation-delay: 120ms;
+}
+
+.fade-delay-2 {
+  animation-delay: 240ms;
+}
+
+@keyframes floatUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
