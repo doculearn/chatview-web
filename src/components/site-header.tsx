@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { signOut, useSession } from "next-auth/react";
 
 type SiteHeaderProps = {
   activePath?: string;
@@ -16,29 +17,20 @@ const menuItems = [
 ];
 
 export function SiteHeader({ activePath }: SiteHeaderProps) {
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
-  const [hydrated, setHydrated] = useState(false);
+  const [theme, setTheme] = useState<"dark" | "light">(() => {
+    if (typeof window === "undefined") return "dark";
+    const storedTheme = window.localStorage.getItem("chatview-theme");
+    if (storedTheme === "dark" || storedTheme === "light") return storedTheme;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  });
+  const { status } = useSession();
+  const isAuthenticated = status === "authenticated";
 
   useEffect(() => {
-    const storedTheme = localStorage.getItem("chatview-theme");
-    const preferredDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const nextTheme =
-      storedTheme === "light" || storedTheme === "dark"
-        ? storedTheme
-        : preferredDark
-          ? "dark"
-          : "light";
-
-    setTheme(nextTheme);
-    document.documentElement.setAttribute("data-theme", nextTheme);
-    setHydrated(true);
-  }, []);
-
-  useEffect(() => {
-    if (!hydrated) return;
+    if (typeof window === "undefined") return;
     document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("chatview-theme", theme);
-  }, [theme, hydrated]);
+    window.localStorage.setItem("chatview-theme", theme);
+  }, [theme]);
 
   return (
     <header className="glass-panel float-up rounded-2xl px-4 py-3 sm:px-6">
@@ -79,6 +71,31 @@ export function SiteHeader({ activePath }: SiteHeaderProps) {
           >
             {theme === "dark" ? "Light Mode" : "Dark Mode"}
           </button>
+          {isAuthenticated ? (
+            <>
+              <Link className={`menu-chip ${activePath === "/account" ? "menu-chip-active" : ""}`} href="/account">
+                Account
+              </Link>
+              <button
+                type="button"
+                className="menu-chip"
+                onClick={() => {
+                  signOut({ callbackUrl: "/" });
+                }}
+              >
+                Sign out
+              </button>
+            </>
+          ) : (
+            <>
+              <Link className={`menu-chip ${activePath === "/login" ? "menu-chip-active" : ""}`} href="/login">
+                Login
+              </Link>
+              <Link className={`menu-chip ${activePath === "/register" ? "menu-chip-active" : ""}`} href="/register">
+                Register
+              </Link>
+            </>
+          )}
         </nav>
       </div>
     </header>

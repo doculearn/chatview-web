@@ -2,8 +2,6 @@ import Link from "next/link";
 import { PageShell } from "@/components/page-shell";
 
 export default function Home() {
-  const apiUrl = process.env.NEXT_PUBLIC_CHATVIEW_API_URL ?? "https://api.chat-view.xyz/api/v1";
-
   return (
     <PageShell activePath="/">
       <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
@@ -53,11 +51,14 @@ export default function Home() {
 
         <aside className="space-y-6">
           <section id="connect" className="glass-panel float-up fade-delay-1 rounded-3xl p-6">
-            <p className="text-xs uppercase tracking-[0.28em] text-(--muted)">Connect</p>
-            <h2 className="mt-2 text-xl font-semibold">API Endpoint</h2>
-            <p className="mt-3 rounded-xl border border-white/10 bg-black/20 p-3 font-mono text-sm text-(--accent-2)">{apiUrl}</p>
+            <p className="text-xs uppercase tracking-[0.28em] text-(--muted)">Security</p>
+            <h2 className="mt-2 text-xl font-semibold">Private By Design</h2>
             <p className="mt-3 text-sm text-(--muted)">
-              Set a custom backend at build time with <span className="font-mono">NEXT_PUBLIC_CHATVIEW_API_URL</span>.
+              Your phone is the controller, your workstation is the execution engine. ChatView keeps prompts and workflows scoped to your
+              authenticated account and active session.
+            </p>
+            <p className="mt-4 rounded-xl border border-white/10 bg-black/20 p-3 text-sm text-(--accent-2)">
+              No public API sales messaging. Just secure, account-based product access.
             </p>
           </section>
 
