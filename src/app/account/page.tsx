@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { PageShell } from "@/components/page-shell";
 import { performLogout } from "@/lib/logout";
+import { authFetch } from "@/lib/auth-fetch";
 import useAuthCredentialsStore from "@/state/use-auth-credentials-store";
 
 type Plan = {
@@ -28,9 +29,9 @@ export default function AccountPage() {
     async function load() {
       try {
         const [profileRes, subRes, planRes] = await Promise.all([
-          fetch("/api/chatview/account"),
-          fetch("/api/chatview/subscription/current"),
-          fetch("/api/chatview/subscription/plans"),
+          authFetch("/api/chatview/account"),
+          authFetch("/api/chatview/subscription/current"),
+          authFetch("/api/chatview/subscription/plans"),
         ]);
 
         const profileData = await profileRes.json().catch(() => null);
@@ -60,7 +61,7 @@ export default function AccountPage() {
   }, [router]);
 
   async function handlePay(plan: string) {
-    const response = await fetch("/api/chatview/subscription/initiate", {
+    const response = await authFetch("/api/chatview/subscription/initiate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
