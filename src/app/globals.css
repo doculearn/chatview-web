@@ -55,6 +55,18 @@ body {
   background-position: center;
 }
 
+.grid-overlay::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(32rem 32rem at 15% 18%, rgba(86, 204, 255, 0.14), transparent 60%),
+    radial-gradient(28rem 28rem at 82% 24%, rgba(36, 211, 160, 0.12), transparent 58%),
+    radial-gradient(40rem 40rem at 50% 100%, rgba(26, 166, 255, 0.12), transparent 60%);
+  opacity: 0.95;
+}
+
 .glass-panel {
   background: linear-gradient(165deg, rgba(18, 31, 54, 0.9), rgba(11, 20, 36, 0.85));
   border: 1px solid rgba(144, 166, 197, 0.2);
@@ -89,6 +101,7 @@ body {
 .menu-chip:hover {
   border-color: var(--accent);
   transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(3, 9, 17, 0.16);
 }
 
 .menu-chip-active {
@@ -96,11 +109,76 @@ body {
   box-shadow: 0 0 0 1px color-mix(in oklab, var(--accent) 50%, transparent 50%);
 }
 
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.85rem;
+  height: 2.85rem;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in oklab, var(--line) 76%, transparent 24%);
+  background:
+    radial-gradient(circle at 30% 30%, color-mix(in oklab, var(--accent) 12%, transparent 88%), transparent 48%),
+    color-mix(in oklab, var(--panel-soft) 82%, transparent 18%);
+  color: var(--foreground);
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px) rotate(6deg);
+  border-color: var(--accent);
+  box-shadow: 0 14px 30px rgba(3, 9, 17, 0.18);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--accent) 72%, white 28%);
+  outline-offset: 2px;
+}
+
 .feature-card {
   border-radius: 1rem;
   border: 1px solid color-mix(in oklab, var(--line) 70%, transparent 30%);
   background: color-mix(in oklab, var(--panel-soft) 82%, transparent 18%);
   padding: 1rem;
+}
+
+.feature-card-spotlight {
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card-spotlight::before {
+  content: "";
+  position: absolute;
+  inset: auto -10% 55% 45%;
+  height: 8rem;
+  background: radial-gradient(circle, rgba(86, 204, 255, 0.18), transparent 68%);
+  pointer-events: none;
+}
+
+.hero-stat {
+  border-radius: 1.25rem;
+  border: 1px solid color-mix(in oklab, var(--line) 60%, transparent 40%);
+  background: color-mix(in oklab, var(--panel) 70%, transparent 30%);
+  padding: 0.9rem 1rem;
+}
+
+.command-strip {
+  border-radius: 1.25rem;
+  border: 1px solid color-mix(in oklab, var(--line) 75%, transparent 25%);
+  background: linear-gradient(180deg, rgba(7, 12, 22, 0.92), rgba(7, 12, 22, 0.78));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+:root[data-theme="light"] .command-strip {
+  background: linear-gradient(180deg, rgba(235, 245, 255, 0.92), rgba(228, 240, 255, 0.82));
+}
+
+.signal-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 9999px;
+  display: inline-block;
 }
 
 .float-up {

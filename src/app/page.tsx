@@ -5,27 +5,52 @@ export default function Home() {
   return (
     <PageShell activePath="/">
       <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-        <section id="features" className="glass-panel float-up rounded-3xl p-6 sm:p-10">
-          <p className="text-xs uppercase tracking-[0.28em] text-(--muted)">Build Without Stopping</p>
-          <h1 className="headline-glow mt-3 text-3xl font-bold leading-tight sm:text-5xl">Vibe Code From Your Phone</h1>
+        <section id="features" className="glass-panel float-up rounded-[2rem] p-6 sm:p-10">
+          <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.24em] text-(--muted)">
+            <span className="rounded-full border border-(--line) bg-(--panel-soft) px-3 py-1">Build Without Stopping</span>
+            <span className="rounded-full border border-(--line) bg-(--panel-soft) px-3 py-1">Phone to Workstation</span>
+          </div>
+
+          <h1 className="headline-glow mt-5 max-w-4xl text-4xl font-bold leading-[0.95] sm:text-6xl">
+            Keep the repo moving even when you leave the desk.
+          </h1>
 
           <p className="mt-5 max-w-2xl text-base leading-7 text-(--muted) sm:text-lg">
             Done for the day? Not quite. Walk away from your desk and keep shipping. Send prompts from mobile, execute commands on your
             workstation, and continue coding from anywhere in the world.
           </p>
 
+          <div className="mt-8 command-strip overflow-hidden p-4 sm:p-5">
+            <div className="flex items-center justify-between gap-3 border-b border-white/8 pb-3">
+              <div className="flex items-center gap-2">
+                <span className="signal-dot bg-[#ff6b6b]" />
+                <span className="signal-dot bg-[#ffd166]" />
+                <span className="signal-dot bg-[#06d6a0]" />
+              </div>
+              <span className="font-mono text-[0.7rem] uppercase tracking-[0.28em] text-(--muted)">Active Relay Session</span>
+            </div>
+            <div className="mt-4 space-y-3 font-mono text-sm sm:text-[0.95rem]">
+              <p className="text-(--accent-2)">$ chatview resume workstation-alpha</p>
+              <p className="text-(--foreground)">Queued mobile prompt: <span className="text-(--muted)">&quot;Patch the failing auth flow and redeploy.&quot;</span></p>
+              <p className="text-(--success)">relay status: connected • edits synced • terminal attached</p>
+            </div>
+          </div>
+
           <div className="mt-8 grid gap-3 sm:grid-cols-3">
-            <div className="feature-card">
+            <div className="hero-stat">
               <p className="font-mono text-xs text-(--accent-2)">REALTIME</p>
-              <p className="mt-1 text-sm text-(--muted)">Live session updates via Web PubSub</p>
+              <p className="mt-2 text-lg font-semibold">Live session relay</p>
+              <p className="mt-1 text-sm text-(--muted)">Stream prompts and outputs without reopening your laptop.</p>
             </div>
-            <div className="feature-card">
+            <div className="hero-stat">
               <p className="font-mono text-xs text-(--accent-2)">REMOTE EXEC</p>
-              <p className="mt-1 text-sm text-(--muted)">Run commands and edit files from your phone</p>
+              <p className="mt-2 text-lg font-semibold">Command-first control</p>
+              <p className="mt-1 text-sm text-(--muted)">Kick off fixes, installs, and refactors straight from mobile.</p>
             </div>
-            <div className="feature-card">
+            <div className="hero-stat">
               <p className="font-mono text-xs text-(--accent-2)">SESSION FLOW</p>
-              <p className="mt-1 text-sm text-(--muted)">Keep context synced between app and IDE</p>
+              <p className="mt-2 text-lg font-semibold">Context stays warm</p>
+              <p className="mt-1 text-sm text-(--muted)">The mobile app and IDE share the same live execution thread.</p>
             </div>
           </div>
 
@@ -50,26 +75,38 @@ export default function Home() {
         </section>
 
         <aside className="space-y-6">
-          <section id="connect" className="glass-panel float-up fade-delay-1 rounded-3xl p-6">
+          <section id="connect" className="glass-panel feature-card-spotlight float-up fade-delay-1 rounded-[2rem] p-6">
             <p className="text-xs uppercase tracking-[0.28em] text-(--muted)">Security</p>
-            <h2 className="mt-2 text-xl font-semibold">Private By Design</h2>
+            <h2 className="mt-2 text-2xl font-semibold">Private by design</h2>
             <p className="mt-3 text-sm text-(--muted)">
               Your phone is the controller, your workstation is the execution engine. ChatView keeps prompts and workflows scoped to your
               authenticated account and active session.
             </p>
-            <p className="mt-4 rounded-xl border border-white/10 bg-black/20 p-3 text-sm text-(--accent-2)">
+            <p className="mt-5 rounded-2xl border border-white/10 bg-black/20 p-4 text-sm text-(--accent-2)">
               No public API sales messaging. Just secure, account-based product access.
             </p>
+
+            <div className="mt-5 grid gap-3">
+              <div className="feature-card">
+                <p className="font-mono text-xs text-(--accent-2)">AUTH LAYER</p>
+                <p className="mt-2 text-sm text-(--muted)">Credential-backed sessions with guarded routes and refresh-token retry flow.</p>
+              </div>
+              <div className="feature-card">
+                <p className="font-mono text-xs text-(--accent-2)">RUNTIME</p>
+                <p className="mt-2 text-sm text-(--muted)">Server-side relay endpoints keep backend keys out of the browser.</p>
+              </div>
+            </div>
           </section>
 
-          <section id="workflow" className="glass-panel float-up fade-delay-2 rounded-3xl p-6">
+          <section id="workflow" className="glass-panel float-up fade-delay-2 rounded-[2rem] p-6">
             <p className="text-xs uppercase tracking-[0.28em] text-(--muted)">Workflow</p>
-            <ol className="mt-3 space-y-3 text-sm text-(--muted)">
-              <li>1. Start or resume a ChatView session in VS Code.</li>
-              <li>2. Send prompts and actions from your phone.</li>
-              <li>3. Watch commands execute on your workstation in real time.</li>
+            <h2 className="mt-2 text-2xl font-semibold">Three beats. Zero context loss.</h2>
+            <ol className="mt-5 space-y-3 text-sm text-(--muted)">
+              <li className="feature-card">1. Start or resume a ChatView session in VS Code.</li>
+              <li className="feature-card">2. Send prompts and actions from your phone.</li>
+              <li className="feature-card">3. Watch commands execute on your workstation in real time.</li>
             </ol>
-            <p className="mt-4 text-sm font-semibold text-(--success)">Never pause momentum.</p>
+            <p className="mt-5 text-sm font-semibold uppercase tracking-[0.18em] text-(--success)">Never pause momentum.</p>
           </section>
         </aside>
       </div>
