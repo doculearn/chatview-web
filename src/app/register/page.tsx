@@ -1,9 +1,13 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
 import { PageShell } from "@/components/page-shell";
+import useAuthCredentialsStore from "@/state/use-auth-credentials-store";
 
 export default function RegisterPage() {
+  const router = useRouter();
+  const setCredentials = useAuthCredentialsStore((state) => state.setCredentials);
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [username, setUsername] = useState("");
@@ -40,6 +44,22 @@ export default function RegisterPage() {
 
     if (!response.ok) {
       setError(data?.error || data?.detail || "Registration failed");
+      return;
+    }
+
+    const accessToken = typeof data?.tokens?.access_token === "string" ? data.tokens.access_token : null;
+
+    if (accessToken) {
+      setCredentials({
+        accessToken,
+        refreshToken: typeof data?.tokens?.refresh_token === "string" ? data.tokens.refresh_token : null,
+        sessionId: typeof data?.session_id === "string" ? data.session_id : null,
+        username,
+        firstname,
+        lastname,
+        email,
+      });
+      router.push("/account");
       return;
     }
 

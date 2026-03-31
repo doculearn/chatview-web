@@ -3,7 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { signOut, useSession } from "next-auth/react";
+import { performLogout } from "@/lib/logout";
+import { useAuthReady } from "@/hooks/use-auth-ready";
 
 type SiteHeaderProps = {
   activePath?: string;
@@ -23,8 +24,7 @@ export function SiteHeader({ activePath }: SiteHeaderProps) {
     if (storedTheme === "dark" || storedTheme === "light") return storedTheme;
     return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   });
-  const { status } = useSession();
-  const isAuthenticated = status === "authenticated";
+  const isAuthenticated = useAuthReady();
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -80,7 +80,7 @@ export function SiteHeader({ activePath }: SiteHeaderProps) {
                 type="button"
                 className="menu-chip"
                 onClick={() => {
-                  signOut({ callbackUrl: "/" });
+                  performLogout("/");
                 }}
               >
                 Sign out

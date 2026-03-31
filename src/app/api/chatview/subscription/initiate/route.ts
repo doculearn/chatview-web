@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
-import { callChatView, getSessionToken } from "@/lib/chatview-server";
+import { callChatView, getRequestToken } from "@/lib/chatview-server";
 
 export async function POST(req: Request) {
   try {
-    const token = await getSessionToken();
+    const token = getRequestToken(req);
     if (!token) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const body = await req.json();

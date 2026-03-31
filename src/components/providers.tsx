@@ -1,17 +1,28 @@
 "use client";
 
-import { ReactNode } from "react";
-import { SessionProvider } from "next-auth/react";
+import { ReactNode, useEffect } from "react";
 import { RouteShield } from "@/components/route-shield";
+import useAuthCredentialsStore from "@/state/use-auth-credentials-store";
 
 type ProvidersProps = {
   children: ReactNode;
 };
 
+function AuthBootstrap() {
+  const loadFromCookies = useAuthCredentialsStore((state) => state.loadFromCookies);
+
+  useEffect(() => {
+    loadFromCookies();
+  }, [loadFromCookies]);
+
+  return null;
+}
+
 export function Providers({ children }: ProvidersProps) {
   return (
-    <SessionProvider>
+    <>
+      <AuthBootstrap />
       <RouteShield>{children}</RouteShield>
-    </SessionProvider>
+    </>
   );
 }

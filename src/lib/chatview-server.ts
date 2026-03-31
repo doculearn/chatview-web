@@ -1,6 +1,3 @@
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth-options";
-
 const CHATVIEW_API_BASE_URL = (process.env.CHATVIEW_API_BASE_URL ?? "https://api.chat-view.xyz/api/v1").replace(/\/+$/, "");
 
 type Method = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
@@ -27,9 +24,25 @@ export async function callChatView<T>(path: string, method: Method, options?: { 
   return data as T;
 }
 
-export async function getSessionToken() {
-  const session = await getServerSession(authOptions);
-  const backendAccessToken = session?.backendAccessToken;
-  const azureAccessToken = session?.azureAccessToken;
-  return backendAccessToken || azureAccessToken || null;
+export function getRequestToken(request: Request) {
+  const authHeader = request.headers.get("authorization");
+  if (authHeader?.startsWith("Bearer ")) {
+    return authHeader.slice("Bearer ".length).trim() || null;
+  }
+
+  const cookieHeader = request.headers.get("cookie") ?? "";
+  const cookies = Object.fromEntries(
+    cookieHeader
+      .split(";")
+      .map((part) => part.trim())
+      .filter(Boolean)
+      .map((part) => {
+        const separatorIndex = part.indexOf("=");
+        const name = separatorIndex >= 0 ? part.slice(0, separatorIndex) : part;
+        const value = separatorIndex >= 0 ? part.slice(separatorIndex + 1) : "";
+        return [name, decodeURIComponent(value)];
+      }),
+  );
+
+  return cookies.chatview_access_token ?? null;
 }

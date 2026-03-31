@@ -2,8 +2,9 @@
 
 import { ReactNode } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
 import { NextShield } from "next-shield";
+import { useAuthReady } from "@/hooks/use-auth-ready";
+import useAuthCredentialsStore from "@/state/use-auth-credentials-store";
 
 const privateRoutes = ["/account"] as const;
 const publicRoutes = ["/login", "/register"] as const;
@@ -16,10 +17,10 @@ type RouteShieldProps = {
 export function RouteShield({ children }: RouteShieldProps) {
   const pathname = usePathname() ?? "/";
   const { replace } = useRouter();
-  const { status } = useSession();
+  const isAuth = useAuthReady();
+  const hasHydrated = useAuthCredentialsStore((state) => state.hasHydrated);
 
-  const isAuth = status === "authenticated";
-  const isLoading = status === "loading";
+  const isLoading = !hasHydrated;
 
   return (
     <NextShield

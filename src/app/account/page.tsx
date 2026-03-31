@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { PageShell } from "@/components/page-shell";
+import { performLogout } from "@/lib/logout";
+import useAuthCredentialsStore from "@/state/use-auth-credentials-store";
 
 type Plan = {
   id: number;
@@ -14,7 +16,9 @@ type Plan = {
 };
 
 export default function AccountPage() {
-  const { data: session } = useSession();
+  const router = useRouter();
+  const firstname = useAuthCredentialsStore((state) => state.firstname);
+  const email = useAuthCredentialsStore((state) => state.email);
   const [profile, setProfile] = useState<Record<string, unknown> | null>(null);
   const [subscription, setSubscription] = useState<Record<string, unknown> | null>(null);
   const [plans, setPlans] = useState<Plan[]>([]);
@@ -37,6 +41,11 @@ export default function AccountPage() {
         if (subRes.ok) setSubscription((subData?.subscription as Record<string, unknown> | null) ?? null);
         if (planRes.ok) setPlans(planData?.plans ?? []);
 
+        if (profileRes.status === 401 || subRes.status === 401 || planRes.status === 401) {
+          performLogout();
+          return;
+        }
+
         if (!profileRes.ok || !subRes.ok || !planRes.ok) {
           setStatus("Some account data could not be loaded. If you signed in with Azure B2C, backend subscription endpoints may require token mapping.");
         } else {
@@ -48,7 +57,7 @@ export default function AccountPage() {
     }
 
     load();
-  }, []);
+  }, [router]);
 
   async function handlePay(plan: string) {
     const response = await fetch("/api/chatview/subscription/initiate", {
@@ -79,12 +88,12 @@ export default function AccountPage() {
       <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
         <section className="glass-panel float-up rounded-3xl p-6 sm:p-10">
           <p className="text-xs uppercase tracking-[0.28em] text-(--muted)">Account</p>
-          <h1 className="headline-glow mt-3 text-3xl font-bold">Welcome, {String(profile?.first_name ?? session?.user?.name ?? "Coder")}</h1>
+          <h1 className="headline-glow mt-3 text-3xl font-bold">Welcome, {String(profile?.first_name ?? firstname ?? "Coder")}</h1>
           <p className="mt-3 text-sm text-(--muted)">{status}</p>
 
           <div className="mt-6 feature-card">
             <p className="text-sm text-(--muted)">Email</p>
-            <p className="font-semibold">{String(profile?.email ?? session?.user?.email ?? "-")}</p>
+            <p className="font-semibold">{String(profile?.email ?? email ?? "-")}</p>
           </div>
 
           <div className="mt-4 feature-card">
