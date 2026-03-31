@@ -8,7 +8,7 @@ export default function DocsPage() {
         <p className="text-xs uppercase tracking-[0.28em] text-(--muted)">Docs</p>
         <h1 className="headline-glow mt-3 text-3xl font-bold sm:text-4xl">Get Started in 5 Minutes</h1>
         <p className="mt-4 max-w-3xl text-(--muted)">
-          Connect your VS Code extension, mobile app, and API endpoint so you can run prompts and coding workflows from your phone.
+          Connect your VS Code extension and mobile app so you can run prompts and coding workflows from your phone.
         </p>
 
         <div className="mt-8 grid gap-4 md:grid-cols-2">
@@ -43,12 +43,9 @@ export default function DocsPage() {
           </article>
 
           <article className="feature-card">
-            <h2 className="text-lg font-semibold">3. Confirm backend URL</h2>
+            <h2 className="text-lg font-semibold">3. Link your account</h2>
             <p className="mt-2 text-sm text-(--muted)">
-              Use the production API endpoint and ensure your token/session is valid.
-            </p>
-            <p className="mt-4 rounded-lg border border-white/10 bg-black/20 p-2 font-mono text-xs text-(--accent-2)">
-              https://api.chat-view.xyz/api/v1
+              Sign in with the same ChatView account on both devices so your active session stays in sync.
             </p>
           </article>
 
