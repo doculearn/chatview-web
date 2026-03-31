@@ -2,23 +2,18 @@ import { PageShell } from "@/components/page-shell";
 
 const plans = [
   {
-    name: "Starter",
-    price: "$0",
-    cadence: "forever",
-    features: ["Basic sessions", "Manual command approvals", "Community support"],
-  },
-  {
-    name: "Pro",
-    price: "$19",
+    name: "Standard",
+    price: "USD 19",
     cadence: "per month",
     features: ["Unlimited sessions", "Priority sync", "Prompt templates", "Device history"],
     highlight: true,
   },
   {
     name: "Team",
-    price: "$79",
-    cadence: "per month",
-    features: ["Shared workspaces", "Role controls", "Audit trail", "Concierge onboarding"],
+    price: "Coming Soon",
+    cadence: "under construction",
+    features: ["Shared workspaces", "Role controls", "Audit trail", "Enterprise onboarding"],
+    disabled: true,
   },
 ];
 
@@ -29,10 +24,10 @@ export default function PricingPage() {
         <p className="text-xs uppercase tracking-[0.28em] text-(--muted)">Pricing</p>
         <h1 className="headline-glow mt-3 text-3xl font-bold sm:text-4xl">Pick Your Vibe Coding Plan</h1>
         <p className="mt-4 max-w-3xl text-(--muted)">
-          Start free, then scale to pro workflows when you want persistent session velocity from your phone.
+          One production package today: USD 19/month. Team package is under construction and coming soon.
         </p>
 
-        <div className="mt-8 grid gap-4 lg:grid-cols-3">
+        <div className="mt-8 grid gap-4 lg:grid-cols-2">
           {plans.map((plan) => (
             <article
               key={plan.name}
@@ -46,8 +41,11 @@ export default function PricingPage() {
                   <li key={feature}>- {feature}</li>
                 ))}
               </ul>
-              <button className="mt-5 w-full rounded-xl bg-(--panel-soft) px-4 py-2 text-sm font-semibold hover:border hover:border-(--accent)">
-                Choose {plan.name}
+              <button
+                className="mt-5 w-full rounded-xl bg-(--panel-soft) px-4 py-2 text-sm font-semibold hover:border hover:border-(--accent) disabled:cursor-not-allowed disabled:opacity-60"
+                disabled={Boolean(plan.disabled)}
+              >
+                {plan.disabled ? "Under Construction" : "Choose Standard"}
               </button>
             </article>
           ))}
