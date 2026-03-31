@@ -14,7 +14,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ChatView Web",
+  title: "ChatView | Remote coding that stays in motion",
   description: "Vibe code from your phone, anywhere in the world.",
 };
 

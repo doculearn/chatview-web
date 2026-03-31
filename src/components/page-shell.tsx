@@ -12,6 +12,9 @@ export function PageShell({ activePath, children }: PageShellProps) {
       <main className="mx-auto flex w-full max-w-6xl flex-col gap-6">
         <SiteHeader activePath={activePath} />
         {children}
+        <footer className="pb-2 pt-1 text-center text-xs uppercase tracking-[0.16em] text-(--muted)">
+          Doculearn &copy; 2026
+        </footer>
       </main>
     </div>
   );
