@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { PageShell } from "@/components/page-shell";
 import { SubscriptionManager } from "@/components/subscription/SubscriptionManager";
+import { UsageStats } from "@/components/usage/UsageStats";
 import { performLogout } from "@/lib/logout";
 import { authFetch } from "@/lib/auth-fetch";
 import useAuthCredentialsStore from "@/state/use-auth-credentials-store";
@@ -65,6 +66,10 @@ export default function AccountPage() {
 
       <div className="mt-6 hidden lg:block">
         <SubscriptionManager />
+      </div>
+
+      <div className="mt-6">
+        <UsageStats />
       </div>
     </PageShell>
   );
