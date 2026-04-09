@@ -4,9 +4,9 @@ import { PageShell } from "@/components/page-shell";
 export default function PrivacyStatementPage() {
   return (
     <PageShell activePath="/privacy-statement">
-      <section className="glass-panel rounded-[2rem] p-6 sm:p-10">
+      <section className="glass-panel rounded-2xl p-4 sm:rounded-[2rem] sm:p-6 lg:p-10">
         <p className="text-xs uppercase tracking-[0.24em] text-(--muted)">Legal</p>
-        <h1 className="mt-3 text-4xl font-bold sm:text-5xl">Privacy Statement</h1>
+        <h1 className="mt-3 text-2xl font-bold sm:text-4xl lg:text-5xl">Privacy Statement</h1>
         <p className="mt-4 max-w-3xl text-base leading-7 text-(--muted)">
           Effective date: April 1, 2026. This Privacy Statement explains how Doculearn collects, uses, and protects information
           when you use ChatView, including the website, VS Code extension, and mobile application.

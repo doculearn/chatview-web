@@ -4,14 +4,14 @@ import { PageShell } from "@/components/page-shell";
 export default function DocsPage() {
   return (
     <PageShell activePath="/docs">
-      <section className="glass-panel float-up rounded-3xl p-6 sm:p-10">
+      <section className="glass-panel float-up rounded-2xl p-4 sm:rounded-3xl sm:p-6 lg:p-10">
         <p className="text-xs uppercase tracking-[0.28em] text-(--muted)">Docs</p>
-        <h1 className="headline-glow mt-3 text-3xl font-bold sm:text-4xl">Get Started in 5 Minutes</h1>
+        <h1 className="headline-glow mt-3 text-xl font-bold sm:text-3xl lg:text-4xl">Get Started in 5 Minutes</h1>
         <p className="mt-4 max-w-3xl text-(--muted)">
           Connect your VS Code extension and mobile app so you can run prompts and coding workflows from your phone.
         </p>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-2">
+        <div className="mt-5 grid gap-3 sm:mt-8 sm:gap-4 md:grid-cols-2">
           <article className="feature-card">
             <h2 className="text-lg font-semibold">1. Install the extension</h2>
             <p className="mt-2 text-sm text-(--muted)">

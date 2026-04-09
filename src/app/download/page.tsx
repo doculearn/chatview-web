@@ -4,14 +4,14 @@ import { PageShell } from "@/components/page-shell";
 export default function DownloadPage() {
   return (
     <PageShell activePath="/download">
-      <section className="glass-panel float-up rounded-3xl p-6 sm:p-10">
+      <section className="glass-panel float-up rounded-2xl p-4 sm:rounded-3xl sm:p-6 lg:p-10">
         <p className="text-xs uppercase tracking-[0.28em] text-(--muted)">Download</p>
-        <h1 className="headline-glow mt-3 text-3xl font-bold sm:text-4xl">Install Your ChatView Stack</h1>
+        <h1 className="headline-glow mt-3 text-xl font-bold sm:text-3xl lg:text-4xl">Install Your ChatView Stack</h1>
         <p className="mt-4 max-w-3xl text-(--muted)">
           Grab the extension and the mobile app, connect to your API, and start running coding prompts from anywhere.
         </p>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-2">
+        <div className="mt-5 grid gap-3 sm:mt-8 sm:gap-4 md:grid-cols-2">
           <article className="feature-card p-5">
             <h2 className="text-xl font-semibold">VS Code Extension</h2>
             <p className="mt-2 text-sm text-(--muted)">

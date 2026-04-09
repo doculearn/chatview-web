@@ -58,9 +58,9 @@ export default function LoginPage() {
 
   return (
     <PageShell activePath="/login">
-      <section className="glass-panel float-up mx-auto w-full max-w-xl rounded-3xl p-6 sm:p-10">
+      <section className="glass-panel float-up mx-auto w-full max-w-xl rounded-2xl p-4 sm:rounded-3xl sm:p-6 lg:p-10">
         <p className="text-xs uppercase tracking-[0.28em] text-(--muted)">Login</p>
-        <h1 className="headline-glow mt-3 text-3xl font-bold">Sign in to ChatView</h1>
+        <h1 className="headline-glow mt-3 text-xl font-bold sm:text-3xl">Sign in to ChatView</h1>
         <p className="mt-3 text-sm text-(--muted)">Use your ChatView account credentials.</p>
 
         <form className="mt-6 space-y-4" onSubmit={handleCredentialsLogin}>

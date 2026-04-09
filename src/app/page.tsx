@@ -5,13 +5,13 @@ export default function Home() {
   return (
     <PageShell activePath="/">
       <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-        <section id="features" className="glass-panel float-up rounded-[2rem] p-6 sm:p-10">
+        <section id="features" className="glass-panel float-up rounded-2xl p-4 sm:rounded-[2rem] sm:p-6 lg:p-10">
           <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.24em] text-(--muted)">
             <span className="rounded-full border border-(--line) bg-(--panel-soft) px-3 py-1">Build Without Stopping</span>
             <span className="rounded-full border border-(--line) bg-(--panel-soft) px-3 py-1">Phone to Workstation</span>
           </div>
 
-          <h1 className="headline-glow mt-5 max-w-4xl text-4xl font-bold leading-[0.95] sm:text-6xl">
+          <h1 className="headline-glow mt-4 max-w-4xl text-2xl font-bold leading-[0.95] sm:mt-5 sm:text-4xl lg:text-6xl">
             Keep the repo moving even when you leave the desk.
           </h1>
 
@@ -36,7 +36,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-8 grid gap-3 sm:grid-cols-3">
+          <div className="mt-5 grid gap-2 sm:mt-8 sm:gap-3 sm:grid-cols-3">
             <div className="hero-stat">
               <p className="font-mono text-xs text-(--accent-2)">REALTIME</p>
               <p className="mt-2 text-lg font-semibold">Live session relay</p>
@@ -54,7 +54,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-5 flex flex-col gap-2 sm:mt-8 sm:gap-3 sm:flex-row">
             <Link
               href="https://marketplace.visualstudio.com/items?itemName=doculearn.chatview-relay"
               target="_blank"
@@ -74,8 +74,8 @@ export default function Home() {
           </div>
         </section>
 
-        <aside className="space-y-6">
-          <section id="connect" className="glass-panel feature-card-spotlight float-up fade-delay-1 rounded-[2rem] p-6">
+        <aside className="space-y-4 sm:space-y-6">
+          <section id="connect" className="glass-panel feature-card-spotlight float-up fade-delay-1 rounded-2xl p-4 sm:rounded-[2rem] sm:p-6">
             <p className="text-xs uppercase tracking-[0.28em] text-(--muted)">Security</p>
             <h2 className="mt-2 text-2xl font-semibold">Private by design</h2>
             <p className="mt-3 text-sm text-(--muted)">
@@ -98,7 +98,7 @@ export default function Home() {
             </div>
           </section>
 
-          <section id="workflow" className="glass-panel float-up fade-delay-2 rounded-[2rem] p-6">
+          <section id="workflow" className="glass-panel float-up fade-delay-2 rounded-2xl p-4 sm:rounded-[2rem] sm:p-6">
             <p className="text-xs uppercase tracking-[0.28em] text-(--muted)">Workflow</p>
             <h2 className="mt-2 text-2xl font-semibold">Three beats. Zero context loss.</h2>
             <ol className="mt-5 space-y-3 text-sm text-(--muted)">

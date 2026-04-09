@@ -68,9 +68,9 @@ export default function RegisterPage() {
 
   return (
     <PageShell activePath="/register">
-      <section className="glass-panel float-up mx-auto w-full max-w-xl rounded-3xl p-6 sm:p-10">
+      <section className="glass-panel float-up mx-auto w-full max-w-xl rounded-2xl p-4 sm:rounded-3xl sm:p-6 lg:p-10">
         <p className="text-xs uppercase tracking-[0.28em] text-(--muted)">Register</p>
-        <h1 className="headline-glow mt-3 text-3xl font-bold">Create your ChatView account</h1>
+        <h1 className="headline-glow mt-3 text-xl font-bold sm:text-3xl">Create your ChatView account</h1>
 
         <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
           <div className="grid gap-3 sm:grid-cols-2">

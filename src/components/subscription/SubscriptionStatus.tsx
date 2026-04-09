@@ -58,9 +58,9 @@ export function SubscriptionStatus({
   };
 
   return (
-    <section className="glass-panel float-up rounded-3xl p-6 sm:p-10">
+    <section className="glass-panel float-up rounded-2xl p-4 sm:rounded-3xl sm:p-6 lg:p-10">
       <p className="text-xs uppercase tracking-[0.28em] text-(--muted)">Current Plan</p>
-      <h2 className="headline-glow mt-3 text-3xl font-bold">
+      <h2 className="headline-glow mt-3 text-xl font-bold sm:text-3xl">
         {subscription.plan.display_name}
       </h2>
 
@@ -76,6 +76,16 @@ export function SubscriptionStatus({
             {subscription.status}
           </div>
         </div>
+
+        {subscription.status === "pending" && (
+          <div className="feature-card bg-blue-500/5 border-blue-500/20">
+            <p className="text-sm text-(--muted)">Payment Required</p>
+            <p className="font-semibold text-blue-400">Awaiting payment</p>
+            <p className="mt-1 text-xs text-(--muted)">
+              Complete your payment to activate your {subscription.plan.display_name} plan.
+            </p>
+          </div>
+        )}
 
         {subscription.is_active && (
           <div className="feature-card">
@@ -104,14 +114,14 @@ export function SubscriptionStatus({
           </div>
         )}
 
-        <div className="mt-6 flex gap-3">
+        <div className="mt-4 flex flex-col gap-2 sm:mt-6 sm:flex-row sm:gap-3">
           {subscription.status === "pending" && (
             <button
               onClick={onActivateClick}
               disabled={activating}
               className="flex-1 rounded-xl bg-(--accent) px-4 py-2 text-sm font-semibold text-white hover:bg-(--accent)/80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {activating ? "Activating..." : "Activate Subscription"}
+              {activating ? "Processing..." : "Complete Payment"}
             </button>
           )}
           {subscription.status === "active" && (

@@ -37,9 +37,9 @@ export function PlanSelector({ plans, onSelectPlan }: PlanSelectorProps) {
   const enterprisePlan = plans.find((p) => p.name === "enterprise");
 
   return (
-    <section className="glass-panel float-up rounded-3xl p-6 sm:p-10">
+    <section className="glass-panel float-up rounded-2xl p-4 sm:rounded-3xl sm:p-6 lg:p-10">
       <p className="text-xs uppercase tracking-[0.28em] text-(--muted)">Choose Your Plan</p>
-      <h2 className="headline-glow mt-3 text-3xl font-bold sm:text-4xl">
+      <h2 className="headline-glow mt-3 text-xl font-bold sm:text-3xl lg:text-4xl">
         Pick Your Subscription
       </h2>
       <p className="mt-4 max-w-3xl text-(--muted)">
@@ -52,7 +52,7 @@ export function PlanSelector({ plans, onSelectPlan }: PlanSelectorProps) {
         </div>
       )}
 
-      <div className="mt-8 grid gap-4 lg:grid-cols-3">
+      <div className="mt-5 grid gap-3 sm:mt-8 sm:gap-4 lg:grid-cols-3">
         {/* Starter Plan */}
         {starterPlan && (
           <article className="feature-card border-(--accent) shadow-[0_0_30px_rgba(26,166,255,0.22)] p-5">

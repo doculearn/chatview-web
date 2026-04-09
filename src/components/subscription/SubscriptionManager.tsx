@@ -78,6 +78,22 @@ export function SubscriptionManager() {
     try {
       setActivating(true);
       setError(null);
+
+      // Re-initiate checkout for the pending subscription's plan
+      if (subscription?.plan?.name) {
+        const response = await authFetch("/api/chatview/subscription/initiate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ plan: subscription.plan.name }),
+        });
+        const data = await response.json().catch(() => null);
+        if (response.ok && data?.checkout_url) {
+          window.location.href = data.checkout_url;
+          return;
+        }
+      }
+
+      // Fallback: try direct activate (for subscriptions without payment provider)
       const response = await authFetch("/api/chatview/subscription/activate", {
         method: "POST",
       });
