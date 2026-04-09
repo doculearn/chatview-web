@@ -38,6 +38,8 @@ export function SubscriptionManager() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [showCancellationForm, setShowCancellationForm] = useState(false);
+  const [activating, setActivating] = useState(false);
+  const [deactivating, setDeactivating] = useState(false);
 
   useEffect(() => {
     loadData();
@@ -69,6 +71,46 @@ export function SubscriptionManager() {
       setError("Error loading subscription information");
     } finally {
       setLoading(false);
+    }
+  }
+
+  async function handleActivate() {
+    try {
+      setActivating(true);
+      setError(null);
+      const response = await authFetch("/api/chatview/subscription/activate", {
+        method: "POST",
+      });
+      const data = await response.json().catch(() => null);
+      if (!response.ok) {
+        setError(data?.error || "Failed to activate subscription");
+        return;
+      }
+      await loadData();
+    } catch {
+      setError("Error activating subscription");
+    } finally {
+      setActivating(false);
+    }
+  }
+
+  async function handleDeactivate() {
+    try {
+      setDeactivating(true);
+      setError(null);
+      const response = await authFetch("/api/chatview/subscription/deactivate", {
+        method: "POST",
+      });
+      const data = await response.json().catch(() => null);
+      if (!response.ok) {
+        setError(data?.error || "Failed to deactivate subscription");
+        return;
+      }
+      await loadData();
+    } catch {
+      setError("Error deactivating subscription");
+    } finally {
+      setDeactivating(false);
     }
   }
 
@@ -148,6 +190,10 @@ export function SubscriptionManager() {
           <SubscriptionStatus
             subscription={subscription}
             onCancelClick={() => setShowCancellationForm(true)}
+            onActivateClick={handleActivate}
+            onDeactivateClick={handleDeactivate}
+            activating={activating}
+            deactivating={deactivating}
           />
           {showCancellationForm && (
             <CancellationForm

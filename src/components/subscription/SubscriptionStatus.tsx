@@ -20,11 +20,19 @@ type Subscription = {
 type SubscriptionStatusProps = {
   subscription: Subscription;
   onCancelClick: () => void;
+  onActivateClick: () => void;
+  onDeactivateClick: () => void;
+  activating?: boolean;
+  deactivating?: boolean;
 };
 
 export function SubscriptionStatus({
   subscription,
   onCancelClick,
+  onActivateClick,
+  onDeactivateClick,
+  activating,
+  deactivating,
 }: SubscriptionStatusProps) {
   const nextPaymentDate = subscription.next_payment_date
     ? new Date(subscription.next_payment_date).toLocaleDateString()
@@ -97,13 +105,31 @@ export function SubscriptionStatus({
         )}
 
         <div className="mt-6 flex gap-3">
-          {subscription.status === "active" && (
+          {subscription.status === "pending" && (
             <button
-              onClick={onCancelClick}
-              className="flex-1 rounded-xl border border-red-500/20 bg-red-500/5 px-4 py-2 text-sm font-semibold text-red-400 hover:border-red-500/40 hover:bg-red-500/10 transition-colors"
+              onClick={onActivateClick}
+              disabled={activating}
+              className="flex-1 rounded-xl bg-(--accent) px-4 py-2 text-sm font-semibold text-white hover:bg-(--accent)/80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Cancel Subscription
+              {activating ? "Activating..." : "Activate Subscription"}
             </button>
+          )}
+          {subscription.status === "active" && (
+            <>
+              <button
+                onClick={onDeactivateClick}
+                disabled={deactivating}
+                className="flex-1 rounded-xl border border-yellow-500/20 bg-yellow-500/5 px-4 py-2 text-sm font-semibold text-yellow-400 hover:border-yellow-500/40 hover:bg-yellow-500/10 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {deactivating ? "Deactivating..." : "Deactivate"}
+              </button>
+              <button
+                onClick={onCancelClick}
+                className="flex-1 rounded-xl border border-red-500/20 bg-red-500/5 px-4 py-2 text-sm font-semibold text-red-400 hover:border-red-500/40 hover:bg-red-500/10 transition-colors"
+              >
+                Cancel Subscription
+              </button>
+            </>
           )}
           {subscription.is_cancelled && !subscription.has_access && (
             <button className="flex-1 rounded-xl bg-(--accent) px-4 py-2 text-sm font-semibold text-white hover:bg-(--accent)/80 transition-colors">
