@@ -24,6 +24,13 @@ export default function AccountPage() {
         if (profileRes.ok) {
           setProfile(profileData);
           setStatus("Account loaded");
+
+          // Redirect to pricing if no active subscription
+          const sub = profileData?.subscription;
+          if (!sub || !sub.active) {
+            router.push("/pricing");
+            return;
+          }
         } else if (profileRes.status === 401) {
           performLogout();
         } else {

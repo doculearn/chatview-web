@@ -60,7 +60,7 @@ export default function RegisterPage() {
         lastname,
         email,
       });
-      router.push("/account");
+      router.push("/pricing");
       return;
     }
 

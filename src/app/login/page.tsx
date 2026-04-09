@@ -54,7 +54,12 @@ export default function LoginPage() {
       email: typeof result.user?.email === "string" ? result.user.email : null,
     });
 
-    router.push("/account");
+    // Redirect to pricing if no active subscription
+    if (!result.subscription_active) {
+      router.push("/pricing");
+    } else {
+      router.push("/account");
+    }
   }
 
   return (

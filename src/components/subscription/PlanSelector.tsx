@@ -140,13 +140,6 @@ export function PlanSelector({ plans, onSelectPlan }: PlanSelectorProps) {
         )}
       </div>
 
-      {/* Free Plan Note */}
-      <div className="mt-6 rounded-lg bg-green-500/5 border border-green-500/20 p-4">
-        <p className="text-sm text-(--muted)">
-          Already enjoying our <strong>Free Plan</strong>? Upgrade to Starter or Pro to unlock unlimited sessions,
-          priority sync, and prompt templates.
-        </p>
-      </div>
     </section>
   );
 }
