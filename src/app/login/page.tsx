@@ -32,6 +32,7 @@ export default function LoginPage() {
           user?: Record<string, unknown>;
           tokens?: Record<string, unknown>;
           session_id?: string;
+          subscription_active?: boolean;
           error?: string;
           detail?: string;
         }
