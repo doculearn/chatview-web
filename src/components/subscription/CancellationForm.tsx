@@ -153,7 +153,7 @@ export function CancellationForm({
         {/* Important Notice */}
         <div className="rounded-lg bg-blue-500/5 border border-blue-500/20 p-4">
           <p className="text-sm text-(--muted)">
-            <strong>Important:</strong> Your subscription will be marked as cancelled immediately, but you'll retain access to ChatView for 3 days from the cancellation date. After 3 days, your access will be revoked.
+            <strong>Important:</strong> Your subscription will be marked as cancelled immediately, but you'll retain access to ChatView for 30 days from the cancellation date. After 30 days, your access will be revoked.
           </p>
         </div>
 

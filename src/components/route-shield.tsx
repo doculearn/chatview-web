@@ -6,9 +6,9 @@ import { NextShield } from "next-shield";
 import { useAuthReady } from "@/hooks/use-auth-ready";
 import useAuthCredentialsStore from "@/state/use-auth-credentials-store";
 
-const privateRoutes = ["/account"] as const;
+const privateRoutes = ["/account", "/subscription/return", "/subscription/success"] as const;
 const publicRoutes = ["/login", "/register"] as const;
-const hybridRoutes = ["/", "/docs", "/pricing", "/download"];
+const hybridRoutes = ["/", "/docs", "/pricing", "/download", "/subscription/cancel"];
 
 type RouteShieldProps = {
   children: ReactNode;

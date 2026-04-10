@@ -13,7 +13,7 @@ export function PageShell({ activePath, children }: PageShellProps) {
         <SiteHeader activePath={activePath} />
         {children}
         <footer className="pb-2 pt-1 text-center text-xs uppercase tracking-[0.16em] text-(--muted)">
-          Doculearn &copy; 2026
+          ChatView &copy; 2026
         </footer>
       </main>
     </div>

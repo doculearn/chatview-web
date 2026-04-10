@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { PageShell } from "@/components/page-shell";
 import { SubscriptionManager } from "@/components/subscription/SubscriptionManager";
 import { UsageStats } from "@/components/usage/UsageStats";
@@ -11,10 +11,28 @@ import useAuthCredentialsStore from "@/state/use-auth-credentials-store";
 
 export default function AccountPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const firstname = useAuthCredentialsStore((state) => state.firstname);
   const email = useAuthCredentialsStore((state) => state.email);
   const [profile, setProfile] = useState<Record<string, unknown> | null>(null);
   const [status, setStatus] = useState<string>("Loading account...");
+
+  // Handle return from Dodo Payments checkout
+  useEffect(() => {
+    const subscriptionCompleted = searchParams?.get("subscription_completed");
+
+    if (subscriptionCompleted === "true") {
+      router.replace("/subscription/return?status=success");
+      return;
+    }
+
+    const checkout = searchParams?.get("checkout");
+    if (checkout === "sub_pending") {
+      // Pending subscription without Dodo — stay on account page
+      // SubscriptionManager will show the "Complete Payment" button
+      return;
+    }
+  }, [searchParams, router]);
 
   useEffect(() => {
     async function load() {
@@ -25,13 +43,6 @@ export default function AccountPage() {
         if (profileRes.ok) {
           setProfile(profileData);
           setStatus("Account loaded");
-
-          // Redirect to pricing if no active subscription
-          const sub = profileData?.subscription;
-          if (!sub || !sub.active) {
-            router.push("/pricing");
-            return;
-          }
         } else if (profileRes.status === 401) {
           performLogout();
         } else {
