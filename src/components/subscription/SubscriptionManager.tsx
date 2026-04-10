@@ -87,8 +87,12 @@ export function SubscriptionManager() {
           body: JSON.stringify({ plan: subscription.plan.name }),
         });
         const data = await response.json().catch(() => null);
-        if (response.ok && data?.checkout_url) {
+        if (data?.checkout_url) {
           window.location.href = data.checkout_url;
+          return;
+        }
+        if (!response.ok) {
+          setError(data?.error || "Failed to initiate payment checkout");
           return;
         }
       }
