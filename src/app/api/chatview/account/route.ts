@@ -12,3 +12,15 @@ export async function GET(req: Request) {
     return NextResponse.json({ error: error instanceof Error ? error.message : "Failed to fetch account" }, { status: 400 });
   }
 }
+
+export async function DELETE(req: Request) {
+  try {
+    const token = getRequestToken(req);
+    if (!token) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
+    await callChatView("/accounts/me/", "DELETE", { token });
+    return NextResponse.json({ message: "Account deleted" });
+  } catch (error) {
+    return NextResponse.json({ error: error instanceof Error ? error.message : "Failed to delete account" }, { status: 400 });
+  }
+}

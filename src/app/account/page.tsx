@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
 import { PageShell } from "@/components/page-shell";
 import { SubscriptionManager } from "@/components/subscription/SubscriptionManager";
 import { UsageStats } from "@/components/usage/UsageStats";
@@ -58,29 +59,39 @@ export default function AccountPage() {
 
   return (
     <PageShell activePath="/account">
-      <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+      <div className="flex flex-col gap-4 sm:gap-6">
+        {/* Account info */}
         <section className="glass-panel float-up rounded-2xl p-4 sm:rounded-3xl sm:p-6 lg:p-10">
           <p className="text-xs uppercase tracking-[0.28em] text-(--muted)">Account</p>
-          <h1 className="headline-glow mt-3 text-xl font-bold sm:text-3xl">Welcome, {String(profile?.first_name ?? firstname ?? "Coder")}</h1>
-          <p className="mt-3 text-sm text-(--muted)">{status}</p>
+          <h1 className="headline-glow mt-2 text-lg font-bold sm:mt-3 sm:text-2xl lg:text-3xl break-words">Welcome, {String(profile?.first_name ?? firstname ?? "Coder")}</h1>
+          <p className="mt-2 text-xs text-(--muted) sm:mt-3 sm:text-sm">{status}</p>
 
-          <div className="mt-6 feature-card">
-            <p className="text-sm text-(--muted)">Email</p>
-            <p className="font-semibold">{String(profile?.email ?? email ?? "-")}</p>
+          <div className="mt-4 feature-card sm:mt-6">
+            <p className="text-xs text-(--muted) sm:text-sm">Email</p>
+            <p className="text-sm font-semibold break-all sm:text-base">{String(profile?.email ?? email ?? "-")}</p>
           </div>
         </section>
 
-        <section className="lg:hidden">
-          <SubscriptionManager />
-        </section>
-      </div>
-
-      <div className="mt-6 hidden lg:block">
+        {/* Subscription */}
         <SubscriptionManager />
-      </div>
 
-      <div className="mt-6">
+        {/* Usage */}
         <UsageStats />
+
+        {/* Delete account */}
+        <section className="glass-panel rounded-2xl p-4 sm:rounded-3xl sm:p-6 lg:p-10">
+          <p className="text-xs uppercase tracking-[0.28em] text-(--muted)">Danger zone</p>
+          <h2 className="mt-2 text-lg font-bold text-red-400 sm:text-xl">Delete Account</h2>
+          <p className="mt-2 text-xs text-(--muted) sm:text-sm">
+            Permanently delete your account and all associated data. This action cannot be undone.
+          </p>
+          <Link
+            href="/delete-account"
+            className="mt-4 inline-block rounded-lg border border-red-500/30 px-5 py-2 text-xs font-semibold uppercase tracking-wider text-red-400 transition-colors hover:bg-red-500/10"
+          >
+            Delete Account
+          </Link>
+        </section>
       </div>
     </PageShell>
   );
