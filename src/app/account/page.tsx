@@ -6,6 +6,7 @@ import Link from "next/link";
 import { PageShell } from "@/components/page-shell";
 import { SubscriptionManager } from "@/components/subscription/SubscriptionManager";
 import { UsageStats } from "@/components/usage/UsageStats";
+import { DataDeletionRequest } from "@/components/account/DataDeletionRequest";
 import { performLogout } from "@/lib/logout";
 import { authFetch } from "@/lib/auth-fetch";
 import useAuthCredentialsStore from "@/state/use-auth-credentials-store";
@@ -77,6 +78,9 @@ export default function AccountPage() {
 
         {/* Usage */}
         <UsageStats />
+
+        {/* Data deletion request */}
+        <DataDeletionRequest />
 
         {/* Delete account */}
         <section className="glass-panel rounded-2xl p-4 sm:rounded-3xl sm:p-6 lg:p-10">
