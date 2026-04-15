@@ -72,7 +72,6 @@ export function SubscriptionReturnContent() {
 
         if (sub.status === "active" || sub.is_active) {
           stopPolling();
-          // Store subscription info for success page
           try {
             localStorage.setItem("chatview_confirmed_plan", sub.plan?.display_name ?? "");
           } catch {
@@ -92,6 +91,30 @@ export function SubscriptionReturnContent() {
           stopPolling();
           setWorkflowStep("cancelled");
           return;
+        }
+
+        // Still pending — ask the backend to check Dodo directly
+        if (sub.status === "pending") {
+          try {
+            const verifyRes = await authFetch("/api/chatview/subscription/verify", {
+              method: "POST",
+            });
+            const verifyData = await verifyRes.json().catch(() => null);
+            if (verifyRes.ok && verifyData?.status === "active") {
+              const activeSub = verifyData.subscription ?? sub;
+              setSubscription(activeSub);
+              stopPolling();
+              try {
+                localStorage.setItem("chatview_confirmed_plan", activeSub.plan?.display_name ?? "");
+              } catch {
+                // localStorage may not be available
+              }
+              setWorkflowStep("completed");
+              return;
+            }
+          } catch {
+            // Verify failed — continue polling
+          }
         }
       }
     } catch {
