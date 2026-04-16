@@ -22,6 +22,7 @@ type SubscriptionStatusProps = {
   onCancelClick: () => void;
   onActivateClick: () => void;
   onDeactivateClick: () => void;
+  onChangePlanClick?: () => void;
   activating?: boolean;
   deactivating?: boolean;
 };
@@ -31,6 +32,7 @@ export function SubscriptionStatus({
   onCancelClick,
   onActivateClick,
   onDeactivateClick,
+  onChangePlanClick,
   activating,
   deactivating,
 }: SubscriptionStatusProps) {
@@ -119,13 +121,21 @@ export function SubscriptionStatus({
             <button
               onClick={onActivateClick}
               disabled={activating}
-              className="flex-1 rounded-xl bg-(--accent) px-4 py-2 text-sm font-semibold text-white hover:bg-(--accent)/80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex-1 rounded-xl bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent/80 active:bg-accent/70 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {activating ? "Processing..." : "Complete Payment"}
             </button>
           )}
           {subscription.status === "active" && (
             <>
+              {onChangePlanClick && (
+                <button
+                  onClick={onChangePlanClick}
+                  className="flex-1 rounded-xl bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent/80 active:bg-accent/70 transition-colors"
+                >
+                  Change Plan
+                </button>
+              )}
               <button
                 onClick={onDeactivateClick}
                 disabled={deactivating}
@@ -145,7 +155,7 @@ export function SubscriptionStatus({
             <button
               onClick={onActivateClick}
               disabled={activating}
-              className="flex-1 rounded-xl bg-(--accent) px-4 py-2 text-sm font-semibold text-white hover:bg-(--accent)/80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex-1 rounded-xl bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent/80 active:bg-accent/70 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {activating ? "Processing..." : "Renew Subscription"}
             </button>

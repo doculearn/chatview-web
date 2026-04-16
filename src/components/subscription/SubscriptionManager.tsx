@@ -40,6 +40,7 @@ export function SubscriptionManager() {
   const [showCancellationForm, setShowCancellationForm] = useState(false);
   const [activating, setActivating] = useState(false);
   const [deactivating, setDeactivating] = useState(false);
+  const [showPlanSelector, setShowPlanSelector] = useState(false);
 
   useEffect(() => {
     loadData();
@@ -79,36 +80,35 @@ export function SubscriptionManager() {
       setActivating(true);
       setError(null);
 
-      // Re-initiate checkout for the pending subscription's plan
-      if (subscription?.plan?.name) {
-        const response = await authFetch("/api/chatview/subscription/initiate", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ plan: subscription.plan.name }),
-        });
-        const data = await response.json().catch(() => null);
-        if (data?.checkout_url) {
-          window.location.href = data.checkout_url;
-          return;
-        }
-        if (!response.ok) {
-          setError(data?.error || "Failed to initiate payment checkout");
-          return;
-        }
-      }
-
-      // Fallback: try direct activate (for subscriptions without payment provider)
-      const response = await authFetch("/api/chatview/subscription/activate", {
-        method: "POST",
-      });
-      const data = await response.json().catch(() => null);
-      if (!response.ok) {
-        setError(data?.error || "Failed to activate subscription");
+      const planName = subscription?.plan?.name;
+      if (!planName) {
+        setError("No plan found. Please select a plan first.");
         return;
       }
+
+      const response = await authFetch("/api/chatview/subscription/initiate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ plan: planName }),
+      });
+      const data = await response.json().catch(() => null);
+
+      if (!response.ok) {
+        setError(data?.error || data?.detail || "Failed to initiate payment checkout");
+        return;
+      }
+
+      // Redirect to checkout if URL is provided
+      const checkoutUrl = data?.checkout_url || data?.payment_url;
+      if (checkoutUrl) {
+        window.location.href = checkoutUrl;
+        return;
+      }
+
+      // If no checkout URL, the backend may have activated directly (free plan)
       await loadData();
     } catch {
-      setError("Error activating subscription");
+      setError("Error initiating payment. Please try again.");
     } finally {
       setActivating(false);
     }
@@ -212,9 +212,20 @@ export function SubscriptionManager() {
             onCancelClick={() => setShowCancellationForm(true)}
             onActivateClick={handleActivate}
             onDeactivateClick={handleDeactivate}
+            onChangePlanClick={subscription.is_active ? () => setShowPlanSelector(!showPlanSelector) : undefined}
             activating={activating}
             deactivating={deactivating}
           />
+          {showPlanSelector && (
+            <PlanSelector
+              plans={plans}
+              currentPlanName={subscription.plan.name}
+              onSelectPlan={async (planName) => {
+                await handleUpgrade(planName);
+                setShowPlanSelector(false);
+              }}
+            />
+          )}
           {showCancellationForm && (
             <CancellationForm
               subscription={subscription}

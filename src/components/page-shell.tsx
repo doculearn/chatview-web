@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
 
 type PageShellProps = {
@@ -13,7 +14,11 @@ export function PageShell({ activePath, children }: PageShellProps) {
         <SiteHeader activePath={activePath} />
         {children}
         <footer className="pb-2 pt-1 text-center text-xs uppercase tracking-[0.16em] text-(--muted)">
-          ChatView &copy; 2026
+          <span>ChatView &copy; 2026</span>
+          <span className="mx-2">·</span>
+          <Link href="/privacy-policy" className="underline underline-offset-4 hover:text-(--foreground)">Privacy Policy</Link>
+          <span className="mx-2">·</span>
+          <Link href="/terms-of-service" className="underline underline-offset-4 hover:text-(--foreground)">Terms of Service</Link>
         </footer>
       </main>
     </div>

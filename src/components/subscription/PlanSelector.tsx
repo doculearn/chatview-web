@@ -13,10 +13,11 @@ type Plan = {
 
 type PlanSelectorProps = {
   plans: Plan[];
+  currentPlanName?: string;
   onSelectPlan: (planName: string) => Promise<void>;
 };
 
-export function PlanSelector({ plans, onSelectPlan }: PlanSelectorProps) {
+export function PlanSelector({ plans, currentPlanName, onSelectPlan }: PlanSelectorProps) {
   const [loading, setLoading] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -72,13 +73,19 @@ export function PlanSelector({ plans, onSelectPlan }: PlanSelectorProps) {
               </ul>
             )}
 
-            <button
-              onClick={() => handleSelectPlan("starter")}
-              disabled={loading === "starter"}
-              className="mt-5 w-full rounded-xl bg-(--accent) px-4 py-2 text-sm font-semibold text-white hover:bg-(--accent)/80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {loading === "starter" ? "Processing..." : "Choose Starter — $19/mo"}
-            </button>
+            {currentPlanName === "starter" ? (
+              <div className="mt-5 w-full rounded-xl border border-(--accent)/40 bg-(--accent)/10 px-4 py-2 text-center text-sm font-semibold text-(--accent)">
+                Current Plan
+              </div>
+            ) : (
+              <button
+                onClick={() => handleSelectPlan("starter")}
+                disabled={loading === "starter"}
+                className="mt-5 w-full rounded-xl bg-(--accent) px-4 py-2 text-sm font-semibold text-white hover:bg-(--accent)/80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {loading === "starter" ? "Processing..." : currentPlanName ? "Switch to Starter — $19/mo" : "Choose Starter — $19/mo"}
+              </button>
+            )}
           </article>
         )}
 
@@ -101,13 +108,19 @@ export function PlanSelector({ plans, onSelectPlan }: PlanSelectorProps) {
               </ul>
             )}
 
-            <button
-              onClick={() => handleSelectPlan("pro")}
-              disabled={loading === "pro"}
-              className="mt-5 w-full rounded-xl bg-amber-500 px-4 py-2 text-sm font-semibold text-black hover:bg-amber-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {loading === "pro" ? "Processing..." : "Choose Pro — $50/mo"}
-            </button>
+            {currentPlanName === "pro" ? (
+              <div className="mt-5 w-full rounded-xl border border-amber-500/40 bg-amber-500/10 px-4 py-2 text-center text-sm font-semibold text-amber-400">
+                Current Plan
+              </div>
+            ) : (
+              <button
+                onClick={() => handleSelectPlan("pro")}
+                disabled={loading === "pro"}
+                className="mt-5 w-full rounded-xl bg-amber-500 px-4 py-2 text-sm font-semibold text-black hover:bg-amber-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {loading === "pro" ? "Processing..." : currentPlanName ? "Switch to Pro — $50/mo" : "Choose Pro — $50/mo"}
+              </button>
+            )}
           </article>
         )}
 
