@@ -10,6 +10,7 @@ export default function DocsPage() {
         <p className="mt-4 max-w-3xl text-(--muted)">
           Connect your VS Code extension and mobile app so you can run prompts and coding workflows from your phone.
         </p>
+        <p className="mt-4 text-lg font-semibold">I am with Mokgethi</p>
 
         <div className="mt-5 grid gap-3 sm:mt-8 sm:gap-4 md:grid-cols-2">
           <article className="feature-card">
