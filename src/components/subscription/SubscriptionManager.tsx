@@ -50,9 +50,26 @@ export function SubscriptionManager() {
     try {
       setLoading(true);
       setError(null);
+
+      async function fetchWithTimeout(url: string, timeoutMs = 10000) {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+        try {
+          const res = await authFetch(url, { signal: controller.signal });
+          clearTimeout(timeoutId);
+          return res;
+        } catch (error) {
+          clearTimeout(timeoutId);
+          if (error instanceof Error && error.name === 'AbortError') {
+            throw new Error('Request timed out');
+          }
+          throw error;
+        }
+      }
+
       const [subRes, plansRes] = await Promise.all([
-        authFetch("/api/chatview/subscription/current"),
-        authFetch("/api/chatview/subscription/plans"),
+        fetchWithTimeout("/api/chatview/subscription/current"),
+        fetchWithTimeout("/api/chatview/subscription/plans"),
       ]);
 
       const subData = await subRes.json().catch(() => null);
@@ -68,8 +85,8 @@ export function SubscriptionManager() {
       if (!subRes.ok || !plansRes.ok) {
         setError("Failed to load subscription data");
       }
-    } catch {
-      setError("Error loading subscription information");
+    } catch (error) {
+      setError(error instanceof Error ? error.message : "Error loading subscription information");
     } finally {
       setLoading(false);
     }
