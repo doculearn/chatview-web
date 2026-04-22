@@ -52,14 +52,14 @@ export default function QRLoginExchangePage() {
               ? data.refresh
               : null;
 
-        if (!accessToken || !refreshToken) {
+        if (!accessToken) {
           setStatus("Invalid exchange response from server");
           return;
         }
 
         setCredentials({
           accessToken,
-          refreshToken,
+          refreshToken: refreshToken ?? "",
         });
         setStatus("Login successful! Redirecting...");
         setTimeout(() => router.push("/account"), 2000);
