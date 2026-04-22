@@ -67,7 +67,7 @@ export default function QRLoginExchangePage() {
           email: typeof user.email === "string" ? user.email : undefined,
         });
         setStatus("Login successful! Redirecting...");
-        setTimeout(() => router.push("/account"), 2000);
+        setTimeout(() => router.push("/qr"), 2000);
       } else {
         setStatus(data.error || "Failed to login");
       }
