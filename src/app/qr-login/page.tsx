@@ -57,9 +57,14 @@ export default function QRLoginExchangePage() {
           return;
         }
 
+        const user = data.user && typeof data.user === "object" ? data.user : {};
         setCredentials({
           accessToken,
           refreshToken: refreshToken ?? "",
+          username: typeof user.username === "string" ? user.username : undefined,
+          firstname: typeof user.firstname === "string" ? user.firstname : undefined,
+          lastname: typeof user.lastname === "string" ? user.lastname : undefined,
+          email: typeof user.email === "string" ? user.email : undefined,
         });
         setStatus("Login successful! Redirecting...");
         setTimeout(() => router.push("/account"), 2000);
