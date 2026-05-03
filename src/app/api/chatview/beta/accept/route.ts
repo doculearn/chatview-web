@@ -1,0 +1,19 @@
+import { NextResponse } from "next/server";
+import { callChatView } from "@/lib/chatview-server";
+
+export async function POST(req: Request) {
+  try {
+    const body = await req.json();
+    const data = await callChatView<Record<string, unknown>>(
+      "/accounts/beta/accept/",
+      "POST",
+      { body },
+    );
+    return NextResponse.json(data);
+  } catch (error) {
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : "Acceptance failed" },
+      { status: 400 },
+    );
+  }
+}
