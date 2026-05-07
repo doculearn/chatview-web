@@ -30,16 +30,26 @@ export default function DownloadPage() {
           <article className="feature-card p-5">
             <h2 className="text-xl font-semibold">Android Mobile App</h2>
             <p className="mt-2 text-sm text-(--muted)">
-              Download the latest APK release to send prompts and control sessions from your phone.
+              Install from Google Play to send prompts and control sessions from your phone.
             </p>
-            <Link
-              className="mt-5 inline-flex rounded-xl border border-(--line) bg-(--panel-soft) px-4 py-2 text-sm font-semibold"
-              href="https://github.com/doculearn/chatview-mobile/releases"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Download APK
-            </Link>
+            <div className="mt-5 flex flex-col gap-2 sm:flex-row">
+              <Link
+                className="inline-flex rounded-xl bg-(--accent) px-4 py-2 text-sm font-semibold text-black"
+                href="https://play.google.com/store/apps/details?id=com.chatviewmobile"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Get it on Google Play
+              </Link>
+              <Link
+                className="inline-flex rounded-xl border border-(--line) bg-(--panel-soft) px-4 py-2 text-sm font-semibold"
+                href="https://github.com/doculearn/chatview-mobile/releases"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Sideload APK
+              </Link>
+            </div>
           </article>
         </div>
       </section>

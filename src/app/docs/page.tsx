@@ -30,15 +30,23 @@ export default function DocsPage() {
           <article className="feature-card">
             <h2 className="text-lg font-semibold">2. Install the mobile app</h2>
             <p className="mt-2 text-sm text-(--muted)">
-              Download the latest APK and sign in with the same account used in VS Code.
+              Get ChatView from Google Play (or sideload the APK) and sign in with the same account used in VS Code.
             </p>
             <Link
-              href="https://github.com/doculearn/chatview-mobile/releases"
+              href="https://play.google.com/store/apps/details?id=com.chatviewmobile"
               className="mt-4 inline-block text-sm font-semibold text-(--accent-2)"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Download latest APK
+              Get it on Google Play
+            </Link>
+            <Link
+              href="https://github.com/doculearn/chatview-mobile/releases"
+              className="ml-4 inline-block text-sm font-semibold text-(--muted)"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Sideload APK
             </Link>
           </article>
 

@@ -64,12 +64,20 @@ export default function Home() {
               Install VS Code Extension
             </Link>
             <Link
+              href="https://play.google.com/store/apps/details?id=com.chatviewmobile"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-xl border border-(--line) bg-(--panel-soft) px-5 py-3 font-semibold text-(--foreground) transition hover:border-(--accent)"
+            >
+              Get it on Google Play
+            </Link>
+            <Link
               href="https://github.com/doculearn/chatview-mobile/releases"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center rounded-xl border border-(--line) bg-(--panel-soft) px-5 py-3 font-semibold text-(--foreground) transition hover:border-(--accent)"
             >
-              Download Mobile APK
+              Or sideload APK
             </Link>
           </div>
         </section>
