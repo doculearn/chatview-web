@@ -7,6 +7,9 @@ export default function Home() {
       <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
         <section id="features" className="glass-panel float-up rounded-2xl p-4 sm:rounded-[2rem] sm:p-6 lg:p-10">
           <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.24em] text-(--muted)">
+            <span className="rounded-full border border-(--accent)/40 bg-(--accent)/10 px-3 py-1 font-semibold text-(--accent)">
+              Free 3-Day Trial
+            </span>
             <span className="rounded-full border border-(--line) bg-(--panel-soft) px-3 py-1">Build Without Stopping</span>
             <span className="rounded-full border border-(--line) bg-(--panel-soft) px-3 py-1">Phone to Workstation</span>
           </div>
@@ -19,6 +22,14 @@ export default function Home() {
             Done for the day? Not quite. Walk away from your desk and keep shipping. Send prompts from mobile, execute commands on your
             workstation, and continue coding from anywhere in the world.
           </p>
+
+          <div className="mt-5 flex flex-wrap items-center gap-3 rounded-2xl border border-(--accent)/30 bg-(--accent)/5 px-4 py-3 text-sm">
+            <span className="font-semibold text-(--accent)">3 days free</span>
+            <span className="text-(--muted)">on every new account — full access, cancel anytime before day 3.</span>
+            <Link href="/register" className="ml-auto font-semibold text-(--foreground) underline-offset-4 hover:underline">
+              Start free trial →
+            </Link>
+          </div>
 
           <div className="mt-8 command-strip overflow-hidden p-4 sm:p-5">
             <div className="flex items-center justify-between gap-3 border-b border-white/8 pb-3">
@@ -71,15 +82,23 @@ export default function Home() {
             >
               Get it on Google Play
             </Link>
-            <Link
-              href="https://github.com/doculearn/chatview-mobile/releases"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-xl border border-(--line) bg-(--panel-soft) px-5 py-3 font-semibold text-(--foreground) transition hover:border-(--accent)"
-            >
-              Or sideload APK
-            </Link>
           </div>
+
+          <a
+            href="https://www.producthunt.com/products/chatview/reviews/new?utm_source=badge-product_review&utm_medium=badge&utm_source=badge-chatview"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-5 inline-block sm:mt-6"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=1220652&theme=light"
+              alt="ChatView - Vibe Code from your Phone, from anywhere | Product Hunt"
+              width={250}
+              height={54}
+              style={{ width: 250, height: 54 }}
+            />
+          </a>
         </section>
 
         <aside className="space-y-4 sm:space-y-6">

@@ -41,14 +41,6 @@ export default function DownloadPage() {
               >
                 Get it on Google Play
               </Link>
-              <Link
-                className="inline-flex rounded-xl border border-(--line) bg-(--panel-soft) px-4 py-2 text-sm font-semibold"
-                href="https://github.com/doculearn/chatview-mobile/releases"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Sideload APK
-              </Link>
             </div>
           </article>
         </div>
