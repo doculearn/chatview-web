@@ -14,10 +14,18 @@ type Plan = {
 type PlanSelectorProps = {
   plans: Plan[];
   currentPlanName?: string;
+  trialEligible?: boolean;
+  trialDays?: number;
   onSelectPlan: (planName: string) => Promise<void>;
 };
 
-export function PlanSelector({ plans, currentPlanName, onSelectPlan }: PlanSelectorProps) {
+export function PlanSelector({
+  plans,
+  currentPlanName,
+  trialEligible = true,
+  trialDays = 3,
+  onSelectPlan,
+}: PlanSelectorProps) {
   const [loading, setLoading] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -46,6 +54,12 @@ export function PlanSelector({ plans, currentPlanName, onSelectPlan }: PlanSelec
       <p className="mt-4 max-w-3xl text-(--muted)">
         Get the most out of ChatView with a paid subscription. Upgrade anytime to unlock premium features.
       </p>
+      {trialEligible && (
+        <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-300">
+          <span aria-hidden>✨</span>
+          {trialDays}-day free trial included — you won&apos;t be charged until day {trialDays + 1}.
+        </div>
+      )}
 
       {error && (
         <div className="mt-6 rounded-lg bg-red-500/10 border border-red-500/20 p-3">
@@ -83,7 +97,7 @@ export function PlanSelector({ plans, currentPlanName, onSelectPlan }: PlanSelec
                 disabled={loading === "starter"}
                 className="mt-5 w-full rounded-xl bg-(--accent) px-4 py-2 text-sm font-semibold text-white hover:bg-(--accent)/80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {loading === "starter" ? "Processing..." : currentPlanName ? "Switch to Starter — $19/mo" : "Choose Starter — $19/mo"}
+                {loading === "starter" ? "Processing..." : currentPlanName ? "Switch to Starter — $9.99/mo" : trialEligible ? `Start free trial — then $${starterPlan.price}/mo` : "Choose Starter — $9.99/mo"}
               </button>
             )}
           </article>
@@ -118,7 +132,7 @@ export function PlanSelector({ plans, currentPlanName, onSelectPlan }: PlanSelec
                 disabled={loading === "pro"}
                 className="mt-5 w-full rounded-xl bg-amber-500 px-4 py-2 text-sm font-semibold text-black hover:bg-amber-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {loading === "pro" ? "Processing..." : currentPlanName ? "Switch to Pro — $50/mo" : "Choose Pro — $50/mo"}
+                {loading === "pro" ? "Processing..." : currentPlanName ? "Switch to Pro — $29.99/mo" : trialEligible ? `Start free trial — then $${proPlan.price}/mo` : "Choose Pro — $29.99/mo"}
               </button>
             )}
           </article>
