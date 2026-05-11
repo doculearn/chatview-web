@@ -79,6 +79,21 @@ export default function AccountPage() {
         {/* Usage */}
         <UsageStats />
 
+        {/* Developer settings */}
+        <section className="glass-panel rounded-2xl p-4 sm:rounded-3xl sm:p-6 lg:p-10">
+          <p className="text-xs uppercase tracking-[0.28em] text-(--accent-2)">Developer</p>
+          <h2 className="mt-2 text-lg font-bold sm:text-xl">Personal Access Tokens</h2>
+          <p className="mt-2 max-w-2xl text-xs text-(--muted) sm:text-sm">
+            Generate long-lived API tokens for headless tools — the ChatView MCP server, CI scripts, custom integrations.
+          </p>
+          <Link
+            href="/account/developer"
+            className="mt-4 inline-block rounded-lg border border-(--line) bg-(--panel-soft) px-5 py-2 text-xs font-semibold uppercase tracking-wider transition hover:border-(--accent)"
+          >
+            Manage tokens →
+          </Link>
+        </section>
+
         {/* Data deletion request */}
         <DataDeletionRequest />
 
