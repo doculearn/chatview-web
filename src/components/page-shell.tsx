@@ -19,6 +19,8 @@ export function PageShell({ activePath, children }: PageShellProps) {
           <Link href="/privacy-policy" className="underline underline-offset-4 hover:text-(--foreground)">Privacy Policy</Link>
           <span className="mx-2">·</span>
           <Link href="/terms-of-service" className="underline underline-offset-4 hover:text-(--foreground)">Terms of Service</Link>
+          <span className="mx-2">·</span>
+          <Link href="/support" className="underline underline-offset-4 hover:text-(--foreground)">Support</Link>
         </footer>
       </main>
     </div>
