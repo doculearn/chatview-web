@@ -19,10 +19,24 @@ export default function SupportPage() {
           ChatView Support
         </h1>
         <p className="mt-4 max-w-3xl text-base leading-7 text-(--muted)">
-          We&apos;re here to help. Reach out with questions about your account,
-          subscription, the VS Code extension, or the mobile app — we typically
-          reply within one business day.
+          We&apos;re here to help. Open a ticket and our team will reply by email — you can
+          also track and continue the conversation from your account.
         </p>
+
+        <div className="mt-6 flex flex-wrap gap-3">
+          <Link
+            href="/support/new"
+            className="inline-flex items-center justify-center rounded-xl bg-(--accent) px-5 py-3 text-sm font-semibold text-black hover:brightness-110"
+          >
+            Open a support ticket
+          </Link>
+          <Link
+            href="/support/tickets"
+            className="inline-flex items-center justify-center rounded-xl border border-(--line) px-5 py-3 text-sm font-semibold hover:bg-(--panel-soft)"
+          >
+            View my tickets
+          </Link>
+        </div>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2">
           <div className="rounded-2xl border border-(--line) bg-(--panel-soft) p-5">
