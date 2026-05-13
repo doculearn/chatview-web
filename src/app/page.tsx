@@ -6,6 +6,13 @@ export default function Home() {
     <PageShell activePath="/">
       <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
         <section id="features" className="glass-panel float-up rounded-2xl p-4 sm:rounded-[2rem] sm:p-6 lg:p-10">
+          <div className="mb-4 flex items-center gap-2 rounded-full border border-(--success)/40 bg-(--success)/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-(--success) w-fit">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-(--success) opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-(--success)" />
+            </span>
+            Demo in Session
+          </div>
           <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.24em] text-(--muted)">
             <span className="rounded-full border border-(--accent)/40 bg-(--accent)/10 px-3 py-1 font-semibold text-(--accent)">
               Free 3-Day Trial
