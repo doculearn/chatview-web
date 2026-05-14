@@ -97,7 +97,13 @@ export function PlanSelector({
                 disabled={loading === "starter"}
                 className="mt-5 w-full rounded-xl bg-(--accent) px-4 py-2 text-sm font-semibold text-white hover:bg-(--accent)/80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {loading === "starter" ? "Processing..." : currentPlanName ? "Switch to Starter — $9.99/mo" : trialEligible ? `Start free trial — then $${starterPlan.price}/mo` : "Choose Starter — $9.99/mo"}
+                {loading === "starter"
+                  ? "Processing..."
+                  : currentPlanName
+                    ? `Switch to Starter — $${starterPlan.price}/mo`
+                    : trialEligible
+                      ? `Start free trial — then $${starterPlan.price}/mo`
+                      : `Choose Starter — $${starterPlan.price}/mo`}
               </button>
             )}
           </article>
@@ -132,7 +138,13 @@ export function PlanSelector({
                 disabled={loading === "pro"}
                 className="mt-5 w-full rounded-xl bg-amber-500 px-4 py-2 text-sm font-semibold text-black hover:bg-amber-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {loading === "pro" ? "Processing..." : currentPlanName ? "Switch to Pro — $29.99/mo" : trialEligible ? `Start free trial — then $${proPlan.price}/mo` : "Choose Pro — $29.99/mo"}
+                {loading === "pro"
+                  ? "Processing..."
+                  : currentPlanName
+                    ? `Switch to Pro — $${proPlan.price}/mo`
+                    : trialEligible
+                      ? `Start free trial — then $${proPlan.price}/mo`
+                      : `Choose Pro — $${proPlan.price}/mo`}
               </button>
             )}
           </article>
