@@ -6,7 +6,7 @@ export async function POST(req: Request) {
     const body = await req.json();
     const token = getRequestToken(req);
     const data = await callChatView<{ payment_link?: string; payment_id?: string }>(
-      "/tip/create/",
+      "/app/tip/create/",
       "POST",
       { token: token ?? undefined, body },
     );
