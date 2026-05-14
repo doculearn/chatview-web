@@ -2,6 +2,18 @@ const CHATVIEW_API_BASE_URL = (process.env.CHATVIEW_API_BASE_URL ?? "https://api
 
 type Method = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
 
+export class ChatViewApiError extends Error {
+  status: number;
+  details: unknown;
+
+  constructor(message: string, status: number, details?: unknown) {
+    super(message);
+    this.name = "ChatViewApiError";
+    this.status = status;
+    this.details = details ?? null;
+  }
+}
+
 export async function callChatView<T>(path: string, method: Method, options?: { token?: string; body?: unknown }) {
   const routePath = path.startsWith("/") ? path : `/${path}`;
   const response = await fetch(`${CHATVIEW_API_BASE_URL}${routePath}`, {
@@ -18,7 +30,7 @@ export async function callChatView<T>(path: string, method: Method, options?: { 
 
   if (!response.ok) {
     const message = data?.error || data?.detail || `Request failed: ${response.status}`;
-    throw new Error(message);
+    throw new ChatViewApiError(message, response.status, data);
   }
 
   return data as T;
