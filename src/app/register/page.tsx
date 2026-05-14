@@ -3,6 +3,7 @@
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { PageShell } from "@/components/page-shell";
+import { GoogleLoginButton } from "@/components/google-login-button";
 import useAuthCredentialsStore from "@/state/use-auth-credentials-store";
 
 export default function RegisterPage() {
@@ -134,6 +135,14 @@ export default function RegisterPage() {
             {loading ? "Creating account..." : "Create account"}
           </button>
         </form>
+
+        <div className="my-5 flex items-center gap-3">
+          <div className="h-px flex-1 bg-(--line)" />
+          <span className="text-xs uppercase tracking-[0.24em] text-(--muted)">or</span>
+          <div className="h-px flex-1 bg-(--line)" />
+        </div>
+
+        <GoogleLoginButton label="Sign up with Google" disabled={loading} />
 
         {message ? <p className="mt-3 text-sm text-(--success)">{message}</p> : null}
         {error ? <p className="mt-3 text-sm text-red-400">{error}</p> : null}
