@@ -22,7 +22,7 @@ const PUBLIC_PLANS = [
     price: "9.99",
     blurb: "For individual developers",
     accent: "border-(--accent)/40 shadow-[0_0_30px_rgba(26,166,255,0.18)]",
-    cta: "Start 3-day free trial",
+    cta: "Subscribe — $9.99/mo",
     features: [
       "1 mobile device",
       "MCP server + VS Code extension",
@@ -36,7 +36,7 @@ const PUBLIC_PLANS = [
     price: "29.99",
     blurb: "For power users & small teams",
     accent: "border-amber-500/60 shadow-[0_0_30px_rgba(245,158,11,0.18)]",
-    cta: "Start 3-day free trial",
+    cta: "Subscribe — $29.99/mo",
     badge: "Most Popular",
     features: [
       "5 mobile devices",

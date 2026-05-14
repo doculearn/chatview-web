@@ -114,7 +114,7 @@ export default function SupportPage() {
                 <Link href="/account" className="text-(--accent) hover:underline">
                   account page
                 </Link>
-                . Your 3-day free trial starts on first sign-in.
+                .
               </li>
               <li>
                 <strong>Connection issues</strong> — make sure your workstation

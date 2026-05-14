@@ -14,16 +14,12 @@ type Plan = {
 type PlanSelectorProps = {
   plans: Plan[];
   currentPlanName?: string;
-  trialEligible?: boolean;
-  trialDays?: number;
   onSelectPlan: (planName: string) => Promise<void>;
 };
 
 export function PlanSelector({
   plans,
   currentPlanName,
-  trialEligible = true,
-  trialDays = 3,
   onSelectPlan,
 }: PlanSelectorProps) {
   const [loading, setLoading] = useState<string | null>(null);
@@ -54,12 +50,6 @@ export function PlanSelector({
       <p className="mt-4 max-w-3xl text-(--muted)">
         Get the most out of ChatView with a paid subscription. Upgrade anytime to unlock premium features.
       </p>
-      {trialEligible && (
-        <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-300">
-          <span aria-hidden>✨</span>
-          {trialDays}-day free trial included — you won&apos;t be charged until day {trialDays + 1}.
-        </div>
-      )}
 
       {error && (
         <div className="mt-6 rounded-lg bg-red-500/10 border border-red-500/20 p-3">
@@ -101,9 +91,7 @@ export function PlanSelector({
                   ? "Processing..."
                   : currentPlanName
                     ? `Switch to Starter — $${starterPlan.price}/mo`
-                    : trialEligible
-                      ? `Start free trial — then $${starterPlan.price}/mo`
-                      : `Choose Starter — $${starterPlan.price}/mo`}
+                    : `Subscribe — $${starterPlan.price}/mo`}
               </button>
             )}
           </article>
@@ -142,9 +130,7 @@ export function PlanSelector({
                   ? "Processing..."
                   : currentPlanName
                     ? `Switch to Pro — $${proPlan.price}/mo`
-                    : trialEligible
-                      ? `Start free trial — then $${proPlan.price}/mo`
-                      : `Choose Pro — $${proPlan.price}/mo`}
+                    : `Subscribe — $${proPlan.price}/mo`}
               </button>
             )}
           </article>

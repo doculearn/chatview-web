@@ -7,9 +7,6 @@ export default function Home() {
       <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
         <section id="features" className="glass-panel float-up rounded-2xl p-4 sm:rounded-[2rem] sm:p-6 lg:p-10">
           <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.24em] text-(--muted)">
-            <span className="rounded-full border border-(--accent)/40 bg-(--accent)/10 px-3 py-1 font-semibold text-(--accent)">
-              Free 3-Day Trial
-            </span>
             <span className="rounded-full border border-(--line) bg-(--panel-soft) px-3 py-1">Build Without Stopping</span>
             <span className="rounded-full border border-(--line) bg-(--panel-soft) px-3 py-1">Phone to Workstation</span>
           </div>
@@ -24,10 +21,10 @@ export default function Home() {
           </p>
 
           <div className="mt-5 flex flex-wrap items-center gap-3 rounded-2xl border border-(--accent)/30 bg-(--accent)/5 px-4 py-3 text-sm">
-            <span className="font-semibold text-(--accent)">3 days free</span>
-            <span className="text-(--muted)">on every new account — full access, cancel anytime before day 3.</span>
+            <span className="font-semibold text-(--accent)">$9.99/mo</span>
+            <span className="text-(--muted)">— full access, cancel anytime.</span>
             <Link href="/register" className="ml-auto font-semibold text-(--foreground) underline-offset-4 hover:underline">
-              Start free trial →
+              Get started →
             </Link>
           </div>
 
