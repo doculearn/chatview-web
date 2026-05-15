@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next/third-parties": "^16.2.3",
+    "firebase": "^12.13.0",
     "js-cookie": "^3.0.5",
     "next": "16.2.1",
     "next-shield": "^2.1.5",

@@ -1,5 +1,13 @@
 "use client";
 
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import useAuthCredentialsStore from "@/state/use-auth-credentials-store";
+import {
+  GoogleSignInCancelled,
+  signInWithGoogleAndExchange,
+} from "@/lib/firebase-auth";
+
 type GoogleLoginButtonProps = {
   label?: string;
   disabled?: boolean;
@@ -9,18 +17,87 @@ export function GoogleLoginButton({
   label = "Continue with Google",
   disabled,
 }: GoogleLoginButtonProps) {
+  const router = useRouter();
+  const setCredentials = useAuthCredentialsStore(
+    (state) => state.setCredentials,
+  );
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleClick() {
+    if (busy || disabled) return;
+    setError(null);
+    setBusy(true);
+    try {
+      const data = await signInWithGoogleAndExchange();
+      if (!data.success) {
+        setError(data.error || "Sign-in failed");
+        return;
+      }
+
+      const tokens = (data.tokens ?? {}) as Record<string, unknown>;
+      const user = (data.user ?? {}) as Record<string, unknown>;
+
+      const accessToken =
+        (typeof tokens.access_token === "string" && tokens.access_token) ||
+        (typeof tokens.azure_access_token === "string" &&
+          tokens.azure_access_token) ||
+        null;
+
+      setCredentials({
+        accessToken,
+        refreshToken:
+          typeof tokens.refresh_token === "string" ? tokens.refresh_token : null,
+        sessionId:
+          typeof data.session_id === "string" ? data.session_id : null,
+        username: typeof user.username === "string" ? user.username : null,
+        firstname:
+          typeof user.firstname === "string"
+            ? user.firstname
+            : typeof user.first_name === "string"
+              ? user.first_name
+              : null,
+        lastname:
+          typeof user.lastname === "string"
+            ? user.lastname
+            : typeof user.last_name === "string"
+              ? user.last_name
+              : null,
+        email: typeof user.email === "string" ? user.email : null,
+      });
+
+      router.replace(data.subscription_active ? "/account" : "/pricing");
+    } catch (err) {
+      if (err instanceof GoogleSignInCancelled) {
+        return;
+      }
+      setError(err instanceof Error ? err.message : "Sign-in failed");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  const isDisabled = Boolean(disabled) || busy;
+
   return (
-    <a
-      href={disabled ? undefined : "/api/chatview/auth/google/login"}
-      aria-disabled={disabled}
-      className={`flex h-12 w-full items-center justify-center gap-3 rounded-xl border bg-white text-sm font-semibold text-gray-800 transition hover:border-(--accent) hover:bg-gray-50 ${
-        disabled
-          ? "border-gray-200 opacity-60 cursor-not-allowed pointer-events-none"
-          : "border-gray-300"
-      }`}>
-      <GoogleGlyph />
-      <span>{label}</span>
-    </a>
+    <div className="w-full">
+      <button
+        type="button"
+        onClick={handleClick}
+        disabled={isDisabled}
+        aria-busy={busy}
+        className={`flex h-12 w-full items-center justify-center gap-3 rounded-xl border bg-white text-sm font-semibold text-gray-800 transition hover:border-(--accent) hover:bg-gray-50 ${
+          isDisabled
+            ? "border-gray-200 opacity-60 cursor-not-allowed"
+            : "border-gray-300"
+        }`}>
+        <GoogleGlyph />
+        <span>{busy ? "Opening Google\u2026" : label}</span>
+      </button>
+      {error ? (
+        <p className="mt-2 text-sm text-red-400">{error}</p>
+      ) : null}
+    </div>
   );
 }
 
