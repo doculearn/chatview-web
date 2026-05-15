@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { PageShell } from "@/components/page-shell";
 import { BuyCoffee } from "@/components/buy-coffee";
+import { EveryIdeEveryModel } from "@/components/every-ide-every-model";
 
 export default function Home() {
   return (
@@ -135,6 +136,7 @@ export default function Home() {
           </section>
         </aside>
       </div>
+      <EveryIdeEveryModel />
       <BuyCoffee />
     </PageShell>
   );
