@@ -5,6 +5,15 @@ type Item = {
   hint?: string;
 };
 
+const AGENTS: Item[] = [
+  { label: "Claude Code", hint: "Anthropic CLI" },
+  { label: "OpenAI Codex CLI", hint: "GPT-5" },
+  { label: "Cursor Agent", hint: "Composer + chat" },
+  { label: "GitHub Copilot Chat", hint: "VS Code" },
+  { label: "Cline / Roo", hint: "Open source" },
+  { label: "Aider", hint: "Terminal-native" },
+];
+
 const IDES: Item[] = [
   { label: "VS Code", hint: "Official extension" },
   { label: "Cursor", hint: "VS Code-compatible" },
@@ -36,39 +45,46 @@ export function EveryIdeEveryModel() {
       id="universal"
       className="glass-panel float-up mt-6 rounded-2xl p-4 sm:rounded-[2rem] sm:p-6 lg:p-10">
       <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.24em] text-(--muted)">
+        <span className="rounded-full border border-(--accent)/40 bg-(--accent)/10 px-3 py-1 text-(--accent)">
+          Codex Mobile, but universal
+        </span>
         <span className="rounded-full border border-(--line) bg-(--panel-soft) px-3 py-1">
-          Bring your own model
+          Every agent
         </span>
         <span className="rounded-full border border-(--line) bg-(--panel-soft) px-3 py-1">
           Every IDE
         </span>
         <span className="rounded-full border border-(--line) bg-(--panel-soft) px-3 py-1">
-          Every platform
+          Every model
         </span>
       </div>
 
       <h2 className="headline-glow mt-4 max-w-3xl text-2xl font-bold leading-tight sm:text-4xl">
-        Not locked to one IDE. Not locked to one model.
+        Codex Mobile for Claude Code, Codex, Cursor & VS Code.
       </h2>
 
       <p className="mt-4 max-w-2xl text-base leading-7 text-(--muted) sm:text-lg">
-        Mobile coding shouldn&apos;t mean ditching the editor you already love or the model that
-        actually solves your bugs. ChatView relays prompts and commands from your phone to{" "}
-        <span className="text-(--foreground)">whichever IDE you run</span> and{" "}
-        <span className="text-(--foreground)">whichever model you pay for</span> — your keys, your
-        choice, your workflow.
+        OpenAI&apos;s Codex Mobile only drives OpenAI&apos;s agent inside OpenAI&apos;s app.
+        ChatView is the mobile control plane for{" "}
+        <span className="text-(--foreground)">every</span> coding agent you already run —
+        Claude Code, Codex CLI, Cursor Agent, Copilot Chat — wired straight to the IDE on
+        your real laptop, powered by{" "}
+        <span className="text-(--foreground)">whichever model you pay for</span>. Your keys.
+        Your choice. Your workflow.
       </p>
 
-      <div className="mt-8 grid gap-4 lg:grid-cols-3">
-        <Pillar title="Works in your IDE" badge="IDE" items={IDES} />
-        <Pillar title="Powered by your model" badge="MODEL" items={MODELS} />
+      <div className="mt-8 grid gap-4 lg:grid-cols-2 xl:grid-cols-4">
+        <Pillar title="Drives your agent" badge="AGENT" items={AGENTS} />
+        <Pillar title="Inside your IDE" badge="IDE" items={IDES} />
+        <Pillar title="On your model" badge="MODEL" items={MODELS} />
         <Pillar title="From any device" badge="DEVICE" items={PLATFORMS} />
       </div>
 
       <div className="mt-8 flex flex-wrap items-center gap-3 rounded-2xl border border-(--accent)/30 bg-(--accent)/5 px-4 py-3 text-sm">
         <span className="font-semibold text-(--accent)">No vendor lock-in.</span>
         <span className="text-(--muted)">
-          One subscription, every editor, every model. $9.99/mo — cancel anytime.
+          One subscription, every agent, every editor, every model. $9.99/mo — cancel
+          anytime.
         </span>
         <Link
           href="/register"

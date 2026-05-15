@@ -9,6 +9,7 @@ export default function Home() {
       <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
         <section id="features" className="glass-panel float-up rounded-2xl p-4 sm:rounded-[2rem] sm:p-6 lg:p-10">
           <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.24em] text-(--muted)">
+            <span className="rounded-full border border-(--accent)/40 bg-(--accent)/10 px-3 py-1 text-(--accent)">Codex Mobile for every agent</span>
             <span className="rounded-full border border-(--line) bg-(--panel-soft) px-3 py-1">Build Without Stopping</span>
             <span className="rounded-full border border-(--line) bg-(--panel-soft) px-3 py-1">Phone to Workstation</span>
           </div>
@@ -18,8 +19,11 @@ export default function Home() {
           </h1>
 
           <p className="mt-5 max-w-2xl text-base leading-7 text-(--muted) sm:text-lg">
-            Done for the day? Not quite. Walk away from your desk and keep shipping. Send prompts from mobile, execute commands on your
-            workstation, and continue coding from anywhere in the world.
+            Codex Mobile, but for{" "}
+            <span className="text-(--foreground)">Claude Code, Codex CLI, Cursor and VS Code</span>{" "}
+            — driven from your phone, running on your real laptop, powered by whichever
+            model you actually pay for. Send prompts from mobile, execute commands on
+            your workstation, and keep shipping from anywhere in the world.
           </p>
 
           <div className="mt-5 flex flex-wrap items-center gap-3 rounded-2xl border border-(--accent)/30 bg-(--accent)/5 px-4 py-3 text-sm">
