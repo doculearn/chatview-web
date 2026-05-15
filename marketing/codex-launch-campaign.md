@@ -124,3 +124,54 @@ chat-view.xyz
 - Pin a tweet on @chat_view linking to `chat-view.xyz/#universal`.
 - Short demo GIF (≤15s) showing: iPhone Safari → VS Code on a Windows PC → command executes.
 - ProductHunt / IndieHackers post timed for the day after the hype peaks.
+
+## LinkedIn posts
+
+### Long form (recommended)
+
+> **OpenAI just launched Codex inside the ChatGPT mobile app.**
+>
+> The mainstream developer world will spend the next week realizing they no longer need to be at their desk to ship code.
+>
+> I welcome the validation — because I've been building exactly this for the past month.
+>
+> **ChatView** turns your phone into a remote control for the coding agent already running on your laptop. The difference:
+>
+> 🛠️ Works with **any IDE** — VS Code, Cursor, Windsurf (not just one vendor's app)
+> 🧠 Powered by **any model** — GPT-5, Claude Opus, Gemini 2.5, DeepSeek, or your own local one
+> 💻 Runs on **any OS** — Windows, macOS, Linux (Codex Mobile is macOS-only; Windows is "coming soon")
+> 🔑 **Your keys, your laptop, your workflow** — no devbox required
+> 💰 **$9.99/month** — indie-built, shipped weekly
+>
+> Mobile-driven development is no longer a fringe idea. It's a category. And like every category, the question becomes: do you want it locked into one vendor's stack, or do you want to keep using the editor and model you already pay for?
+>
+> If you're a Windows or Linux dev who's tired of being a second-class citizen — we ship today.
+>
+> 👉 chat-view.xyz/#universal
+>
+> #buildinpublic #indiehackers #ai #devtools #mobiledev
+
+### Mid-length
+
+> OpenAI launched Codex in the ChatGPT mobile app yesterday. Welcome to the party — we've been hosting it for a month.
+>
+> **ChatView** does the same thing, but:
+> · works with any IDE (VS Code, Cursor, Windsurf)
+> · powered by any model (GPT-5, Claude, Gemini, local)
+> · runs on Windows, macOS, Linux (Codex is macOS-only for now)
+> · your keys, your laptop, your workflow
+> · $9.99/month, indie-built
+>
+> Mobile coding is now a category. The next question is whether it's locked to one vendor — or open to the editor and model you already use.
+>
+> 👉 chat-view.xyz/#universal
+
+### Short / punchy
+
+> Codex Mobile launched yesterday — for macOS.
+>
+> ChatView launched a month ago — for Windows, macOS, Linux, with any IDE and any model.
+>
+> The category is real. The lock-in shouldn't be.
+>
+> 👉 chat-view.xyz/#universal
