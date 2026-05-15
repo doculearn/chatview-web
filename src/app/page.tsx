@@ -22,13 +22,13 @@ const BILLBOARDS: Billboard[] = [
     direction: "left",
     title: (
       <>
-        Run <span className="text-(--accent)">your coding agent</span> from your phone.
+        Drive <span className="text-(--accent)">VS Code, Claude Code & Cursor</span> from your phone.
       </>
     ),
     description:
       "ChatView is the mobile remote for every coding agent you already use. Queue prompts on the train, watch your agent ship in your real repo, approve or cancel runs from the lock screen.",
     highlights: [
-      { title: "Bring your own CLI", description: "Claude Code, Cursor Agent, Aider, Cline/Roo, Continue.dev, or anything else you can run in a terminal." },
+      { title: "Bring your own CLI", description: "VS Code Copilot, Claude Code, Codex CLI, Cursor Agent, Aider, Cline/Roo — anything you can run in a terminal." },
       { title: "Approval gates", description: "Review tool calls and diffs from mobile before they touch your repo." },
       { title: "Resumable sessions", description: "Pick up the same agent thread on phone, web, or back at your desk." },
     ],
@@ -123,7 +123,7 @@ const BILLBOARDS: Billboard[] = [
 const STEPS = [
   { n: 1, title: "Install the relay", body: "Add the ChatView extension to VS Code, Cursor, or Windsurf. One click, no YAML." },
   { n: 2, title: "Pair your phone", body: "Scan the QR code from the mobile app. Your workstation is now your agent's body." },
-  { n: 3, title: "Pick your agent", body: "Claude Code, Cursor Agent, Copilot Chat, Aider — whatever you already pay for." },
+  { n: 3, title: "Pick your agent", body: "VS Code Copilot, Claude Code, Codex CLI, Cursor Agent — whatever you already pay for." },
   { n: 4, title: "Ship from anywhere", body: "Queue prompts, watch diffs, approve commits, merge PRs — all from your phone." },
 ];
 
@@ -134,22 +134,21 @@ export default function Home() {
       <section id="hero" className="glass-panel float-up rounded-2xl p-5 sm:rounded-[2rem] sm:p-10 lg:p-14">
         <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
           <div className="flex flex-wrap items-center justify-center gap-2 text-xs uppercase tracking-[0.24em] text-(--muted)">
-            <span className="rounded-full border border-(--accent)/40 bg-(--accent)/10 px-3 py-1 text-(--accent)">Code from your phone</span>
+            <span className="rounded-full border border-(--accent)/40 bg-(--accent)/10 px-3 py-1 text-(--accent)">Codex Mobile for every agent</span>
             <span className="rounded-full border border-(--line) bg-(--panel-soft) px-3 py-1">Every IDE</span>
-            <span className="rounded-full border border-(--line) bg-(--panel-soft) px-3 py-1">Every agent</span>
+            <span className="rounded-full border border-(--line) bg-(--panel-soft) px-3 py-1">Every model</span>
           </div>
 
           <h1 className="headline-glow mt-5 text-3xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-            Keep shipping{" "}
+            Codex Mobile, but for{" "}
             <span className="bg-gradient-to-r from-(--accent) to-(--accent-2) bg-clip-text text-transparent">
-              even when you leave the desk.
+              VS Code, Claude Code, Codex & Cursor.
             </span>
           </h1>
 
           <p className="mt-6 max-w-2xl text-base leading-7 text-(--muted) sm:text-lg">
-            ChatView turns your phone into a remote for your coding agent. Send prompts from anywhere,
-            watch them execute in your real IDE on your real laptop, powered by whichever model you actually pay for.
-            Never pause momentum just because you walked away from the desk.
+            Drive your coding agent from your phone. Runs in your real IDE on your real laptop,
+            powered by whichever model you actually pay for. Stop pausing momentum just because you walked away from the desk.
           </p>
 
           <div className="mt-7 flex flex-col items-center gap-3 sm:flex-row">
@@ -286,7 +285,7 @@ export default function Home() {
             <ul className="mt-6 space-y-2 text-sm">
               {[
                 "Unlimited mobile-to-IDE relay sessions",
-                "Works with Claude Code, Cursor, Copilot, Aider & more",
+                "Works with VS Code Copilot, Claude Code, Codex CLI, Cursor",
                 "VS Code, Cursor, Windsurf extensions included",
                 "Bring your own model & API keys",
                 "Voice prompts on iOS & Android",
