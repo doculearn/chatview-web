@@ -7,11 +7,11 @@ type Item = {
 
 const AGENTS: Item[] = [
   { label: "Claude Code", hint: "Anthropic CLI" },
-  { label: "OpenAI Codex CLI", hint: "GPT-5" },
   { label: "Cursor Agent", hint: "Composer + chat" },
   { label: "GitHub Copilot Chat", hint: "VS Code" },
   { label: "Cline / Roo", hint: "Open source" },
   { label: "Aider", hint: "Terminal-native" },
+  { label: "Continue.dev", hint: "Open source" },
 ];
 
 const IDES: Item[] = [
@@ -46,7 +46,7 @@ export function EveryIdeEveryModel() {
       className="glass-panel float-up mt-6 rounded-2xl p-4 sm:rounded-[2rem] sm:p-6 lg:p-10">
       <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.24em] text-(--muted)">
         <span className="rounded-full border border-(--accent)/40 bg-(--accent)/10 px-3 py-1 text-(--accent)">
-          Codex Mobile, but universal
+          One mobile app, every agent
         </span>
         <span className="rounded-full border border-(--line) bg-(--panel-soft) px-3 py-1">
           Every agent
@@ -60,17 +60,16 @@ export function EveryIdeEveryModel() {
       </div>
 
       <h2 className="headline-glow mt-4 max-w-3xl text-2xl font-bold leading-tight sm:text-4xl">
-        Codex Mobile for Claude Code, Codex, Cursor & VS Code.
+        Your coding agent, your IDE, your model — driven from your phone.
       </h2>
 
       <p className="mt-4 max-w-2xl text-base leading-7 text-(--muted) sm:text-lg">
-        OpenAI&apos;s Codex Mobile only drives OpenAI&apos;s agent inside OpenAI&apos;s app.
         ChatView is the mobile control plane for{" "}
         <span className="text-(--foreground)">every</span> coding agent you already run —
-        Claude Code, Codex CLI, Cursor Agent, Copilot Chat — wired straight to the IDE on
+        Claude Code, Cursor Agent, Copilot Chat, Aider, Cline — wired straight to the IDE on
         your real laptop, powered by{" "}
         <span className="text-(--foreground)">whichever model you pay for</span>. Your keys.
-        Your choice. Your workflow.
+        Your choice. Your workflow. No vendor lock-in.
       </p>
 
       <div className="mt-8 grid gap-4 lg:grid-cols-2 xl:grid-cols-4">

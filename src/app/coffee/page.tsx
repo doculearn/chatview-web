@@ -6,7 +6,7 @@ import { CoffeeShareButtons } from "@/components/coffee-share-buttons";
 
 const TITLE = "Buy ChatView a coffee ☕";
 const DESCRIPTION =
-  "ChatView is Codex Mobile for Claude Code, Codex, Cursor & VS Code — built by one indie hacker. Tip $5, $10 or $20 to fund servers, features and late-night commits.";
+  "ChatView turns your phone into a remote for your coding agent — driven from mobile, executed in your real IDE. Built by one indie hacker. Tip $5, $10 or $20 to fund servers, features and late-night commits.";
 const URL = "https://chat-view.xyz/coffee";
 
 export const metadata: Metadata = {
@@ -47,9 +47,9 @@ export default function CoffeePage() {
           </h1>
 
           <p className="mt-5 max-w-2xl text-base leading-7 text-(--muted) sm:text-lg">
-            ChatView is{" "}
+            ChatView turns your phone into a{" "}
             <span className="text-(--foreground)">
-              Codex Mobile for Claude Code, Codex, Cursor &amp; VS Code
+              remote for your coding agent
             </span>{" "}
             — built by one indie hacker, one cup of coffee at a time. No VC
             money, no growth team, no SDR pipeline. Every tip goes straight

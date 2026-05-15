@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const SHARE_URL = "https://chat-view.xyz/coffee";
 const SHARE_TEXT =
-  "ChatView is Codex Mobile for Claude Code, Codex, Cursor & VS Code — built by one indie hacker. If it's saved you time, buy me a coffee ☕";
+  "ChatView turns your phone into a remote for your coding agent — ship from anywhere, run on your real laptop. Built by one indie hacker. If it's saved you time, buy me a coffee ☔";
 
 export function CoffeeShareButtons() {
   const [copied, setCopied] = useState(false);
