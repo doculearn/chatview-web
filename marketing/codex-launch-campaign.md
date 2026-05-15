@@ -24,7 +24,7 @@
 
 **Punchy (recommended):**
 > Welcome to the party 🎉
-> ChatView has done this for months — except:
+> ChatView has done this for the past month — except:
 > • any IDE (VS Code, Cursor, Windsurf, Neovim)
 > • any model (GPT-5, Claude, Gemini, DeepSeek, local)
 > • iOS, Android, Web
@@ -41,7 +41,7 @@
 
 ### C. "You've been asking for this one… now in preview."
 
-> Love this. We've been shipping the same thing at ChatView since last year — but for *every* IDE (VS Code, Cursor, Windsurf) and *every* model (GPT, Claude, Gemini, your own keys).
+> Love this. We've been shipping the same thing at ChatView for the past month — but for *every* IDE (VS Code, Cursor, Windsurf) and *every* model (GPT, Claude, Gemini, your own keys).
 > Your editor, your model, your phone. $9.99/mo. chat-view.xyz
 
 ### D. iPad / "best vibe coding device" tweet
@@ -81,7 +81,7 @@
 
 ### I. "THEY DID IT!! Let the real games begin."
 
-> Games have been on for months 🎮
+> Games have been on for a month 🎮
 > ChatView: phone → VS Code / Cursor / Windsurf, any model (GPT-5, Claude, Gemini, local), any OS.
 > $9.99/mo · chat-view.xyz
 
