@@ -14,6 +14,20 @@ export function PageShell({ activePath, children }: PageShellProps) {
         <SiteHeader activePath={activePath} />
         {children}
         <footer className="pb-2 pt-1 text-center text-xs uppercase tracking-[0.16em] text-(--muted)">
+          <a
+            href="https://fazier.com/launches/chat-view.xyz"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mb-3 inline-block"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&theme=light"
+              width={120}
+              alt="Fazier badge"
+            />
+          </a>
+          <div>
           <span>ChatView &copy; 2026</span>
           <span className="mx-2">·</span>
           <Link href="/privacy-policy" className="underline underline-offset-4 hover:text-(--foreground)">Privacy Policy</Link>
@@ -23,6 +37,7 @@ export function PageShell({ activePath, children }: PageShellProps) {
           <Link href="/support" className="underline underline-offset-4 hover:text-(--foreground)">Support</Link>
           <span className="mx-2">·</span>
           <Link href="/support-us" className="underline underline-offset-4 hover:text-(--foreground)">Buy us a coffee ☕</Link>
+          </div>
         </footer>
       </main>
     </div>
