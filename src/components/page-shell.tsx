@@ -44,6 +44,20 @@ export function PageShell({ activePath, children }: PageShellProps) {
                 style={{ width: 195, height: "auto" }}
               />
             </a>
+            <a
+              href="https://nicklaunches.com/products/chatview/?utm_source=chat-view.xyz&utm_medium=badge&utm_campaign=featured"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://nicklaunches.com/badges/featured-dark.svg"
+                alt="ChatView on Nick Launches"
+                width={244}
+                height={56}
+              />
+            </a>
           </div>
           <div>
           <span>ChatView &copy; 2026</span>
