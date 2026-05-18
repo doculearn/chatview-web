@@ -14,19 +14,37 @@ export function PageShell({ activePath, children }: PageShellProps) {
         <SiteHeader activePath={activePath} />
         {children}
         <footer className="pb-2 pt-1 text-center text-xs uppercase tracking-[0.16em] text-(--muted)">
-          <a
-            href="https://fazier.com/launches/chat-view.xyz"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mb-3 inline-block"
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&theme=light"
-              width={120}
-              alt="Fazier badge"
-            />
-          </a>
+          <div className="mb-3 flex flex-wrap items-center justify-center gap-4">
+            <a
+              href="https://fazier.com/launches/chat-view.xyz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&theme=light"
+                width={120}
+                alt="Fazier badge"
+              />
+            </a>
+            <a
+              href="https://openhunts.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="OpenHunts Club"
+              className="inline-block"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://cdn.openhunts.com/badges/club.webp"
+                alt="OpenHunts Club Member"
+                width={195}
+                height={42}
+                style={{ width: 195, height: "auto" }}
+              />
+            </a>
+          </div>
           <div>
           <span>ChatView &copy; 2026</span>
           <span className="mx-2">·</span>
