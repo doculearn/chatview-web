@@ -1,5 +1,13 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
+
+export const metadata: Metadata = {
+  title: "Download ChatView",
+  description:
+    "Install the ChatView VS Code extension and mobile app to prompt your coding agent from anywhere. Free tier with daily prompts, Pro for unlimited use.",
+  alternates: { canonical: "/download" },
+};
 
 export default function DownloadPage() {
   return (

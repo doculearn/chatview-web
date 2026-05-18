@@ -1,5 +1,13 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
+
+export const metadata: Metadata = {
+  title: "Terms of Service",
+  description:
+    "ChatView terms of service — the agreement governing your use of the ChatView website, VS Code extension, and mobile application provided by Doculearn.",
+  alternates: { canonical: "/terms-of-service" },
+};
 
 export default function TermsOfServicePage() {
   return (

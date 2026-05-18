@@ -1,5 +1,13 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
+
+export const metadata: Metadata = {
+  title: "Docs — Get Started in 5 Minutes",
+  description:
+    "ChatView setup guide: install the VS Code extension, pair the mobile app via QR code, and start prompting your coding agent remotely in under five minutes.",
+  alternates: { canonical: "/docs" },
+};
 
 export default function DocsPage() {
   return (

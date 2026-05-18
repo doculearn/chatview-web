@@ -1,5 +1,13 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
+
+export const metadata: Metadata = {
+  title: "Privacy Statement",
+  description:
+    "ChatView privacy statement — how Doculearn collects, uses, and protects your data across the website, VS Code extension, and mobile app.",
+  alternates: { canonical: "/privacy-statement" },
+};
 
 export default function PrivacyStatementPage() {
   return (
