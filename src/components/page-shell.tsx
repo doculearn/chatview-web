@@ -58,6 +58,20 @@ export function PageShell({ activePath, children }: PageShellProps) {
                 height={56}
               />
             </a>
+            <a
+              href="https://huzzler.so/products/xqSH9lOK6m/chatview?utm_source=huzzler_product_website&utm_medium=badge&utm_campaign=free_listing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://huzzler.so/assets/images/embeddable-badges/featured.png"
+                alt="Huzzler Embed Badge"
+                width={159}
+                height={55}
+              />
+            </a>
           </div>
           <div>
           <span>ChatView &copy; 2026</span>
