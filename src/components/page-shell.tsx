@@ -72,6 +72,20 @@ export function PageShell({ activePath, children }: PageShellProps) {
                 height={55}
               />
             </a>
+            <a
+              href="https://startupfa.me/s/chat-view.xyz-590?utm_source=chat-view.xyz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://startupfa.me/badges/featured-badge.webp"
+                alt="ChatView - Featured on Startup Fame"
+                width={171}
+                height={54}
+              />
+            </a>
           </div>
           <div>
           <span>ChatView &copy; 2026</span>
