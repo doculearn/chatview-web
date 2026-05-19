@@ -92,8 +92,8 @@ export default function Page() {
               scan the QR.
             </li>
             <li>
-              <strong>Pricing:</strong> Free tier with daily prompt quota;
-              Pro for unlimited prompting and multi-device pairing.
+              <strong>Pricing:</strong> Plans start at $9.99/month for
+              unlimited prompts and multi-device pairing.
             </li>
             <li>
               <strong>Works with:</strong> Cursor, VS Code + GitHub
@@ -273,7 +273,7 @@ export default function Page() {
                 <tr className="border-t border-white/10">
                   <td className="py-2 pr-4">ChatView</td>
                   <td className="py-2 pr-4">~60 sec</td>
-                  <td className="py-2 pr-4">Free / Pro</td>
+                  <td className="py-2 pr-4">$9.99+/mo</td>
                   <td className="py-2 pr-4">Yes</td>
                   <td className="py-2 pr-4">Yes, streamed</td>
                 </tr>
@@ -346,7 +346,7 @@ export default function Page() {
             the source of truth — and adds a phone-shaped remote on top.
           </p>
           <p>
-            Free tier, no credit card. Pair via QR in 60 seconds.
+            Plans start at $9.99/month. Pair via QR in 60 seconds.
           </p>
           <p>
             <Link

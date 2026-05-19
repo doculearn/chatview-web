@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: "%s | ChatView",
   },
   description:
-    "ChatView pairs your phone with VS Code, Cursor, Claude Code and Codex so you can prompt the coding agent, review diffs, and approve edits from anywhere. Free tier + Pro. Built in public.",
+    "ChatView pairs your phone with VS Code, Cursor, Claude Code and Codex so you can prompt the coding agent, review diffs, and approve edits from anywhere. From $9.99/month. Built in public.",
   applicationName: "ChatView",
   keywords: [
     "ChatView",

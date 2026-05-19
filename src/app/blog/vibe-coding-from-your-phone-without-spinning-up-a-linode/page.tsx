@@ -149,7 +149,7 @@ export default function Page() {
           <p>
             This is what we built ChatView to be. Install a VS Code or
             Cursor extension on your laptop. Pair your phone via QR code
-            (no SSH, no signup needed to pair). Prompt the coding agent
+            (no SSH keys, no networking config). Prompt the coding agent
             from your phone. Watch streamed diffs render on mobile. Approve
             or reject each edit with a tap. Your laptop runs the agent.
             Your existing Cursor / Copilot / Claude Code subscription does
@@ -161,9 +161,9 @@ export default function Page() {
             extensions, your git state — there&apos;s only one copy.
           </p>
           <p>
-            <strong>What it costs:</strong> Free tier with a daily prompt
-            quota and one paired device. Pro for unlimited prompts and
-            multi-device pairing. No cloud VM. No API key dance.
+            <strong>What it costs:</strong> Plans start at $9.99/month
+            for unlimited prompts and multi-device pairing. No cloud VM,
+            no API key dance.
           </p>
           <p>
             <strong>What you lose:</strong> Your laptop has to be on. If
@@ -202,7 +202,7 @@ export default function Page() {
                     3. ChatView (mobile remote)
                   </td>
                   <td className="py-2 pr-4">~60 seconds</td>
-                  <td className="py-2 pr-4">$0 free tier</td>
+                  <td className="py-2 pr-4">$9.99/mo</td>
                   <td className="py-2 pr-4">
                     Streamed diffs, tap to approve
                   </td>
@@ -231,9 +231,9 @@ export default function Page() {
             Try it
           </h2>
           <p>
-            ChatView has a free tier with a daily prompt quota. No credit
-            card to sign up. Works with Cursor, VS Code + GitHub Copilot,
-            Claude Code, and Codex on the same paired session.
+            ChatView starts at $9.99/month for unlimited prompts and
+            multi-device pairing. Works with Cursor, VS Code + GitHub
+            Copilot, Claude Code, and Codex on the same paired session.
           </p>
           <ul className="ml-6 list-disc space-y-1">
             <li>

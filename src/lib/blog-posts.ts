@@ -13,7 +13,7 @@ export const POSTS: BlogPost[] = [
     slug: "top-5-vibe-coding-from-your-phone-apps-2026",
     title: "Top 5 apps for vibe coding from your phone in 2026",
     description:
-      "We ranked the five real ways developers ship code from a phone in 2026: ChatView, Cursor Mobile, GitHub Mobile + Codespaces, Termux + Claude Code, and Replit Mobile. Trade-offs, costs, and which one is right for you.",
+      "We ranked the five real ways developers ship code from a phone in 2026: ChatView, Cursor Mobile, GitHub Mobile + Codespaces, Termux + Claude Code, and Replit Mobile. Trade-offs, costs (ChatView from $9.99/month), and which one is right for you.",
     publishedAt: "2026-05-19",
     readMinutes: 6,
     tags: ["mobile coding", "AI coding agents", "Cursor", "Claude Code", "VS Code"],
