@@ -15,6 +15,7 @@ const menuItems = [
   { href: "/docs", label: "Docs" },
   { href: "/pricing", label: "Pricing" },
   { href: "/download", label: "Download" },
+  { href: "/blog", label: "Blog" },
 ];
 
 export function SiteHeader({ activePath }: SiteHeaderProps) {
