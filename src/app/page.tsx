@@ -2,6 +2,7 @@ import Link from "next/link";
 import { PageShell } from "@/components/page-shell";
 import { BuyCoffee } from "@/components/buy-coffee";
 import { EveryIdeEveryModel } from "@/components/every-ide-every-model";
+import { TrackedLink } from "@/components/tracked-link";
 
 type Highlight = { title: string; description: string };
 
@@ -152,20 +153,22 @@ export default function Home() {
           </p>
 
           <div className="mt-7 flex flex-col items-center gap-3 sm:flex-row">
-            <Link
+            <TrackedLink
               href="/register"
+              location="hero"
+              target="register"
               className="inline-flex items-center justify-center rounded-xl bg-(--accent) px-6 py-3 font-semibold text-black shadow-lg shadow-(--accent)/20 transition hover:brightness-110"
             >
               Start Building →
-            </Link>
-            <Link
+            </TrackedLink>
+            <TrackedLink
               href="https://www.youtube.com/watch?v=9matVuaMesw"
-              target="_blank"
-              rel="noopener noreferrer"
+              location="hero"
+              target="youtube_demo"
               className="inline-flex items-center justify-center rounded-xl border border-(--line) bg-(--panel-soft) px-6 py-3 font-semibold text-(--foreground) transition hover:border-(--accent)"
             >
               ▶ Watch the Demo
-            </Link>
+            </TrackedLink>
           </div>
 
           <div className="mt-5 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-(--muted)">
@@ -297,12 +300,14 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-            <Link
+            <TrackedLink
               href="/register"
+              location="pricing_pro_card"
+              target="register"
               className="mt-7 inline-flex w-full items-center justify-center rounded-xl bg-(--accent) px-5 py-3 font-semibold text-black transition hover:brightness-110"
             >
               Start Building →
-            </Link>
+            </TrackedLink>
           </div>
 
           <div className="glass-panel rounded-2xl p-6 sm:p-8">
@@ -326,12 +331,14 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-            <Link
+            <TrackedLink
               href="/support"
+              location="pricing_team_card"
+              target="contact_sales"
               className="mt-7 inline-flex w-full items-center justify-center rounded-xl border border-(--line) bg-(--panel-soft) px-5 py-3 font-semibold text-(--foreground) transition hover:border-(--accent)"
             >
               Contact sales
-            </Link>
+            </TrackedLink>
           </div>
         </div>
       </section>
@@ -348,22 +355,22 @@ export default function Home() {
             Install the VS Code extension, scan the QR with the mobile app, and ship the next PR from the supermarket queue.
           </p>
           <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link
+            <TrackedLink
               href="https://marketplace.visualstudio.com/items?itemName=doculearn.chatview-relay"
-              target="_blank"
-              rel="noopener noreferrer"
+              location="bottom_cta"
+              target="vscode_marketplace"
               className="inline-flex items-center justify-center rounded-xl bg-(--accent) px-6 py-3 font-semibold text-black transition hover:brightness-110"
             >
               Install VS Code Extension
-            </Link>
-            <Link
+            </TrackedLink>
+            <TrackedLink
               href="https://play.google.com/store/apps/details?id=com.chatviewmobile"
-              target="_blank"
-              rel="noopener noreferrer"
+              location="bottom_cta"
+              target="google_play"
               className="inline-flex items-center justify-center rounded-xl border border-(--line) bg-(--panel-soft) px-6 py-3 font-semibold text-(--foreground) transition hover:border-(--accent)"
             >
               Get it on Google Play
-            </Link>
+            </TrackedLink>
           </div>
         </div>
       </section>

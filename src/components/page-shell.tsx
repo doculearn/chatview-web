@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
+import { TrackedLink } from "@/components/tracked-link";
 
 type PageShellProps = {
   activePath: string;
@@ -15,10 +16,10 @@ export function PageShell({ activePath, children }: PageShellProps) {
         {children}
         <footer className="pb-2 pt-1 text-center text-xs uppercase tracking-[0.16em] text-(--muted)">
           <div className="mb-3 flex flex-wrap items-center justify-center gap-4">
-            <a
+            <TrackedLink
               href="https://fazier.com/launches/chat-view.xyz"
-              target="_blank"
-              rel="noopener noreferrer"
+              location="footer_badges"
+              target="fazier"
               className="inline-block"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -27,11 +28,11 @@ export function PageShell({ activePath, children }: PageShellProps) {
                 width={120}
                 alt="Fazier badge"
               />
-            </a>
-            <a
+            </TrackedLink>
+            <TrackedLink
               href="https://openhunts.com"
-              target="_blank"
-              rel="noopener noreferrer"
+              location="footer_badges"
+              target="openhunts"
               title="OpenHunts Club"
               className="inline-block"
             >
@@ -43,11 +44,11 @@ export function PageShell({ activePath, children }: PageShellProps) {
                 height={42}
                 style={{ width: 195, height: "auto" }}
               />
-            </a>
-            <a
+            </TrackedLink>
+            <TrackedLink
               href="https://nicklaunches.com/products/chatview/?utm_source=chat-view.xyz&utm_medium=badge&utm_campaign=featured"
-              target="_blank"
-              rel="noopener noreferrer"
+              location="footer_badges"
+              target="nick_launches"
               className="inline-block"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -57,11 +58,11 @@ export function PageShell({ activePath, children }: PageShellProps) {
                 width={244}
                 height={56}
               />
-            </a>
-            <a
+            </TrackedLink>
+            <TrackedLink
               href="https://huzzler.so/products/xqSH9lOK6m/chatview?utm_source=huzzler_product_website&utm_medium=badge&utm_campaign=free_listing"
-              target="_blank"
-              rel="noopener noreferrer"
+              location="footer_badges"
+              target="huzzler"
               className="inline-block"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -71,11 +72,11 @@ export function PageShell({ activePath, children }: PageShellProps) {
                 width={159}
                 height={55}
               />
-            </a>
-            <a
+            </TrackedLink>
+            <TrackedLink
               href="https://startupfa.me/s/chat-view.xyz-590?utm_source=chat-view.xyz"
-              target="_blank"
-              rel="noopener noreferrer"
+              location="footer_badges"
+              target="startup_fame"
               className="inline-block"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -85,11 +86,11 @@ export function PageShell({ activePath, children }: PageShellProps) {
                 width={171}
                 height={54}
               />
-            </a>
-            <a
+            </TrackedLink>
+            <TrackedLink
               href="https://www.tinystartups.com/startup/chatview"
-              target="_blank"
-              rel="noopener noreferrer"
+              location="footer_badges"
+              target="tiny_startups"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -151,7 +152,7 @@ export function PageShell({ activePath, children }: PageShellProps) {
                   tinystartups.com
                 </span>
               </span>
-            </a>
+            </TrackedLink>
           </div>
           <div>
           <span>ChatView &copy; 2026</span>

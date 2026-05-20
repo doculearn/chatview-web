@@ -46,6 +46,22 @@ type Dashboard = {
   country_split: CountryRow[];
 };
 
+type FunnelStep = {
+  event: string;
+  label: string;
+  sessions: number;
+  drop_off_from_prev: number | null;
+  conversion_from_prev_pct: number | null;
+};
+
+type Funnel = {
+  site: string;
+  window_days: number;
+  since: string;
+  steps: FunnelStep[];
+  overall_conversion_pct: number;
+};
+
 // ── UI helpers ────────────────────────────────────────────────────
 
 function StatCard({ label, value }: { label: string; value: number | string }) {
@@ -110,6 +126,7 @@ const RANGE_OPTIONS = [1, 7, 30, 90] as const;
 
 export default function AdminAnalyticsPage() {
   const [data, setData] = useState<Dashboard | null>(null);
+  const [funnel, setFunnel] = useState<Funnel | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [days, setDays] = useState<number>(7);
@@ -118,22 +135,31 @@ export default function AdminAnalyticsPage() {
     setLoading(true);
     setError(null);
     try {
-      const res = await authFetch(
-        `/api/chatview/analytics/dashboard?days=${windowDays}`,
-      );
-      if (res.status === 401 || res.status === 403) {
+      const [dashRes, funnelRes] = await Promise.all([
+        authFetch(`/api/chatview/analytics/dashboard?days=${windowDays}`),
+        authFetch(`/api/chatview/analytics/funnel?days=${windowDays}`),
+      ]);
+
+      if (dashRes.status === 401 || dashRes.status === 403) {
         setError("Admin access required.");
         setData(null);
+        setFunnel(null);
         return;
       }
-      if (!res.ok) {
-        const detail = await res.json().catch(() => null);
+      if (!dashRes.ok) {
+        const detail = await dashRes.json().catch(() => null);
         setError(detail?.error || "Failed to load analytics");
         setData(null);
         return;
       }
-      const body = (await res.json()) as Dashboard;
-      setData(body);
+      setData((await dashRes.json()) as Dashboard);
+
+      // Funnel is best-effort — don't fail the whole page if it errors.
+      if (funnelRes.ok) {
+        setFunnel((await funnelRes.json()) as Funnel);
+      } else {
+        setFunnel(null);
+      }
     } catch (e) {
       setError(e instanceof Error ? e.message : "Network error");
     } finally {
@@ -210,6 +236,8 @@ export default function AdminAnalyticsPage() {
             <Section title="Traffic by day">
               <ByDayChart series={data.by_day} />
             </Section>
+
+            {funnel && <FunnelSection funnel={funnel} />}
 
             <div className="grid gap-4 sm:grid-cols-2">
               <Section title="Top pages">
@@ -292,6 +320,62 @@ function RankedList({
         <BarRow key={r.label} label={r.label} value={r.value} max={max} />
       ))}
     </div>
+  );
+}
+
+function FunnelSection({ funnel }: { funnel: Funnel }) {
+  const top = funnel.steps[0]?.sessions ?? 0;
+  return (
+    <Section
+      title={`Conversion funnel · ${funnel.overall_conversion_pct}% pricing → paid`}
+    >
+      {top === 0 ? (
+        <p className="text-sm text-(--muted)">
+          No funnel events in this window. Visit /pricing to seed one.
+        </p>
+      ) : (
+        <div className="space-y-2">
+          {funnel.steps.map((step) => {
+            const pct = top > 0 ? Math.round((step.sessions / top) * 100) : 0;
+            const widthPct = Math.max(2, pct);
+            return (
+              <div key={step.event}>
+                <div className="flex items-baseline justify-between text-sm">
+                  <span className="font-medium">{step.label}</span>
+                  <span className="tabular-nums text-(--muted)">
+                    {step.sessions.toLocaleString()} sessions
+                    {step.conversion_from_prev_pct !== null && (
+                      <>
+                        {" · "}
+                        <span className="font-mono text-(--foreground)">
+                          {step.conversion_from_prev_pct}%
+                        </span>{" "}
+                        from prev
+                        {step.drop_off_from_prev != null &&
+                          step.drop_off_from_prev > 0 && (
+                            <>
+                              {" · "}
+                              <span className="text-(--warning)">
+                                −{step.drop_off_from_prev} drop-off
+                              </span>
+                            </>
+                          )}
+                      </>
+                    )}
+                  </span>
+                </div>
+                <div className="mt-1 h-3 rounded-full bg-(--panel-soft)">
+                  <div
+                    className="h-3 rounded-full bg-(--accent)"
+                    style={{ width: `${widthPct}%` }}
+                  />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </Section>
   );
 }
 
