@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { PageShell } from "@/components/page-shell";
 import { authFetch } from "@/lib/auth-fetch";
+import { track } from "@/lib/cv-analytics";
 
 type Subscription = {
   plan: { display_name: string; price: string };
@@ -17,6 +18,11 @@ export default function SubscriptionSuccessPage() {
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
+    // Fire conversion event exactly once when the user lands on the
+    // post-checkout success page. Dodo redirects here after a
+    // successful payment, so this is our ground-truth conversion.
+    track("checkout_completed");
+
     // Fetch latest subscription info
     authFetch("/api/chatview/subscription/current")
       .then(async (res) => {

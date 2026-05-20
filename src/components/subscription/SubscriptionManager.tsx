@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { authFetch } from "@/lib/auth-fetch";
+import { track } from "@/lib/cv-analytics";
 import { CancellationForm } from "./CancellationForm";
 import { SubscriptionStatus } from "./SubscriptionStatus";
 import { PlanSelector } from "./PlanSelector";
@@ -112,12 +113,14 @@ export function SubscriptionManager() {
 
       if (!response.ok) {
         setError(data?.error || data?.detail || "Failed to initiate payment checkout");
+        track("checkout_failed", { plan: planName, reason: data?.error || data?.detail || "unknown" });
         return;
       }
 
       // Redirect to checkout if URL is provided
       const checkoutUrl = data?.checkout_url || data?.payment_url;
       if (checkoutUrl) {
+        track("checkout_started", { plan: planName });
         window.location.href = checkoutUrl;
         return;
       }

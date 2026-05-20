@@ -11,6 +11,8 @@ export default function robots(): MetadataRoute.Robots {
         disallow: [
           "/account",
           "/account/",
+          "/admin",
+          "/admin/",
           "/callback/",
           "/subscription/cancel",
           "/subscription/return",

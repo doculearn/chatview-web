@@ -1,10 +1,11 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { PageShell } from "@/components/page-shell";
 import { GoogleLoginButton } from "@/components/google-login-button";
 import useAuthCredentialsStore from "@/state/use-auth-credentials-store";
+import { track } from "@/lib/cv-analytics";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -18,6 +19,13 @@ export default function RegisterPage() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  // Fire once when the registration form is first seen — lets us
+  // measure step-1 of the signup funnel (page reached → form submitted
+  // → account created).
+  useEffect(() => {
+    track("signup_started");
+  }, []);
 
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
@@ -46,6 +54,7 @@ export default function RegisterPage() {
 
     if (!response.ok) {
       setError(data?.error || data?.detail || "Registration failed");
+      track("signup_failed", { reason: data?.error || data?.detail || "unknown" });
       return;
     }
 
@@ -61,10 +70,12 @@ export default function RegisterPage() {
         lastname,
         email,
       });
+      track("signup_completed", { method: "email" });
       router.push("/pricing");
       return;
     }
 
+    track("signup_completed", { method: "email", needs_login: true });
     setMessage("Registration successful. You can now log in.");
   }
 

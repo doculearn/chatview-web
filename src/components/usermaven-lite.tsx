@@ -41,9 +41,9 @@ declare global {
     };
   }
   interface Navigator {
-    // Both are non-standard / partial; declare loosely.
+    // Non-standard / partially-shipped privacy signals. Declared
+    // loosely so we can read them defensively.
     globalPrivacyControl?: boolean;
-    doNotTrack?: string | null;
   }
 }
 
@@ -51,12 +51,14 @@ function uuid(): string {
   // Browsers without crypto.randomUUID (older Safari) fall back to a
   // best-effort random hex. The id is for our own bucketing — collisions
   // are harmless past 2^64.
-  if (typeof crypto !== "undefined" && "randomUUID" in crypto) {
-    return crypto.randomUUID();
+  const c: Crypto | undefined =
+    typeof crypto !== "undefined" ? crypto : undefined;
+  if (c && typeof c.randomUUID === "function") {
+    return c.randomUUID();
   }
   const a = new Uint8Array(16);
-  if (typeof crypto !== "undefined" && crypto.getRandomValues) {
-    crypto.getRandomValues(a);
+  if (c && typeof c.getRandomValues === "function") {
+    c.getRandomValues(a);
   } else {
     for (let i = 0; i < 16; i++) a[i] = Math.floor(Math.random() * 256);
   }
@@ -66,10 +68,14 @@ function uuid(): string {
 function privacyOptedOut(): boolean {
   if (typeof navigator === "undefined") return false;
   if (navigator.globalPrivacyControl === true) return true;
+  // navigator.doNotTrack is part of the lib.dom types; older Firefox
+  // exposed it as window.doNotTrack and IE/Edge legacy used
+  // navigator.msDoNotTrack — read them defensively via index access.
   if (navigator.doNotTrack === "1") return true;
-  // Firefox legacy:
-  // @ts-expect-error msDoNotTrack is non-standard
-  if (window.doNotTrack === "1" || navigator.msDoNotTrack === "1") return true;
+  const w = window as unknown as Record<string, unknown>;
+  if (w.doNotTrack === "1") return true;
+  const nav = navigator as unknown as Record<string, unknown>;
+  if (nav.msDoNotTrack === "1") return true;
   return false;
 }
 

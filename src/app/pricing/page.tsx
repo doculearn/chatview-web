@@ -5,6 +5,7 @@ import { PageShell } from "@/components/page-shell";
 import { SubscriptionManager } from "@/components/subscription/SubscriptionManager";
 import { PublicPricing } from "@/components/subscription/PublicPricing";
 import { useAuthReady } from "@/hooks/use-auth-ready";
+import { track } from "@/lib/cv-analytics";
 
 export default function PricingPage() {
   const isAuthenticated = useAuthReady();
@@ -12,6 +13,7 @@ export default function PricingPage() {
 
   useEffect(() => {
     setMounted(true);
+    track("pricing_viewed");
   }, []);
 
   return (

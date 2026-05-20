@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { PageShell } from "@/components/page-shell";
+import { track } from "@/lib/cv-analytics";
 
 export default function BetaSignupPage() {
   const [firstname, setFirstname] = useState("");
@@ -42,6 +43,7 @@ export default function BetaSignupPage() {
         setError(data?.error || data?.detail || "Could not submit your request.");
         return;
       }
+      track("beta_signup_completed", { country: country.trim() || "" });
       setSuccess(true);
     } finally {
       setLoading(false);
