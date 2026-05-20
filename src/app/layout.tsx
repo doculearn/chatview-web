@@ -19,7 +19,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://chat-view.xyz"),
   title: {
-    default: "ChatView | Remote coding that stays in motion",
+    default: "Code from your Phone | ChatView",
     template: "%s | ChatView",
   },
   description:
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "ChatView",
     url: "https://chat-view.xyz",
-    title: "ChatView | Remote coding that stays in motion",
+    title: "Code from your Phone | ChatView",
     description:
       "Pair your phone with Cursor, VS Code, Claude Code or Codex. Prompt the agent, review diffs, approve edits — from anywhere.",
     locale: "en_US",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@williammbtja",
     creator: "@williammbtja",
-    title: "ChatView | Remote coding that stays in motion",
+    title: "Code from your Phone | ChatView",
     description:
       "Pair your phone with Cursor, VS Code, Claude Code or Codex. Prompt the agent, review diffs, approve edits — from anywhere.",
     images: ["/chatview-logo.png"],
