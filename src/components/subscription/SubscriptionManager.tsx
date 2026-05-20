@@ -103,6 +103,7 @@ export function SubscriptionManager() {
         setError("No plan found. Please select a plan first.");
         return;
       }
+      track("plan_selected", { plan: planName, source: "activate", authed: true });
 
       const response = await authFetch("/api/chatview/subscription/initiate", {
         method: "POST",
@@ -157,6 +158,7 @@ export function SubscriptionManager() {
   async function handleUpgrade(planName: string) {
     try {
       setError(null);
+      track("plan_selected", { plan: planName, source: "upgrade", authed: true });
       const response = await authFetch("/api/chatview/subscription/initiate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -167,10 +169,12 @@ export function SubscriptionManager() {
 
       if (!response.ok) {
         setError(data?.error || "Failed to initiate subscription");
+        track("checkout_failed", { plan: planName, reason: data?.error || data?.detail || "unknown" });
         return;
       }
 
       if (data?.checkout_url) {
+        track("checkout_started", { plan: planName });
         window.location.href = data.checkout_url;
       } else {
         // Free plan or already active

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { TrackedLink } from "@/components/tracked-link";
 
 const PUBLIC_PLANS = [
   {
@@ -84,8 +85,12 @@ export function PublicPricing() {
                 </li>
               ))}
             </ul>
-            <Link
+            <TrackedLink
               href={plan.name === "free" ? "/register" : `/login?next=/pricing`}
+              location="public_pricing_card"
+              target={plan.name === "free" ? "register" : "login"}
+              event="plan_selected"
+              extra={{ plan: plan.name, price: plan.price, authed: false }}
               className={`mt-5 w-full block rounded-xl px-4 py-2 text-center text-sm font-semibold transition-colors ${
                 plan.name === "pro"
                   ? "bg-amber-500 text-black hover:bg-amber-400"
@@ -93,7 +98,7 @@ export function PublicPricing() {
               }`}
             >
               {plan.cta}
-            </Link>
+            </TrackedLink>
           </article>
         ))}
       </div>

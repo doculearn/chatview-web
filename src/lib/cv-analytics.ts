@@ -12,11 +12,15 @@
  */
 
 export type FunnelEvent =
+  // Acquisition
+  | "landing_viewed"
   // Signup
   | "signup_started"
   | "signup_completed"
   | "signup_failed"
   // Subscription / checkout
+  | "pricing_viewed"
+  | "plan_selected"
   | "checkout_started"
   | "checkout_completed"
   | "checkout_failed"
@@ -25,18 +29,37 @@ export type FunnelEvent =
   | "beta_signup_completed"
   // Acquisition / CTAs
   | "cta_clicked"
-  | "pricing_viewed"
   // QR / pairing
   | "pair_started"
   | "pair_completed";
 
-// Map our internal funnel events to GA4 reserved/recommended event
-// names so they're recognised in the Events report and can be marked
-// as key events without creating synthetic events in the GA4 UI.
+// Subset of FunnelEvent we forward to gtag. Anything not in this set
+// stays in Usermaven only — useful for high-cardinality or product
+// telemetry we don't want bloating GA4's free 500-event-name quota.
+const GA4_FORWARDED: ReadonlySet<string> = new Set<FunnelEvent>([
+  "landing_viewed",
+  "signup_started",
+  "signup_completed",
+  "signup_failed",
+  "pricing_viewed",
+  "plan_selected",
+  "checkout_started",
+  "checkout_completed",
+  "checkout_failed",
+  "checkout_cancelled",
+  "beta_signup_completed",
+  "cta_clicked",
+]);
+
+// Aliases for events that map to GA4 recommended/reserved names so
+// they get special treatment in reports, audiences, and Google Ads
+// conversion import:
 //   - sign_up        — recommended event for account creation
 //   - purchase       — recommended event for paid conversion
 //   - generate_lead  — recommended event for waitlist / lead capture
-const GA4_EVENT_MAP: Record<string, string> = {
+// Internal name still fires too so dashboards built against it keep
+// working; the alias is sent as a second gtag call.
+const GA4_ALIASES: Record<string, string> = {
   signup_completed: "sign_up",
   checkout_completed: "purchase",
   beta_signup_completed: "generate_lead",
@@ -57,9 +80,10 @@ export function track(
   try {
     const gtag = (window as unknown as { gtag?: GtagFn }).gtag;
     if (typeof gtag !== "function") return;
-    const ga4Name = GA4_EVENT_MAP[event];
-    if (!ga4Name) return;
-    gtag("event", ga4Name, props ?? {});
+    if (!GA4_FORWARDED.has(event)) return;
+    gtag("event", event, props ?? {});
+    const alias = GA4_ALIASES[event];
+    if (alias) gtag("event", alias, props ?? {});
   } catch {
     // Analytics must never throw into product code.
   }

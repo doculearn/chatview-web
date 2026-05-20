@@ -3,6 +3,7 @@ import { PageShell } from "@/components/page-shell";
 import { BuyCoffee } from "@/components/buy-coffee";
 import { EveryIdeEveryModel } from "@/components/every-ide-every-model";
 import { TrackedLink } from "@/components/tracked-link";
+import { TrackPageView } from "@/components/track-page-view";
 
 type Highlight = { title: string; description: string };
 
@@ -130,8 +131,7 @@ const STEPS = [
 
 export default function Home() {
   return (
-    <PageShell activePath="/">
-      {/* ─── HERO ─────────────────────────────────────────────────────── */}
+    <PageShell activePath="/">      <TrackPageView event="landing_viewed" />      {/* ─── HERO ─────────────────────────────────────────────────────── */}
       <section id="hero" className="glass-panel float-up rounded-2xl p-5 sm:rounded-[2rem] sm:p-10 lg:p-14">
         <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
           <div className="flex flex-wrap items-center justify-center gap-2 text-xs uppercase tracking-[0.24em] text-(--muted)">

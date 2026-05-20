@@ -25,6 +25,10 @@ type Props = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "onClick" | "target">
   /** Native anchor target attribute (e.g. "_blank"). Defaults to
    *  "_blank" for external links. */
   htmlTarget?: string;
+  /** Override the event name. Defaults to "cta_clicked". Use for
+   *  funnel-step links like a pricing plan card ("plan_selected")
+   *  where the click itself is the conversion signal. */
+  event?: string;
   /** Extra props recorded alongside the event. */
   extra?: Record<string, unknown>;
   children: ReactNode;
@@ -35,6 +39,7 @@ export function TrackedLink({
   location,
   target,
   htmlTarget,
+  event,
   extra,
   children,
   ...rest
@@ -42,7 +47,7 @@ export function TrackedLink({
   const isInternal = href.startsWith("/") && !href.startsWith("//");
 
   function handleClick(e: MouseEvent<HTMLAnchorElement>) {
-    track("cta_clicked", { location, target, href, ...(extra || {}) });
+    track(event ?? "cta_clicked", { location, target, href, ...(extra || {}) });
     rest.onMouseDown?.(e as never);
   }
 
