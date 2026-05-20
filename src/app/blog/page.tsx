@@ -31,43 +31,68 @@ export default function BlogIndexPage() {
         </p>
 
         <div className="mt-8 space-y-4">
-          {POSTS.map((post) => (
-            <article
-              key={post.slug}
-              className="feature-card flex flex-col gap-2 p-5 transition hover:bg-white/[0.04]"
-            >
-              <div className="flex items-center gap-3 text-xs text-(--muted)">
-                <time dateTime={post.publishedAt}>
-                  {new Date(post.publishedAt).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "short",
-                    day: "numeric",
-                  })}
-                </time>
-                <span aria-hidden="true">·</span>
-                <span>{post.readMinutes} min read</span>
-              </div>
-              <h2 className="text-lg font-semibold leading-snug sm:text-xl">
-                <Link
-                  href={`/blog/${post.slug}`}
-                  className="hover:text-(--accent)"
-                >
-                  {post.title}
-                </Link>
-              </h2>
-              <p className="text-sm text-(--muted)">{post.description}</p>
-              <div className="mt-1 flex flex-wrap gap-2">
-                {post.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full border border-white/10 px-2 py-0.5 text-[10px] uppercase tracking-[0.16em] text-(--muted)"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </article>
-          ))}
+          {POSTS.map((post) => {
+            const isExternal = Boolean(post.externalUrl);
+            const titleNode = isExternal ? (
+              <a
+                href={post.externalUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-(--accent)"
+              >
+                {post.title}
+                <span aria-hidden="true" className="ml-1">↗</span>
+              </a>
+            ) : (
+              <Link
+                href={`/blog/${post.slug}`}
+                className="hover:text-(--accent)"
+              >
+                {post.title}
+              </Link>
+            );
+
+            return (
+              <article
+                key={post.slug}
+                className="feature-card flex flex-col gap-2 p-5 transition hover:bg-white/[0.04]"
+              >
+                <div className="flex items-center gap-3 text-xs text-(--muted)">
+                  <time dateTime={post.publishedAt}>
+                    {new Date(post.publishedAt).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                    })}
+                  </time>
+                  <span aria-hidden="true">·</span>
+                  <span>{post.readMinutes} min read</span>
+                  {isExternal ? (
+                    <>
+                      <span aria-hidden="true">·</span>
+                      <span className="rounded-full border border-(--accent)/40 bg-(--accent)/10 px-2 py-0.5 text-[10px] uppercase tracking-[0.16em] text-(--accent)">
+                        {post.externalLabel ?? "External"}
+                      </span>
+                    </>
+                  ) : null}
+                </div>
+                <h2 className="text-lg font-semibold leading-snug sm:text-xl">
+                  {titleNode}
+                </h2>
+                <p className="text-sm text-(--muted)">{post.description}</p>
+                <div className="mt-1 flex flex-wrap gap-2">
+                  {post.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-white/10 px-2 py-0.5 text-[10px] uppercase tracking-[0.16em] text-(--muted)"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </article>
+            );
+          })}
         </div>
       </section>
     </PageShell>
