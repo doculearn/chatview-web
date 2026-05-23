@@ -186,21 +186,36 @@ export default function Home() {
             <span>Your keys, your laptop, your repo</span>
           </div>
 
-          <a
-            href="https://www.producthunt.com/products/chatview/reviews/new?utm_source=badge-product_review&utm_medium=badge&utm_source=badge-chatview"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-7"
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=1220652&theme=light"
-              alt="ChatView on Product Hunt"
-              width={250}
-              height={54}
-              style={{ width: 250, height: 54 }}
-            />
-          </a>
+          <div className="mt-7 flex flex-wrap items-center justify-center gap-4">
+            <a
+              href="https://www.producthunt.com/products/chatview/reviews/new?utm_source=badge-product_review&utm_medium=badge&utm_source=badge-chatview"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=1220652&theme=light"
+                alt="ChatView on Product Hunt"
+                width={250}
+                height={54}
+                style={{ width: 250, height: 54 }}
+              />
+            </a>
+            <a
+              href="https://fazier.com/launches/chatview-2"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://fazier.com/api/v1/public/badges/embed_image.svg?launch_id=9306&badge_type=daily&theme=light"
+                alt="ChatView on Fazier"
+                width={270}
+                height={54}
+                style={{ width: 270, height: 54 }}
+              />
+            </a>
+          </div>
         </div>
 
         {/* hero stats strip */}

@@ -17,19 +17,6 @@ export function PageShell({ activePath, children }: PageShellProps) {
         <footer className="pb-2 pt-1 text-center text-xs uppercase tracking-[0.16em] text-(--muted)">
           <div className="mb-3 flex flex-wrap items-center justify-center gap-4">
             <TrackedLink
-              href="https://fazier.com/launches/chat-view.xyz"
-              location="footer_badges"
-              target="fazier"
-              className="inline-block"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&theme=light"
-                width={120}
-                alt="Fazier badge"
-              />
-            </TrackedLink>
-            <TrackedLink
               href="https://openhunts.com"
               location="footer_badges"
               target="openhunts"
