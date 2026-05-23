@@ -132,7 +132,7 @@ const STEPS = [
 export default function Home() {
   return (
     <PageShell activePath="/">      <TrackPageView event="landing_viewed" />      {/* ─── HERO ─────────────────────────────────────────────────────── */}
-      <section id="hero" className="glass-panel float-up rounded-2xl p-5 sm:rounded-[2rem] sm:p-10 lg:p-14">
+      <section id="hero" className="glass-panel float-up p-5 sm:p-10 lg:p-14">
         <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
           <div className="flex flex-wrap items-center justify-center gap-2 text-xs uppercase tracking-[0.24em] text-(--muted)">
             <span className="inline-flex items-center gap-2 rounded-full border border-red-500/50 bg-red-500/10 px-3 py-1 font-semibold text-red-400">

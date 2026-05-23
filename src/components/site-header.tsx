@@ -35,7 +35,7 @@ export function SiteHeader({ activePath }: SiteHeaderProps) {
   }, [theme]);
 
   return (
-    <header className="glass-panel float-up rounded-2xl px-3 py-2.5 shadow-[0_18px_50px_rgba(3,9,17,0.24)] sm:rounded-[1.75rem] sm:px-6 sm:py-3">
+    <header className="glass-panel float-up px-3 py-2.5 shadow-[0_18px_50px_rgba(3,9,17,0.24)] sm:px-6 sm:py-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2 sm:gap-3">
           <Image
