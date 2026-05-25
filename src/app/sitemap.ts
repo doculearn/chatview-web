@@ -38,12 +38,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority,
     }),
   );
-  const blogEntries: MetadataRoute.Sitemap = POSTS.map((post) => ({
-    url: `${BASE_URL}/blog/${post.slug}`,
-    lastModified: new Date(post.publishedAt),
-    changeFrequency: "monthly",
-    priority: 0.7,
-  }));
+  const blogEntries: MetadataRoute.Sitemap = POSTS
+    // Exclude posts whose canonical lives off-site (e.g. Medium). The slug
+    // route doesn't render a page for them, so including them in the
+    // sitemap produces a 4XX. Their canonical link is the externalUrl,
+    // which is already discoverable from /blog.
+    .filter((post) => !post.externalUrl)
+    .map((post) => ({
+      url: `${BASE_URL}/blog/${post.slug}`,
+      lastModified: new Date(post.publishedAt),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    }));
   return [...staticEntries, ...blogEntries];
 }
 

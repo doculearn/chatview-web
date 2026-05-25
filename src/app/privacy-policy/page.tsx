@@ -6,6 +6,23 @@ export const metadata: Metadata = {
   title: "Privacy Policy | ChatView",
   description:
     "ChatView privacy policy — how we collect, use, and share your data.",
+  alternates: {
+    canonical: "/privacy-policy",
+  },
+  openGraph: {
+    title: "Privacy Policy | ChatView",
+    description:
+      "ChatView privacy policy — how we collect, use, and share your data.",
+    url: "https://chat-view.xyz/privacy-policy",
+    siteName: "ChatView",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Privacy Policy | ChatView",
+    description:
+      "How we collect, use, and share your data.",
+  },
 };
 
 export default function PrivacyPolicyPage() {

@@ -6,6 +6,23 @@ export const metadata: Metadata = {
   title: "Support | ChatView",
   description:
     "Get help with ChatView — contact support, find documentation, and troubleshoot the VS Code extension and mobile app.",
+  alternates: {
+    canonical: "/support",
+  },
+  openGraph: {
+    title: "Support | ChatView",
+    description:
+      "Get help with ChatView — contact support, find documentation, and troubleshoot the VS Code extension and mobile app.",
+    url: "https://chat-view.xyz/support",
+    siteName: "ChatView",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Support | ChatView",
+    description:
+      "Get help with ChatView — contact support and find documentation.",
+  },
 };
 
 export default function SupportPage() {
