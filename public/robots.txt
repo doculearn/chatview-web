@@ -1,0 +1,20 @@
+User-Agent: *
+Allow: /
+Disallow: /account
+Disallow: /account/
+Disallow: /admin
+Disallow: /admin/
+Disallow: /callback/
+Disallow: /subscription/cancel
+Disallow: /subscription/return
+Disallow: /subscription/success
+Disallow: /beta/accept
+Disallow: /qr-login
+Disallow: /qr/view
+Disallow: /support/new
+Disallow: /support/submitted
+Disallow: /support/tickets
+Disallow: /delete-account
+
+Host: https://chat-view.xyz
+Sitemap: https://chat-view.xyz/sitemap.xml
