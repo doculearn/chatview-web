@@ -11,7 +11,7 @@ type PageShellProps = {
 export function PageShell({ activePath, children }: PageShellProps) {
   return (
     <div className="grid-overlay flex min-h-screen flex-1">
-      <main className="flex w-full flex-col gap-4 sm:gap-6">
+      <main className="mx-auto flex w-full max-w-[1200px] flex-col gap-4 px-3 sm:gap-6 sm:px-6">
         <SiteHeader activePath={activePath} />
         {children}
         <footer className="pb-2 pt-1 text-center text-xs uppercase tracking-[0.16em] text-(--muted)">
