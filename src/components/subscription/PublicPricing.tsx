@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { TrackedLink } from "@/components/tracked-link";
+import { MicrosoftMarketplaceCta } from "./MicrosoftMarketplaceCta";
 
 const PUBLIC_PLANS = [
   {
@@ -102,6 +103,8 @@ export function PublicPricing() {
           </article>
         ))}
       </div>
+
+      <MicrosoftMarketplaceCta location="public_pricing" />
 
       <p className="text-center text-xs text-(--muted)">
         Already have an account?{" "}

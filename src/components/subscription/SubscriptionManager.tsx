@@ -6,6 +6,7 @@ import { track } from "@/lib/cv-analytics";
 import { CancellationForm } from "./CancellationForm";
 import { SubscriptionStatus } from "./SubscriptionStatus";
 import { PlanSelector } from "./PlanSelector";
+import { MicrosoftMarketplaceCta } from "./MicrosoftMarketplaceCta";
 
 type Subscription = {
   id: string;
@@ -259,10 +260,13 @@ export function SubscriptionManager() {
           )}
         </>
       ) : (
-        <PlanSelector
-          plans={plans}
-          onSelectPlan={handleUpgrade}
-        />
+        <>
+          <PlanSelector
+            plans={plans}
+            onSelectPlan={handleUpgrade}
+          />
+          <MicrosoftMarketplaceCta location="account_subscription_manager" />
+        </>
       )}
     </div>
   );

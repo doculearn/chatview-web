@@ -157,7 +157,7 @@ export default function Home() {
               href="/register"
               location="hero"
               target="register"
-              className="inline-flex items-center justify-center rounded-xl bg-(--accent) px-6 py-3 font-semibold text-black shadow-lg shadow-(--accent)/20 transition hover:brightness-110"
+              className="inline-flex items-center justify-center rounded-xl bg-(--accent) px-6 py-3 font-semibold text-white shadow-lg shadow-(--accent)/20 transition hover:brightness-110"
             >
               Start Building →
             </TrackedLink>
@@ -319,7 +319,7 @@ export default function Home() {
               href="/register"
               location="pricing_pro_card"
               target="register"
-              className="mt-7 inline-flex w-full items-center justify-center rounded-xl bg-(--accent) px-5 py-3 font-semibold text-black transition hover:brightness-110"
+              className="mt-7 inline-flex w-full items-center justify-center rounded-xl bg-(--accent) px-5 py-3 font-semibold text-white transition hover:brightness-110"
             >
               Start Building →
             </TrackedLink>
