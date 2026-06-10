@@ -84,6 +84,10 @@ export default function RegisterPage() {
       <section className="glass-panel float-up mx-auto w-full max-w-xl rounded-2xl p-4 sm:rounded-3xl sm:p-6 lg:p-10">
         <p className="text-xs uppercase tracking-[0.28em] text-(--muted)">Register</p>
         <h1 className="headline-glow mt-3 text-xl font-bold sm:text-3xl">Create your ChatView account</h1>
+        <p className="mt-3 inline-flex items-center gap-2 rounded-full border border-sky-500/20 bg-sky-500/10 px-3 py-1 text-sm font-medium text-sky-400">
+          <span aria-hidden="true">🎉</span>
+          Includes a free 7-day premium trial &mdash; no card required
+        </p>
 
         <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
           <div className="grid gap-3 sm:grid-cols-2">

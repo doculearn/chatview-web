@@ -34,9 +34,17 @@ type SubscriptionPlan = {
   features: string[];
 };
 
+type TrialInfo = {
+  active: boolean;
+  started_at: string | null;
+  ends_at: string | null;
+  days_remaining: number;
+};
+
 export function SubscriptionManager() {
   const [subscription, setSubscription] = useState<Subscription | null>(null);
   const [plans, setPlans] = useState<SubscriptionPlan[]>([]);
+  const [trial, setTrial] = useState<TrialInfo | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [showCancellationForm, setShowCancellationForm] = useState(false);
@@ -69,19 +77,24 @@ export function SubscriptionManager() {
         }
       }
 
-      const [subRes, plansRes] = await Promise.all([
+      const [subRes, plansRes, statusRes] = await Promise.all([
         fetchWithTimeout("/api/chatview/subscription/current"),
         fetchWithTimeout("/api/chatview/subscription/plans"),
+        fetchWithTimeout("/api/chatview/subscription/status"),
       ]);
 
       const subData = await subRes.json().catch(() => null);
       const plansData = await plansRes.json().catch(() => null);
+      const statusData = await statusRes.json().catch(() => null);
 
       if (subRes.ok) {
         setSubscription(subData?.subscription || null);
       }
       if (plansRes.ok) {
         setPlans(plansData?.plans || []);
+      }
+      if (statusRes.ok) {
+        setTrial((statusData?.trial as TrialInfo) || null);
       }
 
       if (!subRes.ok || !plansRes.ok) {
@@ -227,6 +240,31 @@ export function SubscriptionManager() {
       {error && (
         <div className="glass-panel rounded-2xl border border-red-500/20 bg-red-500/5 p-4">
           <p className="text-sm text-red-400">{error}</p>
+        </div>
+      )}
+
+      {trial?.active && (
+        <div className="glass-panel float-up rounded-2xl border border-sky-500/20 bg-sky-500/5 p-4 sm:p-5">
+          <div className="flex items-center justify-between gap-3">
+            <div>
+              <p className="text-xs uppercase tracking-[0.28em] text-sky-400">Free Trial</p>
+              <p className="mt-1 font-semibold text-(--foreground)">
+                You&apos;re on a 7-day premium trial &mdash;{" "}
+                {trial.days_remaining > 0
+                  ? `${trial.days_remaining} day${trial.days_remaining === 1 ? "" : "s"} left`
+                  : "ending today"}
+                .
+              </p>
+              {trial.ends_at && (
+                <p className="mt-1 text-sm text-(--muted)">
+                  Full access until {new Date(trial.ends_at).toLocaleDateString()}. Upgrade any time to keep premium features.
+                </p>
+              )}
+            </div>
+            <span className="rounded-full border border-sky-500/20 bg-sky-500/10 px-3 py-1 text-xs font-semibold text-sky-400">
+              {trial.days_remaining}d
+            </span>
+          </div>
         </div>
       )}
 
