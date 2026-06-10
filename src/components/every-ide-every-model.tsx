@@ -46,7 +46,7 @@ export function EveryIdeEveryModel() {
       className="glass-panel float-up mt-6 rounded-2xl p-4 sm:rounded-[2rem] sm:p-6 lg:p-10">
       <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.24em] text-(--muted)">
         <span className="rounded-full border border-(--accent)/40 bg-(--accent)/10 px-3 py-1 text-(--accent)">
-          Codex Mobile, but universal
+          Vibe code from your phone
         </span>
         <span className="rounded-full border border-(--line) bg-(--panel-soft) px-3 py-1">
           Every agent
@@ -60,11 +60,11 @@ export function EveryIdeEveryModel() {
       </div>
 
       <h2 className="headline-glow mt-4 max-w-3xl text-2xl font-bold leading-tight sm:text-4xl">
-        Codex Mobile for VS Code, Claude Code, Codex & Cursor.
+        One remote for every agent, IDE & model.
       </h2>
 
       <p className="mt-4 max-w-2xl text-base leading-7 text-(--muted) sm:text-lg">
-        OpenAI&apos;s Codex Mobile only drives OpenAI&apos;s agent inside OpenAI&apos;s app.
+        Most mobile coding apps lock you into one vendor&apos;s agent inside one vendor&apos;s app.
         ChatView is the mobile control plane for{" "}
         <span className="text-(--foreground)">every</span> coding agent you already run —
         VS Code Copilot, Claude Code, Codex CLI, Cursor Agent — wired straight to the IDE on
@@ -83,8 +83,8 @@ export function EveryIdeEveryModel() {
       <div className="mt-8 flex flex-wrap items-center gap-3 rounded-2xl border border-(--accent)/30 bg-(--accent)/5 px-4 py-3 text-sm">
         <span className="font-semibold text-(--accent)">No vendor lock-in.</span>
         <span className="text-(--muted)">
-          One subscription, every agent, every editor, every model. $9.99/mo — cancel
-          anytime.
+          One subscription, every agent, every editor, every model. Free 7-day trial, no card
+          required — then $9.99/mo, cancel anytime.
         </span>
         <Link
           href="/register"

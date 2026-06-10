@@ -52,6 +52,10 @@ const PUBLIC_PLANS = [
 export function PublicPricing() {
   return (
     <div className="space-y-6">
+      <div className="rounded-2xl border border-(--accent)/30 bg-(--accent)/5 px-4 py-3 text-center text-sm text-(--foreground)">
+        <span className="font-semibold text-(--accent)">Free 7-day trial on every paid plan</span>
+        <span className="text-(--muted)"> — no card required. Cancel anytime.</span>
+      </div>
       <div className="grid gap-4 sm:grid-cols-3">
         {PUBLIC_PLANS.map((plan) => (
           <article

@@ -135,21 +135,23 @@ export default function Home() {
       <section id="hero" className="glass-panel float-up p-5 sm:p-10 lg:p-14">
         <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
           <div className="flex flex-wrap items-center justify-center gap-2 text-xs uppercase tracking-[0.24em] text-(--muted)">
-            <span className="rounded-full border border-(--accent)/40 bg-(--accent)/10 px-3 py-1 text-(--accent)">Codex Mobile for every agent</span>
+            <span className="rounded-full border border-(--accent)/40 bg-(--accent)/10 px-3 py-1 text-(--accent)">Free 7-day trial · no card</span>
             <span className="rounded-full border border-(--line) bg-(--panel-soft) px-3 py-1">Every IDE</span>
             <span className="rounded-full border border-(--line) bg-(--panel-soft) px-3 py-1">Every model</span>
           </div>
 
           <h1 className="headline-glow mt-5 text-3xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-            Codex Mobile, but for{" "}
+            Vibe code from your{" "}
             <span className="bg-gradient-to-r from-(--accent) to-(--accent-2) bg-clip-text text-transparent">
-              VS Code, Claude Code, Codex & Cursor.
+              phone.
             </span>
           </h1>
 
           <p className="mt-6 max-w-2xl text-base leading-7 text-(--muted) sm:text-lg">
-            Drive your coding agent from your phone. Runs in your real IDE on your real laptop,
-            powered by whichever model you actually pay for. Stop pausing momentum just because you walked away from the desk.
+            ChatView is the mobile remote for the coding agent you already use — VS Code Copilot,
+            Cursor, Claude Code or Codex CLI. Queue prompts from the couch, watch your agent ship in
+            your real repo, and approve edits from anywhere. Your laptop does the work; your phone
+            keeps the momentum.
           </p>
 
           <div className="mt-7 flex flex-col items-center gap-3 sm:flex-row">
@@ -159,7 +161,7 @@ export default function Home() {
               target="register"
               className="inline-flex items-center justify-center rounded-xl bg-(--accent) px-6 py-3 font-semibold text-white shadow-lg shadow-(--accent)/20 transition hover:brightness-110"
             >
-              Start Building →
+              Start your free trial →
             </TrackedLink>
             <TrackedLink
               href="https://www.youtube.com/watch?v=9matVuaMesw"
@@ -172,9 +174,9 @@ export default function Home() {
           </div>
 
           <div className="mt-5 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-(--muted)">
-            <span>$9.99 / month</span>
+            <span>7-day free trial</span>
             <span aria-hidden>·</span>
-            <span>Cancel anytime</span>
+            <span>No card required</span>
             <span aria-hidden>·</span>
             <span>Your keys, your laptop, your repo</span>
           </div>
@@ -299,9 +301,10 @@ export default function Home() {
               <span className="text-5xl font-extrabold">$9.99</span>
               <span className="text-(--muted)">/ month</span>
             </div>
-            <p className="mt-3 text-sm text-(--muted)">Everything you need to ship from your phone. Cancel anytime.</p>
+            <p className="mt-3 text-sm text-(--muted)">Everything you need to ship from your phone. Start free for 7 days — no card required, cancel anytime.</p>
             <ul className="mt-6 space-y-2 text-sm">
               {[
+                "Free 7-day trial — no card required",
                 "Unlimited mobile-to-IDE relay sessions",
                 "Works with VS Code Copilot, Claude Code, Codex CLI, Cursor",
                 "VS Code, Cursor, Windsurf extensions included",
@@ -321,7 +324,7 @@ export default function Home() {
               target="register"
               className="mt-7 inline-flex w-full items-center justify-center rounded-xl bg-(--accent) px-5 py-3 font-semibold text-white transition hover:brightness-110"
             >
-              Start Building →
+              Start your free trial →
             </TrackedLink>
           </div>
 
@@ -367,7 +370,8 @@ export default function Home() {
             Your agent is waiting. Your phone is already in your hand.
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base text-(--muted) sm:text-lg">
-            Install the VS Code extension, scan the QR with the mobile app, and ship the next PR from the supermarket queue.
+            Install the VS Code extension, scan the QR with the mobile app, and ship the next PR from
+            the supermarket queue. Start free for 7 days — no card required.
           </p>
           <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <TrackedLink

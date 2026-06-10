@@ -19,17 +19,20 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://chat-view.xyz"),
   title: {
-    default: "Code from your Phone | ChatView",
+    default: "Vibe Code From Your Phone | ChatView",
     template: "%s | ChatView",
   },
   description:
-    "ChatView pairs your phone with VS Code, Cursor, Claude Code and Codex so you can prompt the coding agent, review diffs, and approve edits from anywhere. From $9.99/month. Built in public.",
+    "Vibe code from your phone with ChatView. Drive VS Code, Cursor, Claude Code and Codex CLI from anywhere — queue prompts, review diffs, and approve edits on the go. Start a free 7-day trial, no card required.",
   applicationName: "ChatView",
   keywords: [
+    "vibe code from your phone",
+    "vibe coding",
+    "vibe coding app",
+    "code from your phone",
     "ChatView",
     "Cursor mobile",
     "VS Code mobile",
-    "Codex Mobile alternative",
     "Claude Code mobile",
     "remote coding",
     "AI coding agent",
@@ -45,16 +48,16 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "ChatView",
     url: "https://chat-view.xyz",
-    title: "Code from your Phone | ChatView",
+    title: "Vibe Code From Your Phone | ChatView",
     description:
-      "Pair your phone with Cursor, VS Code, Claude Code or Codex. Prompt the agent, review diffs, approve edits — from anywhere.",
+      "Vibe code from your phone. Drive Cursor, VS Code, Claude Code or Codex CLI from anywhere — prompt the agent, review diffs, approve edits. Free 7-day trial, no card required.",
     locale: "en_US",
     images: [
       {
         url: "/chatview-logo.png",
         width: 1200,
         height: 630,
-        alt: "ChatView — chat with your IDE from anywhere",
+        alt: "ChatView — vibe code from your phone",
       },
     ],
   },
@@ -62,9 +65,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@williammbtja",
     creator: "@williammbtja",
-    title: "Code from your Phone | ChatView",
+    title: "Vibe Code From Your Phone | ChatView",
     description:
-      "Pair your phone with Cursor, VS Code, Claude Code or Codex. Prompt the agent, review diffs, approve edits — from anywhere.",
+      "Vibe code from your phone. Drive Cursor, VS Code, Claude Code or Codex CLI from anywhere. Free 7-day trial, no card required.",
     images: ["/chatview-logo.png"],
   },
   robots: {

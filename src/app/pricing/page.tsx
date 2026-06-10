@@ -26,7 +26,8 @@ export default function PricingPage() {
             </h1>
           </div>
           <p className="mt-3 text-sm text-(--muted) sm:text-base">
-            Pick a plan and get full access. Cancel anytime — no contracts, no surprises.
+            Vibe code from your phone. Start free for 7 days — no card required. Cancel anytime, no
+            contracts, no surprises.
           </p>
         </section>
 
