@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
 import { TrackedLink } from "@/components/tracked-link";
+import { CookieSettingsLink } from "@/components/cookie-consent";
 
 type PageShellProps = {
   activePath: string;
@@ -151,6 +152,8 @@ export function PageShell({ activePath, children }: PageShellProps) {
           <Link href="/support" className="underline underline-offset-4 hover:text-(--foreground)">Support</Link>
           <span className="mx-2">·</span>
           <Link href="/support-us" className="underline underline-offset-4 hover:text-(--foreground)">Buy us a coffee ☕</Link>
+          <span className="mx-2">·</span>
+          <CookieSettingsLink className="uppercase tracking-[0.16em] underline underline-offset-4 hover:text-(--foreground)" />
           </div>
         </footer>
       </main>

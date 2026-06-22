@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 import { UsermavenLite } from "@/components/usermaven-lite";
+import {
+  CookieConsent,
+  ConsentGatedAnalytics,
+} from "@/components/cookie-consent";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -92,13 +95,15 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <GoogleAnalytics gaId="G-9603SMF2Q3" />
+        {/* Google Analytics sets cookies, so it loads only after opt-in. */}
+        <ConsentGatedAnalytics />
         {/* Cookieless in-house analytics. useSearchParams forces this
             into a Suspense boundary in Next.js 14+. */}
         <Suspense fallback={null}>
           <UsermavenLite />
         </Suspense>
         <Providers>{children}</Providers>
+        <CookieConsent />
       </body>
     </html>
   );
