@@ -2,6 +2,7 @@
 
 import { ReactNode, useEffect } from "react";
 import { RouteShield } from "@/components/route-shield";
+import { GoogleOneTap } from "@/components/google-one-tap";
 import useAuthCredentialsStore from "@/state/use-auth-credentials-store";
 
 type ProvidersProps = {
@@ -22,6 +23,7 @@ export function Providers({ children }: ProvidersProps) {
   return (
     <>
       <AuthBootstrap />
+      <GoogleOneTap />
       <RouteShield>{children}</RouteShield>
     </>
   );
