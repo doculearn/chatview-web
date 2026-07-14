@@ -19,7 +19,12 @@ import {
   type GoogleExchangeResult,
 } from "@/lib/firebase-auth";
 
-const GOOGLE_CLIENT_ID = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID ?? "";
+// The Firebase project's Web OAuth client ID. This is a public value (it is
+// sent to browsers during any Google sign-in), so it is safe to embed and can
+// be overridden per-environment via NEXT_PUBLIC_GOOGLE_CLIENT_ID.
+const GOOGLE_CLIENT_ID =
+  process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID ??
+  "157796964641-jgnedrqdia3c8aevg1adetd3ae719eu7.apps.googleusercontent.com";
 const GSI_SRC = "https://accounts.google.com/gsi/client";
 
 // Routes where the One Tap prompt should not interrupt the user.
