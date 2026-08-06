@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 const CHATVIEW_API_BASE_URL = (
-  process.env.CHATVIEW_API_BASE_URL ?? "https://api.chat-view.xyz/api/v1"
+  process.env.CHATVIEW_API_BASE_URL ?? "https://api.chatview.app/api/v1"
 ).replace(/\/+$/, "");
 
 export async function GET() {

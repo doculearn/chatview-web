@@ -1,4 +1,4 @@
-const CHATVIEW_API_BASE_URL = (process.env.CHATVIEW_API_BASE_URL ?? "https://api.chat-view.xyz/api/v1").replace(/\/+$/, "");
+const CHATVIEW_API_BASE_URL = (process.env.CHATVIEW_API_BASE_URL ?? "https://api.chatview.app/api/v1").replace(/\/+$/, "");
 
 type Method = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
 

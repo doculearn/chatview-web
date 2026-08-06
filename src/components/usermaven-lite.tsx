@@ -25,7 +25,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 
 const COLLECT_URL =
   process.env.NEXT_PUBLIC_ANALYTICS_URL ||
-  "https://api.chat-view.xyz/api/v1/analytics/collect/";
+  "https://api.chatview.app/api/v1/analytics/collect/";
 const SITE =
   process.env.NEXT_PUBLIC_ANALYTICS_SITE || "chat-view.xyz";
 
