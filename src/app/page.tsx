@@ -164,7 +164,7 @@ export default function Home() {
               Start your free trial →
             </TrackedLink>
             <TrackedLink
-              href="https://www.youtube.com/watch?v=9matVuaMesw"
+              href="https://youtu.be/MXlRTRYF9L4?si=6Cufh3dZ_RIcIcgM"
               location="hero"
               target="youtube_demo"
               className="inline-flex items-center justify-center rounded-xl border border-(--line) bg-(--panel-soft) px-6 py-3 font-semibold text-(--foreground) transition hover:border-(--accent)"
