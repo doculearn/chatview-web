@@ -94,6 +94,7 @@ export default function RootLayout({
       lang="en"
       className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
+      <meta name="msvalidate.01" content="B91F1C8AC71E2CC150001185B1C342F9" />
       <body className="min-h-full flex flex-col">
         {/* Google Analytics sets cookies, so it loads only after opt-in. */}
         <ConsentGatedAnalytics />
