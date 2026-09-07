@@ -296,7 +296,7 @@ export default function Home() {
 
         <div className="mt-8 grid gap-4 lg:grid-cols-2">
           <div className="glass-panel feature-card-spotlight rounded-2xl p-6 sm:p-8">
-            <p className="text-xs uppercase tracking-[0.28em] text-(--accent)">ChatView Pro</p>
+            <p className="text-xs uppercase tracking-[0.28em] text-(--accent)">ChatView Solo</p>
             <div className="mt-3 flex items-baseline gap-2">
               <span className="text-5xl font-extrabold">$9.99</span>
               <span className="text-(--muted)">/ month</span>
@@ -309,7 +309,7 @@ export default function Home() {
                 "Works with VS Code Copilot, Claude Code, Codex CLI, Cursor",
                 "VS Code, Cursor, Windsurf extensions included",
                 "Bring your own model & API keys",
-                "Voice prompts on iOS & Android",
+                "Push notifications the moment a run finishes",
                 "Email support",
               ].map((f) => (
                 <li key={f} className="flex items-start gap-2">
@@ -336,7 +336,7 @@ export default function Home() {
             <p className="mt-3 text-sm text-(--muted)">SSO, audit logs, on-prem relay, and shared workstation pools.</p>
             <ul className="mt-6 space-y-2 text-sm">
               {[
-                "Everything in Pro",
+                "Everything in Solo",
                 "SAML / SCIM single sign-on",
                 "Self-hosted relay (on-prem or VPC)",
                 "Shared workstation pools",

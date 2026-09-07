@@ -33,8 +33,8 @@ const MODELS: Item[] = [
 ];
 
 const PLATFORMS: Item[] = [
-  { label: "iOS" },
   { label: "Android" },
+  { label: "iOS", hint: "Coming soon" },
   { label: "Web" },
   { label: "Desktop (via VS Code)" },
 ];

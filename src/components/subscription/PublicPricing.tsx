@@ -32,21 +32,6 @@ const PUBLIC_PLANS = [
       "Email support",
     ],
   },
-  {
-    name: "pro",
-    display_name: "Pro",
-    price: "29.99",
-    blurb: "For power users & small teams",
-    accent: "border-amber-500/60 shadow-[0_0_30px_rgba(245,158,11,0.18)]",
-    cta: "Subscribe — $29.99/mo",
-    badge: "Most Popular",
-    features: [
-      "5 mobile devices",
-      "Everything in Solo",
-      "Priority support",
-      "Early access to new features",
-    ],
-  },
 ];
 
 export function PublicPricing() {
@@ -56,21 +41,15 @@ export function PublicPricing() {
         <span className="font-semibold text-(--accent)">Free 7-day trial on every paid plan</span>
         <span className="text-(--muted)"> — no card required. Cancel anytime.</span>
       </div>
-      <div className="grid gap-4 sm:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2">
         {PUBLIC_PLANS.map((plan) => (
           <article
             key={plan.name}
             className={`feature-card border ${plan.accent} p-5 flex flex-col`}
           >
-            {plan.badge ? (
-              <p className="text-xs font-semibold uppercase tracking-wide text-amber-400">
-                {plan.badge}
-              </p>
-            ) : (
-              <p className="text-xs font-semibold uppercase tracking-wide text-(--muted)">
-                &nbsp;
-              </p>
-            )}
+            <p className="text-xs font-semibold uppercase tracking-wide text-(--muted)">
+              &nbsp;
+            </p>
             <p className="mt-1 text-sm font-semibold text-(--accent-2)">
               {plan.display_name}
             </p>
@@ -96,11 +75,7 @@ export function PublicPricing() {
               target={plan.name === "free" ? "register" : "login"}
               event="plan_selected"
               extra={{ plan: plan.name, price: plan.price, authed: false }}
-              className={`mt-5 w-full block rounded-xl px-4 py-2 text-center text-sm font-semibold transition-colors ${
-                plan.name === "pro"
-                  ? "bg-amber-500 text-black hover:bg-amber-400"
-                  : "bg-(--accent) text-white hover:bg-(--accent)/80"
-              }`}
+              className="mt-5 w-full block rounded-xl bg-(--accent) px-4 py-2 text-center text-sm font-semibold text-white transition-colors hover:bg-(--accent)/80"
             >
               {plan.cta}
             </TrackedLink>
