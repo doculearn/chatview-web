@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { PageShell } from "@/components/page-shell";
 import { authFetch } from "@/lib/auth-fetch";
-import { useAuthReady } from "@/hooks/use-auth-ready";
+import { useAuthStatus } from "@/hooks/use-auth-ready";
 
 type TicketSummary = {
   id: string;
@@ -34,7 +34,8 @@ const STATUS_LABELS: Record<string, string> = {
 };
 
 export default function MyTicketsPage() {
-  const authReady = useAuthReady();
+  const authStatus = useAuthStatus();
+  const authReady = authStatus === "authenticated";
   const [tickets, setTickets] = useState<TicketSummary[] | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -73,9 +74,34 @@ export default function MyTicketsPage() {
         </div>
 
         <div className="mt-6">
-          {!authReady && <p className="text-sm text-(--muted)">Loading…</p>}
+          {authStatus === "loading" && (
+            <p className="text-sm text-(--muted)">Loading…</p>
+          )}
+          {authStatus === "anonymous" && (
+            <div className="rounded-2xl border border-(--line) bg-(--panel-soft) p-6 text-center">
+              <p className="text-sm text-(--muted)">
+                Sign in to view the tickets linked to your account.
+              </p>
+              <Link
+                href="/login?next=/support/tickets"
+                className="mt-4 inline-flex items-center justify-center rounded-xl bg-(--accent) px-4 py-2 text-sm font-semibold text-black hover:brightness-110"
+              >
+                Sign in
+              </Link>
+              <p className="mt-3 text-xs text-(--muted)">
+                Don&apos;t have an account?{" "}
+                <Link href="/support/new" className="text-(--accent) hover:underline">
+                  Open a ticket without signing in
+                </Link>
+                .
+              </p>
+            </div>
+          )}
           {authReady && error && (
             <p className="rounded-lg border border-red-500/40 bg-red-500/10 px-3 py-2 text-sm text-red-300">{error}</p>
+          )}
+          {authReady && !error && tickets === null && (
+            <p className="text-sm text-(--muted)">Loading…</p>
           )}
           {authReady && !error && tickets !== null && tickets.length === 0 && (
             <div className="rounded-2xl border border-(--line) bg-(--panel-soft) p-6 text-center">
