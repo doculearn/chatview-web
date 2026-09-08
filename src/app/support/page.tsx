@@ -98,26 +98,42 @@ export default function SupportPage() {
             <p className="font-mono text-xs uppercase tracking-[0.24em] text-(--accent-2)">
               Community
             </p>
-            <p className="mt-3 text-lg font-semibold">Join our real-time support channels</p>
-            <p className="mt-2 text-sm text-(--muted)">Get help from the team and community in Discord or Slack.</p>
-            <div className="mt-3 flex flex-wrap gap-3">
+            <p className="mt-3 text-lg font-semibold">Contact & community</p>
+            <p className="mt-2 text-sm text-(--muted)">Choose the channel that suits you best — email, phone, Discord, or Slack.</p>
+            <div className="mt-3 grid gap-2">
               <a
-                href="https://discord.gg/9WRURqthD"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-xl bg-[#5865f2] px-4 py-2 text-sm font-semibold text-white hover:brightness-110"
+                href="mailto:support@chatview.app"
+                className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-(--accent) hover:underline"
               >
-                Join Discord
+                support@chatview.app
               </a>
 
               <a
-                href="https://join.slack.com/t/chatview/shared_invite/zt-49luv40jk-v9zv6k48s3COOoGCSdb~CQ"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-xl bg-[#4a154b] px-4 py-2 text-sm font-semibold text-white hover:brightness-110"
+                href="tel:+27736329512"
+                className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-(--foreground) hover:underline"
               >
-                Join Slack
+                +27 73 632 9512
               </a>
+
+              <div className="flex flex-wrap gap-3 mt-2">
+                <a
+                  href="https://discord.gg/9WRURqthD"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-xl bg-[#5865f2] px-4 py-2 text-sm font-semibold text-white hover:brightness-110"
+                >
+                  Join Discord
+                </a>
+
+                <a
+                  href="https://join.slack.com/t/chatview/shared_invite/zt-49luv40jk-v9zv6k48s3COOoGCSdb~CQ"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-xl bg-[#4a154b] px-4 py-2 text-sm font-semibold text-white hover:brightness-110"
+                >
+                  Join Slack
+                </a>
+              </div>
             </div>
           </div>
         </div>
