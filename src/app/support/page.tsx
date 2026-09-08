@@ -62,10 +62,10 @@ export default function SupportPage() {
             </p>
             <p className="mt-3 text-lg font-semibold">
               <a
-                href="mailto:hello@chat-view.xyz"
+                href="mailto:support@chatview.app"
                 className="text-(--accent) hover:underline"
               >
-                hello@chat-view.xyz
+                support@chatview.app
               </a>
             </p>
             <p className="mt-2 text-sm text-(--muted)">
@@ -90,6 +90,35 @@ export default function SupportPage() {
               View your subscription, update billing, or cancel your plan at any
               time.
             </p>
+          </div>
+        </div>
+
+        <div className="mt-6">
+          <div className="rounded-2xl border border-(--line) bg-(--panel-soft) p-5">
+            <p className="font-mono text-xs uppercase tracking-[0.24em] text-(--accent-2)">
+              Community
+            </p>
+            <p className="mt-3 text-lg font-semibold">Join our real-time support channels</p>
+            <p className="mt-2 text-sm text-(--muted)">Get help from the team and community in Discord or Slack.</p>
+            <div className="mt-3 flex flex-wrap gap-3">
+              <a
+                href="https://discord.gg/9WRURqthD"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-xl bg-[#5865f2] px-4 py-2 text-sm font-semibold text-white hover:brightness-110"
+              >
+                Join Discord
+              </a>
+
+              <a
+                href="https://join.slack.com/t/chatview/shared_invite/zt-49luv40jk-v9zv6k48s3COOoGCSdb~CQ"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-xl bg-[#4a154b] px-4 py-2 text-sm font-semibold text-white hover:brightness-110"
+              >
+                Join Slack
+              </a>
+            </div>
           </div>
         </div>
 
