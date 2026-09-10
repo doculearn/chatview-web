@@ -1,3 +1,5 @@
+
+import { Localized } from "@/components/localized";
 import Link from "next/link";
 
 type Item = {
@@ -41,7 +43,7 @@ const PLATFORMS: Item[] = [
 
 export function EveryIdeEveryModel() {
   return (
-    <section
+    <Localized><section
       id="universal"
       className="glass-panel float-up mt-6 rounded-2xl p-4 sm:rounded-[2rem] sm:p-6 lg:p-10">
       <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.24em] text-(--muted)">
@@ -92,7 +94,7 @@ export function EveryIdeEveryModel() {
           Try it free →
         </Link>
       </div>
-    </section>
+    </section></Localized>
   );
 }
 
@@ -106,7 +108,7 @@ function Pillar({
   items: Item[];
 }) {
   return (
-    <div className="hero-stat h-full">
+    <Localized><div className="hero-stat h-full">
       <p className="font-mono text-xs text-(--accent-2)">{badge}</p>
       <p className="mt-2 text-lg font-semibold">{title}</p>
       <ul className="mt-3 space-y-2">
@@ -121,6 +123,6 @@ function Pillar({
           </li>
         ))}
       </ul>
-    </div>
+    </div></Localized>
   );
 }

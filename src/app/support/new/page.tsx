@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -62,7 +64,7 @@ export default function NewTicketPage() {
   }
 
   return (
-    <PageShell activePath="/support">
+    <Localized><PageShell activePath="/support">
       <section className="glass-panel rounded-2xl p-4 sm:rounded-[2rem] sm:p-6 lg:p-10">
         <p className="text-xs uppercase tracking-[0.24em] text-(--muted)">Support</p>
         <h1 className="mt-3 text-2xl font-bold sm:text-4xl">Open a support ticket</h1>
@@ -169,6 +171,6 @@ export default function NewTicketPage() {
           </div>
         </form>
       </section>
-    </PageShell>
+    </PageShell></Localized>
   );
 }

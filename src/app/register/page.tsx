@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -80,7 +82,7 @@ export default function RegisterPage() {
   }
 
   return (
-    <PageShell activePath="/register">
+    <Localized><PageShell activePath="/register">
       <section className="glass-panel float-up mx-auto w-full max-w-xl rounded-2xl p-4 sm:rounded-3xl sm:p-6 lg:p-10">
         <p className="text-xs uppercase tracking-[0.28em] text-(--muted)">Register</p>
         <h1 className="headline-glow mt-3 text-xl font-bold sm:text-3xl">Create your ChatView account</h1>
@@ -162,6 +164,6 @@ export default function RegisterPage() {
         {message ? <p className="mt-3 text-sm text-(--success)">{message}</p> : null}
         {error ? <p className="mt-3 text-sm text-red-400">{error}</p> : null}
       </section>
-    </PageShell>
+    </PageShell></Localized>
   );
 }

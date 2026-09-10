@@ -1,10 +1,15 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Languages, Menu, Moon, Sun, X } from "lucide-react";
 import { performLogout } from "@/lib/logout";
 import { useAuthReady } from "@/hooks/use-auth-ready";
+import { useTranslation } from "react-i18next";
+import { SUPPORTED_LANGUAGES, normalizeLanguage, setAppLanguage } from "@/app/i18n";
 
 type SiteHeaderProps = {
   activePath?: string;
@@ -19,6 +24,9 @@ const menuItems = [
 ];
 
 export function SiteHeader({ activePath }: SiteHeaderProps) {
+  const { t, i18n } = useTranslation();
+  const [languagePending, setLanguagePending] = useState(false);
+  const [languageError, setLanguageError] = useState(false);
   const [theme, setTheme] = useState<"dark" | "light">(() => {
     if (typeof window === "undefined") return "dark";
     const storedTheme = window.localStorage.getItem("chatview-theme");
@@ -35,9 +43,9 @@ export function SiteHeader({ activePath }: SiteHeaderProps) {
   }, [theme]);
 
   return (
-    <header className="glass-panel float-up px-3 py-2.5 shadow-[0_18px_50px_rgba(3,9,17,0.24)] sm:px-6 sm:py-3">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2 sm:gap-3">
+    <Localized><header className="glass-panel float-up px-3 py-2.5 shadow-[0_18px_50px_rgba(3,9,17,0.24)] sm:px-6 sm:py-3">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <Link href="/" aria-label="ChatView" className="flex min-w-0 items-center gap-2 sm:gap-3">
           <Image
             src="/chatview-logo.png"
             alt="ChatView"
@@ -46,42 +54,54 @@ export function SiteHeader({ activePath }: SiteHeaderProps) {
             className="h-8 w-8 rounded-xl border border-white/10 bg-white/5 p-0.5 shadow-[0_0_0_1px_rgba(255,255,255,0.04)] sm:h-11 sm:w-11 sm:rounded-2xl sm:p-1"
             priority
           />
-          <div className="hidden sm:block">
+          <div className="hidden min-w-0 sm:block">
             <p className="text-xs uppercase tracking-[0.2em] text-(--muted)">ChatView</p>
-            <p className="text-sm font-semibold text-(--foreground)">Remote coding that stays in motion</p>
+            <p className="hidden text-sm font-semibold text-(--foreground) xl:block">Remote coding that stays in motion</p>
           </div>
           <p className="text-xs font-semibold uppercase tracking-[0.12em] text-(--foreground) sm:hidden">ChatView</p>
-        </div>
+        </Link>
 
-        <div className="flex items-center gap-2">
+        <div className="flex min-w-0 max-w-full flex-wrap items-center gap-2 max-[380px]:w-full">
+          <label className="flex h-11 min-w-0 flex-1 items-center gap-2 rounded-md border border-(--line) bg-(--panel-soft) px-3 text-(--foreground) focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-(--accent) sm:flex-none">
+            <Languages aria-hidden="true" className="h-5 w-5 shrink-0 text-(--accent-2)" />
+            <span className="hidden text-sm sm:inline">{t("settings.language")}</span>
+          <select
+            aria-label={t("settings.language")}
+            title={t("settings.language")}
+            value={normalizeLanguage(i18n.language)}
+            disabled={languagePending}
+            onChange={async (event) => {
+              setLanguagePending(true);
+              setLanguageError(false);
+              try {
+                await setAppLanguage(normalizeLanguage(event.target.value));
+              } catch {
+                setLanguageError(true);
+              } finally {
+                setLanguagePending(false);
+              }
+            }}
+            className="h-full w-28 min-w-0 flex-1 cursor-pointer bg-(--panel-soft) text-sm text-(--foreground) outline-none disabled:cursor-wait sm:w-36"
+            translate="no"
+          >
+            {SUPPORTED_LANGUAGES.map((language) => (
+              <option key={language.code} value={language.code} lang={language.code}>
+                {language.label}
+              </option>
+            ))}
+          </select>
+          </label>
           <button
             type="button"
             onClick={() => setTheme((current) => (current === "dark" ? "light" : "dark"))}
-            className="theme-toggle !h-8 !w-8 sm:!h-[2.85rem] sm:!w-[2.85rem]"
+            className="theme-toggle !h-11 !w-11 shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--accent)"
             aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+            title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
           >
             {theme === "dark" ? (
-              <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 sm:h-5 sm:w-5">
-                <path
-                  d="M12 5.25a.9.9 0 0 1 .9.9v1.4a.9.9 0 1 1-1.8 0v-1.4a.9.9 0 0 1 .9-.9Zm0 11.2a.9.9 0 0 1 .9.9v1.4a.9.9 0 1 1-1.8 0v-1.4a.9.9 0 0 1 .9-.9Zm6.6-5.35a.9.9 0 0 1 0 1.8h-1.4a.9.9 0 1 1 0-1.8h1.4Zm-11.2 0a.9.9 0 1 1 0 1.8H6a.9.9 0 0 1 0-1.8h1.4Zm8.17-4.6a.9.9 0 0 1 1.27 1.27l-.99.99a.9.9 0 1 1-1.27-1.27l.99-.99Zm-7.91 7.91a.9.9 0 0 1 1.27 1.27l-.99.99a.9.9 0 1 1-1.27-1.27l.99-.99Zm9.18.99a.9.9 0 1 1-1.27 1.27l-.99-.99a.9.9 0 0 1 1.27-1.27l.99.99Zm-7.91-7.91a.9.9 0 0 1-1.27 1.27l-.99-.99A.9.9 0 0 1 7.4 6.49l.99.99ZM12 8.4A3.6 3.6 0 1 1 8.4 12 3.6 3.6 0 0 1 12 8.4Z"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="1.5"
-                />
-              </svg>
+              <Sun aria-hidden="true" className="h-5 w-5" />
             ) : (
-              <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 sm:h-5 sm:w-5">
-                <path
-                  d="M13.9 3.5a.9.9 0 0 1 .46 1.64A7.55 7.55 0 1 0 19.7 18.6a.9.9 0 0 1 .83 1.58A9.35 9.35 0 1 1 12.58 3.08a.9.9 0 0 1 1.32.42ZM18.8 5.35l.26.7.7.26-.7.26-.26.7-.26-.7-.7-.26.7-.26.26-.7Zm1.85 4.7.17.45.45.17-.45.17-.17.45-.17-.45-.45-.17.45-.17.17-.45Z"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="1.5"
-                />
-              </svg>
+              <Moon aria-hidden="true" className="h-5 w-5" />
             )}
           </button>
 
@@ -89,18 +109,23 @@ export function SiteHeader({ activePath }: SiteHeaderProps) {
           <button
             type="button"
             onClick={() => setMenuOpen((v) => !v)}
-            className="inline-flex h-8 w-8 items-center justify-center rounded-xl border border-(--line) bg-(--panel-soft) text-(--foreground) lg:hidden"
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-(--line) bg-(--panel-soft) text-(--foreground) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--accent) lg:hidden"
             aria-label="Toggle menu"
+            title="Toggle menu"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
           >
             {menuOpen ? (
-              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6 6 18M6 6l12 12" /></svg>
+              <X aria-hidden="true" className="h-5 w-5" />
             ) : (
-              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
+              <Menu aria-hidden="true" className="h-5 w-5" />
             )}
           </button>
+        </div>
+        {languageError && <span role="alert" className="w-full text-sm text-(--foreground)">{t("common.tryAgain")}</span>}
 
           {/* Desktop navigation */}
-          <nav className="hidden items-center gap-2 text-sm lg:flex">
+          <nav className="hidden w-full flex-wrap items-center gap-2 border-t border-(--line) pt-3 text-sm lg:flex">
             {menuItems.map((item) => {
               const isActive = item.href === activePath;
               return (
@@ -121,12 +146,11 @@ export function SiteHeader({ activePath }: SiteHeaderProps) {
               </>
             )}
           </nav>
-        </div>
       </div>
 
       {/* Mobile navigation drawer */}
       {menuOpen && (
-        <nav className="mt-3 flex flex-wrap gap-2 border-t border-(--line) pt-3 text-sm lg:hidden">
+        <nav id="mobile-navigation" className="mt-3 flex flex-wrap gap-2 border-t border-(--line) pt-3 text-sm lg:hidden">
           {menuItems.map((item) => {
             const isActive = item.href === activePath;
             return (
@@ -148,6 +172,6 @@ export function SiteHeader({ activePath }: SiteHeaderProps) {
           )}
         </nav>
       )}
-    </header>
+    </header></Localized>
   );
 }

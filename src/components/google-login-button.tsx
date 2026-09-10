@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -80,7 +82,7 @@ export function GoogleLoginButton({
   const isDisabled = Boolean(disabled) || busy;
 
   return (
-    <div className="w-full">
+    <Localized><div className="w-full">
       <button
         type="button"
         onClick={handleClick}
@@ -97,13 +99,13 @@ export function GoogleLoginButton({
       {error ? (
         <p className="mt-2 text-sm text-red-400">{error}</p>
       ) : null}
-    </div>
+    </div></Localized>
   );
 }
 
 function GoogleGlyph() {
   return (
-    <svg
+    <Localized><svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 48 48"
       className="h-5 w-5"
@@ -124,6 +126,6 @@ function GoogleGlyph() {
         fill="#1976D2"
         d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.2 4.2-4 5.6l6.3 5.3c-.4.4 6.4-4.6 6.4-14.9 0-1.3-.1-2.4-.4-3.5z"
       />
-    </svg>
+    </svg></Localized>
   );
 }

@@ -1,3 +1,5 @@
+
+import { Localized } from "@/components/localized";
 import Link from "next/link";
 import { PageShell } from "@/components/page-shell";
 import { BuyCoffee } from "@/components/buy-coffee";
@@ -79,10 +81,10 @@ const BILLBOARDS: Billboard[] = [
           { label: "Vim / Neovim", hint: "Terminal" },
           { label: "Web IDE", hint: "Browser" },
         ].map((ide) => (
-          <div key={ide.label} className="feature-card">
+          <Localized key={ide.label}><div className="feature-card">
             <p className="font-mono text-xs text-(--accent-2)">{ide.hint.toUpperCase()}</p>
             <p className="mt-1 text-sm font-semibold">{ide.label}</p>
-          </div>
+          </div></Localized>
         ))}
       </div>
     ),
@@ -113,9 +115,9 @@ const BILLBOARDS: Billboard[] = [
           "llama-3.3-70b",
           "qwen-2.5-coder",
         ].map((m) => (
-          <div key={m} className="rounded-lg border border-(--line) bg-(--panel-soft) px-3 py-2 text-(--foreground)">
+          <Localized key={m}><div className="rounded-lg border border-(--line) bg-(--panel-soft) px-3 py-2 text-(--foreground)">
             {m}
-          </div>
+          </div></Localized>
         ))}
       </div>
     ),
@@ -131,7 +133,7 @@ const STEPS = [
 
 export default function Home() {
   return (
-    <PageShell activePath="/">      <TrackPageView event="landing_viewed" />      {/* ─── HERO ─────────────────────────────────────────────────────── */}
+    <Localized><PageShell activePath="/">      <TrackPageView event="landing_viewed" />      {/* ─── HERO ─────────────────────────────────────────────────────── */}
       <section id="hero" className="glass-panel float-up p-5 sm:p-10 lg:p-14">
         <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
           <div className="flex flex-wrap items-center justify-center gap-2 text-xs uppercase tracking-[0.24em] text-(--muted)">
@@ -140,7 +142,7 @@ export default function Home() {
             <span className="rounded-full border border-(--line) bg-(--panel-soft) px-3 py-1">Every model</span>
           </div>
 
-          <h1 className="headline-glow mt-5 text-3xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+          <h1 className="headline-glow mt-5 max-w-full text-3xl font-extrabold leading-[1.05] tracking-tight wrap-anywhere sm:text-5xl lg:text-6xl">
             Vibe code from your{" "}
             <span className="bg-gradient-to-r from-(--accent) to-(--accent-2) bg-clip-text text-transparent">
               phone.
@@ -238,7 +240,7 @@ export default function Home() {
         {BILLBOARDS.map((b, i) => (
           <div
             key={b.id}
-            className={`glass-panel float-up fade-delay-${(i % 3) + 1} grid gap-6 rounded-2xl p-5 sm:rounded-[2rem] sm:p-10 lg:grid-cols-2 lg:gap-10`}
+            className={`glass-panel float-up fade-delay-${(i % 3) + 1} grid grid-cols-1 gap-6 rounded-2xl p-5 wrap-anywhere sm:rounded-[2rem] sm:p-10 lg:grid-cols-2 lg:gap-10`}
           >
             <div className={b.direction === "right" ? "lg:order-2" : ""}>
               <p className="text-xs font-bold uppercase tracking-[0.24em] text-(--accent)">{b.eyebrow}</p>
@@ -366,7 +368,7 @@ export default function Home() {
       {/* ─── CTA ──────────────────────────────────────────────────────── */}
       <section id="cta" className="mt-10 sm:mt-16">
         <div className="glass-panel float-up rounded-2xl p-6 text-center sm:rounded-[2rem] sm:p-12">
-          <h2 className="headline-glow text-2xl font-bold sm:text-4xl">
+          <h2 className="headline-glow text-2xl font-bold wrap-anywhere sm:text-4xl">
             Your agent is waiting. Your phone is already in your hand.
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base text-(--muted) sm:text-lg">
@@ -395,6 +397,6 @@ export default function Home() {
       </section>
 
       <BuyCoffee />
-    </PageShell>
+    </PageShell></Localized>
   );
 }

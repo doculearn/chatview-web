@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -84,7 +86,7 @@ export default function QRLoginExchangePage() {
   }
 
   return (
-    <PageShell activePath="/qr-login">
+    <Localized><PageShell activePath="/qr-login">
       <div className="glass-panel float-up rounded-2xl p-4 sm:rounded-3xl sm:p-6 lg:p-10 max-w-md mx-auto">
         <h1 className="headline-glow text-xl font-bold mb-4">QR Login</h1>
         <p className="text-sm text-(--muted)">{status}</p>
@@ -97,6 +99,6 @@ export default function QRLoginExchangePage() {
           </button>
         )}
       </div>
-    </PageShell>
+    </PageShell></Localized>
   );
 }

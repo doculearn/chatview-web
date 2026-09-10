@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -58,7 +60,7 @@ export default function MyTicketsPage() {
   }, [authReady]);
 
   return (
-    <PageShell activePath="/support">
+    <Localized><PageShell activePath="/support">
       <section className="glass-panel rounded-2xl p-4 sm:rounded-[2rem] sm:p-6 lg:p-10">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
@@ -143,6 +145,6 @@ export default function MyTicketsPage() {
           )}
         </div>
       </section>
-    </PageShell>
+    </PageShell></Localized>
   );
 }

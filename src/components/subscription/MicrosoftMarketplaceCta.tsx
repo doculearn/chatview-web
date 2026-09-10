@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 import { TrackedLink } from "@/components/tracked-link";
 
@@ -12,7 +14,7 @@ type Props = {
 
 export function MicrosoftMarketplaceCta({ location, className = "" }: Props) {
   return (
-    <div
+    <Localized><div
       className={`feature-card border border-white/15 p-5 sm:p-6 ${className}`}
     >
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -47,6 +49,6 @@ export function MicrosoftMarketplaceCta({ location, className = "" }: Props) {
           Subscribe via Microsoft
         </TrackedLink>
       </div>
-    </div>
+    </div></Localized>
   );
 }

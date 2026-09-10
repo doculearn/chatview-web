@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 import { useEffect, useState } from "react";
 import { authFetch } from "@/lib/auth-fetch";
@@ -37,26 +39,26 @@ export function UsageStats() {
 
   if (loading) {
     return (
-      <div className="glass-panel float-up rounded-2xl p-4 sm:rounded-3xl sm:p-6">
+      <Localized><div className="glass-panel float-up rounded-2xl p-4 sm:rounded-3xl sm:p-6">
         <p className="text-xs uppercase tracking-[0.28em] text-(--muted)">Usage</p>
         <p className="mt-4 text-sm text-(--muted)">Loading stats...</p>
-      </div>
+      </div></Localized>
     );
   }
 
   if (!stats) {
     return (
-      <div className="glass-panel float-up rounded-2xl p-4 sm:rounded-3xl sm:p-6">
+      <Localized><div className="glass-panel float-up rounded-2xl p-4 sm:rounded-3xl sm:p-6">
         <p className="text-xs uppercase tracking-[0.28em] text-(--muted)">Usage</p>
         <p className="mt-4 text-sm text-(--muted)">Could not load usage data.</p>
-      </div>
+      </div></Localized>
     );
   }
 
   const maxDaily = Math.max(...stats.daily.map((d) => d.total), 1);
 
   return (
-    <div className="glass-panel float-up rounded-2xl p-4 sm:rounded-3xl sm:p-6">
+    <Localized><div className="glass-panel float-up rounded-2xl p-4 sm:rounded-3xl sm:p-6">
       <p className="text-xs uppercase tracking-[0.28em] text-(--muted)">Prompt Usage</p>
 
       {/* Stat cards */}
@@ -109,7 +111,7 @@ export function UsageStats() {
           Failed
         </span>
       </div>
-    </div>
+    </div></Localized>
   );
 }
 
@@ -117,7 +119,7 @@ function StatCard({ label, stat }: { label: string; stat: { total: number; succe
   const successRate = stat.total > 0 ? Math.round((stat.succeeded / stat.total) * 100) : 0;
 
   return (
-    <div className="feature-card rounded-xl p-3">
+    <Localized><div className="feature-card rounded-xl p-3">
       <p className="text-[11px] text-(--muted) font-medium">{label}</p>
       <p className="text-xl font-bold mt-1">{stat.total}</p>
       <div className="flex items-center gap-1.5 mt-1">
@@ -129,6 +131,6 @@ function StatCard({ label, stat }: { label: string; stat: { total: number; succe
           <div className="h-full rounded-full bg-green-400" style={{ width: `${successRate}%` }} />
         </div>
       )}
-    </div>
+    </div></Localized>
   );
 }

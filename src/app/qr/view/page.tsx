@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
@@ -32,7 +34,7 @@ function QRViewInner() {
   }, [exp]);
 
   return (
-    <main
+    <Localized><main
       style={{
         minHeight: "100vh",
         display: "flex",
@@ -96,14 +98,14 @@ function QRViewInner() {
           You can close this tab once your mobile app confirms the login.
         </p>
       </div>
-    </main>
+    </main></Localized>
   );
 }
 
 export default function QRViewPage() {
   return (
-    <Suspense fallback={null}>
+    <Localized><Suspense fallback={null}>
       <QRViewInner />
-    </Suspense>
+    </Suspense></Localized>
   );
 }

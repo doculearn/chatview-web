@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 import { useRouter } from "next/navigation";
 import { PageShell } from "@/components/page-shell";
@@ -7,7 +9,7 @@ export default function SubscriptionCancelPage() {
   const router = useRouter();
 
   return (
-    <PageShell activePath="/subscription">
+    <Localized><PageShell activePath="/subscription">
       <section className="glass-panel float-up rounded-2xl p-6 sm:rounded-3xl sm:p-10 lg:p-14">
         <div className="mx-auto max-w-lg text-center">
           {/* Cancelled Icon */}
@@ -61,6 +63,6 @@ export default function SubscriptionCancelPage() {
           </div>
         </div>
       </section>
-    </PageShell>
+    </PageShell></Localized>
   );
 }

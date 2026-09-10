@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 import { useEffect, useState } from "react";
 import { PageShell } from "@/components/page-shell";
@@ -52,7 +54,7 @@ export default function QRLoginPage() {
     mobileLoginUri || (qrToken && origin ? `${origin}/qr-login?token=${encodeURIComponent(qrToken)}` : "");
 
   return (
-    <PageShell activePath="/qr">
+    <Localized><PageShell activePath="/qr">
       <div className="glass-panel float-up rounded-2xl p-4 sm:rounded-3xl sm:p-6 lg:p-10 max-w-md mx-auto">
         <h1 className="headline-glow text-xl font-bold mb-4">QR Code Login</h1>
         <p className="text-sm text-(--muted) mb-6">
@@ -79,6 +81,6 @@ export default function QRLoginPage() {
           This code expires in 5 minutes. Refresh the page to generate a new one.
         </p>
       </div>
-    </PageShell>
+    </PageShell></Localized>
   );
 }

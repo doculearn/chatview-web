@@ -1,3 +1,5 @@
+
+import { Localized } from "@/components/localized";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
@@ -31,7 +33,7 @@ export const metadata: Metadata = {
 
 export default function CoffeePage() {
   return (
-    <PageShell activePath="/coffee">
+    <Localized><PageShell activePath="/coffee">
       {/* ─── HERO ─────────────────────────────────────────────────── */}
       <section className="glass-panel float-up rounded-2xl p-6 text-center sm:rounded-[2rem] sm:p-12">
         <div className="mx-auto flex max-w-3xl flex-col items-center">
@@ -135,6 +137,6 @@ export default function CoffeePage() {
           </Link>
         </div>
       </section>
-    </PageShell>
+    </PageShell></Localized>
   );
 }

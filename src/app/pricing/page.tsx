@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 import { useEffect, useState } from "react";
 import { PageShell } from "@/components/page-shell";
@@ -17,7 +19,7 @@ export default function PricingPage() {
   }, []);
 
   return (
-    <PageShell activePath="/pricing">
+    <Localized><PageShell activePath="/pricing">
       <div className="space-y-6">
         <section className="glass-panel float-up rounded-2xl p-5 sm:rounded-[2rem] sm:p-7">
           <div className="flex flex-wrap items-center gap-3">
@@ -35,6 +37,6 @@ export default function PricingPage() {
             swap to SubscriptionManager once mounted and the user is signed in. */}
         {mounted && isAuthenticated ? <SubscriptionManager /> : <PublicPricing />}
       </div>
-    </PageShell>
+    </PageShell></Localized>
   );
 }

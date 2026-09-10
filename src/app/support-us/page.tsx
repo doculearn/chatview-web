@@ -1,3 +1,5 @@
+
+import { Localized } from "@/components/localized";
 import { PageShell } from "@/components/page-shell";
 import { BuyCoffee } from "@/components/buy-coffee";
 import type { Metadata } from "next";
@@ -27,8 +29,8 @@ export const metadata: Metadata = {
 
 export default function SupportUsPage() {
   return (
-    <PageShell activePath="/support-us">
+    <Localized><PageShell activePath="/support-us">
       <BuyCoffee />
-    </PageShell>
+    </PageShell></Localized>
   );
 }

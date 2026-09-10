@@ -1,3 +1,5 @@
+
+import { Localized } from "@/components/localized";
 import Link from "next/link";
 import { PageShell } from "@/components/page-shell";
 import type { Metadata } from "next";
@@ -27,7 +29,7 @@ export const metadata: Metadata = {
 
 export default function SupportPage() {
   return (
-    <PageShell activePath="/support">
+    <Localized><PageShell activePath="/support">
       <section className="glass-panel rounded-2xl p-4 sm:rounded-[2rem] sm:p-6 lg:p-10">
         <p className="text-xs uppercase tracking-[0.24em] text-(--muted)">
           Help Center
@@ -220,6 +222,6 @@ export default function SupportPage() {
           </section>
         </div>
       </section>
-    </PageShell>
+    </PageShell></Localized>
   );
 }

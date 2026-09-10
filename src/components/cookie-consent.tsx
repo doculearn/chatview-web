@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 /**
  * Cookie consent banner + consent-gated Google Analytics.
@@ -66,7 +68,7 @@ function useConsent(): ConsentValue | null {
 export function ConsentGatedAnalytics() {
   const consent = useConsent();
   if (consent !== "accepted") return null;
-  return <GoogleAnalytics gaId={GA_ID} />;
+  return <Localized><GoogleAnalytics gaId={GA_ID} /></Localized>;
 }
 
 /**
@@ -81,7 +83,7 @@ export function CookieConsent() {
   };
 
   return (
-    <div
+    <Localized><div
       role="dialog"
       aria-live="polite"
       aria-label="Cookie consent"
@@ -117,7 +119,7 @@ export function CookieConsent() {
           </button>
         </div>
       </div>
-    </div>
+    </div></Localized>
   );
 }
 
@@ -127,8 +129,8 @@ export function CookieConsent() {
  */
 export function CookieSettingsLink({ className }: { className?: string }) {
   return (
-    <button type="button" onClick={clearConsent} className={className}>
+    <Localized><button type="button" onClick={clearConsent} className={className}>
       Cookie settings
-    </button>
+    </button></Localized>
   );
 }

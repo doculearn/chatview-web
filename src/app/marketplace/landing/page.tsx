@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -78,7 +80,7 @@ function LandingInner() {
 
   if (!token) {
     return (
-      <section className="glass-panel rounded-2xl p-4 sm:rounded-[2rem] sm:p-6 lg:p-10">
+      <Localized><section className="glass-panel rounded-2xl p-4 sm:rounded-[2rem] sm:p-6 lg:p-10">
         <p className="text-xs uppercase tracking-[0.24em] text-(--muted)">Microsoft Marketplace</p>
         <h1 className="mt-3 text-2xl font-bold sm:text-4xl">Missing purchase token</h1>
         <p className="mt-3 max-w-2xl text-sm text-(--muted)">
@@ -93,14 +95,14 @@ function LandingInner() {
             Need help?
           </Link>
         </div>
-      </section>
+      </section></Localized>
     );
   }
 
   if (!isAuthed) {
     const next = `/marketplace/landing?token=${encodeURIComponent(token)}`;
     return (
-      <section className="glass-panel rounded-2xl p-4 sm:rounded-[2rem] sm:p-6 lg:p-10">
+      <Localized><section className="glass-panel rounded-2xl p-4 sm:rounded-[2rem] sm:p-6 lg:p-10">
         <p className="text-xs uppercase tracking-[0.24em] text-(--muted)">Microsoft Marketplace</p>
         <h1 className="mt-3 text-2xl font-bold sm:text-4xl">Sign in to activate your subscription</h1>
         <p className="mt-3 max-w-2xl text-sm text-(--muted)">
@@ -122,12 +124,12 @@ function LandingInner() {
             Create account
           </Link>
         </div>
-      </section>
+      </section></Localized>
     );
   }
 
   return (
-    <section className="glass-panel rounded-2xl p-4 sm:rounded-[2rem] sm:p-6 lg:p-10">
+    <Localized><section className="glass-panel rounded-2xl p-4 sm:rounded-[2rem] sm:p-6 lg:p-10">
       <p className="text-xs uppercase tracking-[0.24em] text-(--muted)">Microsoft Marketplace</p>
       <h1 className="mt-3 text-2xl font-bold sm:text-4xl">Activate your ChatView subscription</h1>
       <p className="mt-3 max-w-2xl text-sm text-(--muted)">
@@ -194,25 +196,25 @@ function LandingInner() {
           </div>
         </div>
       )}
-    </section>
+    </section></Localized>
   );
 }
 
 function Row({ label, value, mono = false }: { label: string; value: string; mono?: boolean }) {
   return (
-    <div className="flex flex-wrap items-baseline justify-between gap-2">
+    <Localized><div className="flex flex-wrap items-baseline justify-between gap-2">
       <dt className="text-(--muted)">{label}</dt>
       <dd className={mono ? "font-mono text-xs" : "font-semibold"}>{value}</dd>
-    </div>
+    </div></Localized>
   );
 }
 
 export default function MarketplaceLandingPage() {
   return (
-    <PageShell activePath="/marketplace/landing">
+    <Localized><PageShell activePath="/marketplace/landing">
       <Suspense fallback={null}>
         <LandingInner />
       </Suspense>
-    </PageShell>
+    </PageShell></Localized>
   );
 }

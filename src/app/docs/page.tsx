@@ -1,3 +1,5 @@
+
+import { Localized } from "@/components/localized";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
@@ -11,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function DocsPage() {
   return (
-    <PageShell activePath="/docs">
+    <Localized><PageShell activePath="/docs">
       <section className="glass-panel float-up rounded-2xl p-4 sm:rounded-3xl sm:p-6 lg:p-10">
         <p className="text-xs uppercase tracking-[0.28em] text-(--muted)">Docs</p>
         <h1 className="headline-glow mt-3 text-xl font-bold sm:text-3xl lg:text-4xl">Get Started in 5 Minutes</h1>
@@ -68,6 +70,6 @@ export default function DocsPage() {
           </article>
         </div>
       </section>
-    </PageShell>
+    </PageShell></Localized>
   );
 }

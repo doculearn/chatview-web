@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 import { Suspense, useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -68,7 +70,7 @@ function OAuthSuccessInner() {
   }, [router, searchParams, setCredentials]);
 
   return (
-    <PageShell activePath="/login">
+    <Localized><PageShell activePath="/login">
       <section className="glass-panel float-up mx-auto w-full max-w-xl rounded-2xl p-6 sm:rounded-3xl sm:p-10 text-center">
         {error ? (
           <>
@@ -89,14 +91,14 @@ function OAuthSuccessInner() {
           </>
         )}
       </section>
-    </PageShell>
+    </PageShell></Localized>
   );
 }
 
 export default function OAuthSuccessPage() {
   return (
-    <Suspense fallback={null}>
+    <Localized><Suspense fallback={null}>
       <OAuthSuccessInner />
-    </Suspense>
+    </Suspense></Localized>
   );
 }

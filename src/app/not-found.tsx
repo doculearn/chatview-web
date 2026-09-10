@@ -1,3 +1,5 @@
+
+import { Localized } from "@/components/localized";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageShell } from "@/components/page-shell";
@@ -54,7 +56,7 @@ const QUICK_LINKS: Array<{ href: string; label: string; description: string }> =
 
 export default function NotFound() {
   return (
-    <PageShell activePath="/404">
+    <Localized><PageShell activePath="/404">
       <section className="mx-auto flex w-full max-w-3xl flex-col items-start gap-8 px-4 py-16 sm:px-6 sm:py-24">
         <div className="flex flex-col gap-3">
           <p className="text-xs uppercase tracking-[0.24em] text-(--muted)">
@@ -99,6 +101,6 @@ export default function NotFound() {
           ))}
         </div>
       </section>
-    </PageShell>
+    </PageShell></Localized>
   );
 }

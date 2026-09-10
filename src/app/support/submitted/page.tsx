@@ -1,3 +1,5 @@
+
+import { Localized } from "@/components/localized";
 import Link from "next/link";
 import { PageShell } from "@/components/page-shell";
 
@@ -6,14 +8,14 @@ export default function TicketSubmittedPage({
 }: {
   searchParams: Promise<{ number?: string }>;
 }) {
-  return <Inner searchParams={searchParams} />;
+  return <Localized><Inner searchParams={searchParams} /></Localized>;
 }
 
 async function Inner({ searchParams }: { searchParams: Promise<{ number?: string }> }) {
   const sp = await searchParams;
   const number = sp.number;
   return (
-    <PageShell activePath="/support">
+    <Localized><PageShell activePath="/support">
       <section className="glass-panel rounded-2xl p-6 sm:rounded-[2rem] sm:p-10">
         <p className="text-xs uppercase tracking-[0.24em] text-(--success)">Submitted</p>
         <h1 className="mt-3 text-2xl font-bold sm:text-4xl">Thanks — we&apos;ve got it.</h1>
@@ -36,6 +38,6 @@ async function Inner({ searchParams }: { searchParams: Promise<{ number?: string
           </Link>
         </div>
       </section>
-    </PageShell>
+    </PageShell></Localized>
   );
 }

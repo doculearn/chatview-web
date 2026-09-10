@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 import { useState } from "react";
 
@@ -28,7 +30,7 @@ export function CoffeeShareButtons() {
   }
 
   return (
-    <div className="flex flex-wrap items-center justify-center gap-3">
+    <Localized><div className="flex flex-wrap items-center justify-center gap-3">
       <a
         href={twitterHref}
         target="_blank"
@@ -52,6 +54,6 @@ export function CoffeeShareButtons() {
       >
         {copied ? "✓ Link copied" : "🔗 Copy link"}
       </button>
-    </div>
+    </div></Localized>
   );
 }

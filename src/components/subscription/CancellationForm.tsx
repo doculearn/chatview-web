@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 import { useState } from "react";
 
@@ -65,7 +67,7 @@ export function CancellationForm({
   }
 
   return (
-    <section className="glass-panel float-up rounded-2xl p-4 sm:rounded-3xl sm:p-6 lg:p-10 border-red-500/20">
+    <Localized><section className="glass-panel float-up rounded-2xl p-4 sm:rounded-3xl sm:p-6 lg:p-10 border-red-500/20">
       <p className="text-xs uppercase tracking-[0.28em] text-(--muted)">Before You Go</p>
       <h2 className="headline-glow mt-3 text-xl font-bold text-red-400 sm:text-3xl">
         Cancel Subscription
@@ -176,6 +178,6 @@ export function CancellationForm({
           </button>
         </div>
       </form>
-    </section>
+    </section></Localized>
   );
 }

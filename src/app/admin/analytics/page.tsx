@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 /**
  * Admin-only dashboard for the in-house ChatView Insights analytics.
@@ -66,12 +68,12 @@ type Funnel = {
 
 function StatCard({ label, value }: { label: string; value: number | string }) {
   return (
-    <div className="glass-panel rounded-2xl p-4 sm:p-5">
+    <Localized><div className="glass-panel rounded-2xl p-4 sm:p-5">
       <p className="text-xs uppercase tracking-[0.24em] text-(--muted)">{label}</p>
       <p className="mt-2 text-2xl font-bold tabular-nums sm:text-3xl">
         {typeof value === "number" ? value.toLocaleString() : value}
       </p>
-    </div>
+    </div></Localized>
   );
 }
 
@@ -86,7 +88,7 @@ function BarRow({
 }) {
   const pct = max > 0 ? Math.max(2, Math.round((value / max) * 100)) : 0;
   return (
-    <div className="flex items-center gap-3 py-1.5">
+    <Localized><div className="flex items-center gap-3 py-1.5">
       <div className="w-1/3 truncate text-sm" title={label}>
         {label}
       </div>
@@ -101,7 +103,7 @@ function BarRow({
       <div className="w-16 text-right text-sm tabular-nums">
         {value.toLocaleString()}
       </div>
-    </div>
+    </div></Localized>
   );
 }
 
@@ -113,10 +115,10 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className="glass-panel rounded-2xl p-4 sm:p-6">
+    <Localized><section className="glass-panel rounded-2xl p-4 sm:p-6">
       <h2 className="text-base font-semibold sm:text-lg">{title}</h2>
       <div className="mt-3">{children}</div>
-    </section>
+    </section></Localized>
   );
 }
 
@@ -172,7 +174,7 @@ export default function AdminAnalyticsPage() {
   }, [days, load]);
 
   return (
-    <PageShell activePath="/admin/analytics">
+    <Localized><PageShell activePath="/admin/analytics">
       <section className="float-up space-y-4 sm:space-y-6">
         <header className="flex flex-wrap items-end justify-between gap-3">
           <div>
@@ -297,7 +299,7 @@ export default function AdminAnalyticsPage() {
           </>
         )}
       </section>
-    </PageShell>
+    </PageShell></Localized>
   );
 }
 
@@ -311,22 +313,22 @@ function RankedList({
   emptyText?: string;
 }) {
   if (rows.length === 0) {
-    return <p className="text-sm text-(--muted)">{emptyText}</p>;
+    return <Localized><p className="text-sm text-(--muted)">{emptyText}</p></Localized>;
   }
   const max = Math.max(...rows.map((r) => r.value), 1);
   return (
-    <div className="space-y-1">
+    <Localized><div className="space-y-1">
       {rows.map((r) => (
         <BarRow key={r.label} label={r.label} value={r.value} max={max} />
       ))}
-    </div>
+    </div></Localized>
   );
 }
 
 function FunnelSection({ funnel }: { funnel: Funnel }) {
   const top = funnel.steps[0]?.sessions ?? 0;
   return (
-    <Section
+    <Localized><Section
       title={`Conversion funnel · ${funnel.overall_conversion_pct}% pricing → paid`}
     >
       {top === 0 ? (
@@ -375,17 +377,17 @@ function FunnelSection({ funnel }: { funnel: Funnel }) {
           })}
         </div>
       )}
-    </Section>
+    </Section></Localized>
   );
 }
 
 function ByDayChart({ series }: { series: DaySeries[] }) {
   if (!series.length) {
-    return <p className="text-sm text-(--muted)">No data yet.</p>;
+    return <Localized><p className="text-sm text-(--muted)">No data yet.</p></Localized>;
   }
   const max = Math.max(...series.map((d) => d.views), 1);
   return (
-    <div>
+    <Localized><div>
       <div className="flex h-32 items-end gap-1">
         {series.map((d) => {
           const h = Math.max(2, Math.round((d.views / max) * 100));
@@ -407,6 +409,6 @@ function ByDayChart({ series }: { series: DaySeries[] }) {
         <span>{series[0]?.day}</span>
         <span>{series[series.length - 1]?.day}</span>
       </div>
-    </div>
+    </div></Localized>
   );
 }

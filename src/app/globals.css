@@ -10,6 +10,7 @@
   --accent: #2b8fd6;
   --accent-2: #4aa8e0;
   --success: #24d3a0;
+  --font-indian: var(--font-devanagari), var(--font-kannada), var(--font-bengali), var(--font-tamil), var(--font-telugu), var(--font-gujarati), var(--font-gurmukhi), var(--font-malayalam), var(--font-odia);
 }
 
 :root[data-theme="light"] {
@@ -29,8 +30,8 @@
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
   --color-accent-2: var(--accent-2);
-  --font-sans: var(--font-space-grotesk);
-  --font-mono: var(--font-jetbrains-mono);
+  --font-sans: var(--font-space-grotesk), var(--font-indian), sans-serif;
+  --font-mono: var(--font-jetbrains-mono), var(--font-indian), monospace;
 }
 
 body {
@@ -39,7 +40,11 @@ body {
     radial-gradient(60rem 60rem at -10% 110%, rgba(86, 204, 255, 0.16), transparent 52%),
     var(--background);
   color: var(--foreground);
-  font-family: var(--font-space-grotesk), sans-serif;
+  font-family: var(--font-space-grotesk), var(--font-indian), sans-serif;
+}
+
+html:is(:lang(hi), :lang(kn), :lang(bn), :lang(ta), :lang(te), :lang(gu), :lang(pa), :lang(mr), :lang(ml), :lang(or)) body * {
+  letter-spacing: 0;
 }
 
 :root[data-theme="light"] body {

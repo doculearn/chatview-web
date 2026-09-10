@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -59,7 +61,7 @@ export default function AccountPage() {
   }, [router]);
 
   return (
-    <PageShell activePath="/account">
+    <Localized><PageShell activePath="/account">
       <div className="flex flex-col gap-4 sm:gap-6">
         {/* Account info */}
         <section className="glass-panel float-up rounded-2xl p-4 sm:rounded-3xl sm:p-6 lg:p-10">
@@ -112,6 +114,6 @@ export default function AccountPage() {
           </Link>
         </section>
       </div>
-    </PageShell>
+    </PageShell></Localized>
   );
 }

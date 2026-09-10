@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -45,7 +47,7 @@ export default function DeleteAccountPage() {
   }
 
   return (
-    <PageShell activePath="/delete-account">
+    <Localized><PageShell activePath="/delete-account">
       <section className="glass-panel rounded-2xl p-4 sm:rounded-[2rem] sm:p-6 lg:p-10">
         <p className="text-xs uppercase tracking-[0.24em] text-(--muted)">Account</p>
         <h1 className="mt-3 text-2xl font-bold sm:text-4xl lg:text-5xl">Delete Your Account</h1>
@@ -143,6 +145,6 @@ export default function DeleteAccountPage() {
           </p>
         </div>
       </section>
-    </PageShell>
+    </PageShell></Localized>
   );
 }

@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
@@ -77,7 +79,7 @@ function BetaAcceptInner() {
   }
 
   return (
-    <PageShell activePath="/beta/accept">
+    <Localized><PageShell activePath="/beta/accept">
       <section className="glass-panel float-up mx-auto w-full max-w-3xl rounded-2xl p-4 sm:rounded-3xl sm:p-6 lg:p-10">
         <p className="text-xs uppercase tracking-[0.28em] text-(--muted)">Closed Beta Agreement</p>
         <h1 className="headline-glow mt-3 text-xl font-bold sm:text-3xl">
@@ -153,14 +155,14 @@ function BetaAcceptInner() {
           </>
         )}
       </section>
-    </PageShell>
+    </PageShell></Localized>
   );
 }
 
 export default function BetaAcceptPage() {
   return (
-    <Suspense fallback={null}>
+    <Localized><Suspense fallback={null}>
       <BetaAcceptInner />
-    </Suspense>
+    </Suspense></Localized>
   );
 }

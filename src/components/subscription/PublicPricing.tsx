@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 import Link from "next/link";
 import { TrackedLink } from "@/components/tracked-link";
@@ -36,7 +38,7 @@ const PUBLIC_PLANS = [
 
 export function PublicPricing() {
   return (
-    <div className="space-y-6">
+    <Localized><div className="space-y-6">
       <div className="rounded-2xl border border-(--accent)/30 bg-(--accent)/5 px-4 py-3 text-center text-sm text-(--foreground)">
         <span className="font-semibold text-(--accent)">Free 7-day trial on every paid plan</span>
         <span className="text-(--muted)"> — no card required. Cancel anytime.</span>
@@ -92,6 +94,6 @@ export function PublicPricing() {
         </Link>
         .
       </p>
-    </div>
+    </div></Localized>
   );
 }

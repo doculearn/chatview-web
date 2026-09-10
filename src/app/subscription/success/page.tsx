@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -49,7 +51,7 @@ export default function SubscriptionSuccessPage() {
     })();
 
   return (
-    <PageShell activePath="/subscription">
+    <Localized><PageShell activePath="/subscription">
       <section
         className={`glass-panel float-up rounded-2xl p-6 sm:rounded-3xl sm:p-10 lg:p-14 transition-all duration-700 ${showContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
       >
@@ -146,6 +148,6 @@ export default function SubscriptionSuccessPage() {
           </p>
         </div>
       </section>
-    </PageShell>
+    </PageShell></Localized>
   );
 }

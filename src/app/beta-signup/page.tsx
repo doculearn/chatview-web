@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 import { FormEvent, useState } from "react";
 import { PageShell } from "@/components/page-shell";
@@ -51,7 +53,7 @@ export default function BetaSignupPage() {
   }
 
   return (
-    <PageShell activePath="/beta-signup">
+    <Localized><PageShell activePath="/beta-signup">
       <section className="glass-panel float-up mx-auto w-full max-w-xl rounded-2xl p-4 sm:rounded-3xl sm:p-6 lg:p-10">
         <p className="text-xs uppercase tracking-[0.28em] text-(--muted)">Closed Beta</p>
         <h1 className="headline-glow mt-3 text-xl font-bold sm:text-3xl">
@@ -159,6 +161,6 @@ export default function BetaSignupPage() {
           </form>
         )}
       </section>
-    </PageShell>
+    </PageShell></Localized>
   );
 }

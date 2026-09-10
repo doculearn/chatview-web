@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Space_Grotesk, JetBrains_Mono, Noto_Sans_Devanagari, Noto_Sans_Kannada, Noto_Sans_Bengali, Noto_Sans_Tamil, Noto_Sans_Telugu, Noto_Sans_Gujarati, Noto_Sans_Gurmukhi, Noto_Sans_Malayalam, Noto_Sans_Oriya } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 import { UsermavenLite } from "@/components/usermaven-lite";
@@ -18,6 +18,16 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   subsets: ["latin"],
 });
+
+const devanagari = Noto_Sans_Devanagari({ variable: "--font-devanagari", preload: false });
+const kannada = Noto_Sans_Kannada({ variable: "--font-kannada", preload: false });
+const bengali = Noto_Sans_Bengali({ variable: "--font-bengali", preload: false });
+const tamil = Noto_Sans_Tamil({ variable: "--font-tamil", preload: false });
+const telugu = Noto_Sans_Telugu({ variable: "--font-telugu", preload: false });
+const gujarati = Noto_Sans_Gujarati({ variable: "--font-gujarati", preload: false });
+const gurmukhi = Noto_Sans_Gurmukhi({ variable: "--font-gurmukhi", preload: false, weight: ["400", "700"] });
+const malayalam = Noto_Sans_Malayalam({ variable: "--font-malayalam", preload: false });
+const odia = Noto_Sans_Oriya({ variable: "--font-odia", preload: false });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://chat-view.xyz"),
@@ -92,7 +102,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} ${devanagari.variable} ${kannada.variable} ${bengali.variable} ${tamil.variable} ${telugu.variable} ${gujarati.variable} ${gurmukhi.variable} ${malayalam.variable} ${odia.variable} h-full antialiased`}
     >
       <meta name="msvalidate.01" content="B91F1C8AC71E2CC150001185B1C342F9" />
       <body className="min-h-full flex flex-col">

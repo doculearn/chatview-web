@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 import { useEffect, useState } from "react";
 import { authFetch } from "@/lib/auth-fetch";
@@ -229,14 +231,14 @@ export function SubscriptionManager() {
 
   if (loading) {
     return (
-      <div className="glass-panel float-up rounded-3xl p-6 sm:p-10">
+      <Localized><div className="glass-panel float-up rounded-3xl p-6 sm:p-10">
         <p className="text-(--muted)">Loading subscription information...</p>
-      </div>
+      </div></Localized>
     );
   }
 
   return (
-    <div className="space-y-6">
+    <Localized><div className="space-y-6">
       {error && (
         <div className="glass-panel rounded-2xl border border-red-500/20 bg-red-500/5 p-4">
           <p className="text-sm text-red-400">{error}</p>
@@ -306,6 +308,6 @@ export function SubscriptionManager() {
           <MicrosoftMarketplaceCta location="account_subscription_manager" />
         </>
       )}
-    </div>
+    </div></Localized>
   );
 }

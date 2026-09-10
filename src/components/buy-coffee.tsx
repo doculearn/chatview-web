@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 import { useState } from "react";
 
@@ -40,7 +42,7 @@ export function BuyCoffee() {
   }
 
   return (
-    <section className="glass-panel float-up rounded-2xl p-5 sm:rounded-3xl sm:p-7 lg:p-9">
+    <Localized><section className="glass-panel float-up rounded-2xl p-5 sm:rounded-3xl sm:p-7 lg:p-9">
       <div className="flex flex-wrap items-center gap-3">
         <span className="rounded-full border border-amber-500/40 bg-amber-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-amber-300">
           Indie Built
@@ -93,6 +95,6 @@ export function BuyCoffee() {
         Tips are one-time and processed by Dodo Payments. They&apos;re not tax
         deductible and don&apos;t change your subscription.
       </p>
-    </section>
+    </section></Localized>
   );
 }

@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -89,7 +91,7 @@ export default function TicketDetailPage() {
   }
 
   return (
-    <PageShell activePath="/support">
+    <Localized><PageShell activePath="/support">
       <section className="glass-panel rounded-2xl p-4 sm:rounded-[2rem] sm:p-6 lg:p-10">
         <Link href="/support/tickets" className="text-xs uppercase tracking-[0.24em] text-(--muted) hover:text-(--foreground)">
           ← All tickets
@@ -170,6 +172,6 @@ export default function TicketDetailPage() {
           </>
         )}
       </section>
-    </PageShell>
+    </PageShell></Localized>
   );
 }

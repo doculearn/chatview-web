@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 import { useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -140,7 +142,7 @@ export function SubscriptionReturnContent() {
   const statusDisplay = getStatusDisplay(workflowStep);
 
   return (
-    <section className="glass-panel float-up rounded-2xl p-6 sm:rounded-3xl sm:p-10 lg:p-14">
+    <Localized><section className="glass-panel float-up rounded-2xl p-6 sm:rounded-3xl sm:p-10 lg:p-14">
       <div className="mx-auto max-w-lg text-center">
         {/* Status Icon */}
         <div className="mb-6 flex justify-center">
@@ -223,7 +225,7 @@ export function SubscriptionReturnContent() {
           )}
         </div>
       </div>
-    </section>
+    </section></Localized>
   );
 }
 

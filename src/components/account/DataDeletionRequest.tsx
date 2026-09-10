@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 import { useState } from "react";
 import { authFetch } from "@/lib/auth-fetch";
@@ -73,7 +75,7 @@ export function DataDeletionRequest() {
   }
 
   return (
-    <section className="glass-panel rounded-2xl p-4 sm:rounded-3xl sm:p-6 lg:p-10">
+    <Localized><section className="glass-panel rounded-2xl p-4 sm:rounded-3xl sm:p-6 lg:p-10">
       <p className="text-xs uppercase tracking-[0.28em] text-(--muted)">Privacy</p>
       <h2 className="mt-2 text-lg font-bold sm:text-xl">Request Data Deletion</h2>
       <p className="mt-2 text-xs text-(--muted) sm:text-sm">
@@ -113,6 +115,6 @@ export function DataDeletionRequest() {
       >
         {submitting ? "Submitting…" : "Submit Deletion Request"}
       </button>
-    </section>
+    </section></Localized>
   );
 }

@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 import { ReactNode } from "react";
 import { usePathname, useRouter } from "next/navigation";
@@ -23,7 +25,7 @@ export function RouteShield({ children }: RouteShieldProps) {
   const isLoading = !hasHydrated;
 
   return (
-    <NextShield
+    <Localized><NextShield
       isAuth={isAuth}
       isLoading={isLoading}
       router={{ pathname, replace } as unknown as { pathname: string; replace: (url: string) => void }}
@@ -39,6 +41,6 @@ export function RouteShield({ children }: RouteShieldProps) {
       }
     >
       {children}
-    </NextShield>
+    </NextShield></Localized>
   );
 }

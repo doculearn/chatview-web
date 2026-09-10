@@ -1,3 +1,5 @@
+
+import { Localized } from "@/components/localized";
 import Link from "next/link";
 import { PageShell } from "@/components/page-shell";
 import type { Metadata } from "next";
@@ -27,7 +29,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <PageShell activePath="/privacy-policy">
+    <Localized><PageShell activePath="/privacy-policy">
       <section className="glass-panel rounded-2xl p-4 sm:rounded-[2rem] sm:p-6 lg:p-10">
         <p className="text-xs uppercase tracking-[0.24em] text-(--muted)">
           Legal
@@ -318,6 +320,6 @@ export default function PrivacyPolicyPage() {
           </section>
         </div>
       </section>
-    </PageShell>
+    </PageShell></Localized>
   );
 }

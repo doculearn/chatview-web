@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
@@ -11,7 +13,7 @@ function OAuthErrorInner() {
   const description = searchParams.get("error_description") ?? "OAuth sign-in failed.";
 
   return (
-    <PageShell activePath="/login">
+    <Localized><PageShell activePath="/login">
       <section className="glass-panel float-up mx-auto w-full max-w-xl rounded-2xl p-6 sm:rounded-3xl sm:p-10 text-center">
         <h1 className="headline-glow text-xl font-bold sm:text-2xl">Sign-in failed</h1>
         <p className="mt-3 text-xs uppercase tracking-[0.24em] text-(--muted)">
@@ -31,14 +33,14 @@ function OAuthErrorInner() {
           </Link>
         </div>
       </section>
-    </PageShell>
+    </PageShell></Localized>
   );
 }
 
 export default function OAuthErrorPage() {
   return (
-    <Suspense fallback={null}>
+    <Localized><Suspense fallback={null}>
       <OAuthErrorInner />
-    </Suspense>
+    </Suspense></Localized>
   );
 }

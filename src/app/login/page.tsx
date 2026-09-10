@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -65,7 +67,7 @@ export default function LoginPage() {
   }
 
   return (
-    <PageShell activePath="/login">
+    <Localized><PageShell activePath="/login">
       <section className="glass-panel float-up mx-auto w-full max-w-xl rounded-2xl p-4 sm:rounded-3xl sm:p-6 lg:p-10">
         <p className="text-xs uppercase tracking-[0.28em] text-(--muted)">Login</p>
         <h1 className="headline-glow mt-3 text-xl font-bold sm:text-3xl">Sign in to ChatView</h1>
@@ -120,6 +122,6 @@ export default function LoginPage() {
 
         {error ? <p className="mt-3 text-sm text-red-400">{error}</p> : null}
       </section>
-    </PageShell>
+    </PageShell></Localized>
   );
 }

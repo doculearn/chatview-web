@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
@@ -131,7 +133,7 @@ export default function DeveloperSettingsPage() {
   }
 
   return (
-    <PageShell activePath="/account/developer">
+    <Localized><PageShell activePath="/account/developer">
       <section className="glass-panel rounded-2xl p-4 sm:rounded-[2rem] sm:p-8">
         <div className="flex flex-wrap items-baseline justify-between gap-3">
           <div>
@@ -261,6 +263,6 @@ export default function DeveloperSettingsPage() {
           </div>
         </div>
       )}
-    </PageShell>
+    </PageShell></Localized>
   );
 }

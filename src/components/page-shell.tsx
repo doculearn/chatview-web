@@ -1,3 +1,5 @@
+
+import { Localized } from "@/components/localized";
 import { ReactNode } from "react";
 import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
@@ -11,7 +13,7 @@ type PageShellProps = {
 
 export function PageShell({ activePath, children }: PageShellProps) {
   return (
-    <div className="grid-overlay flex min-h-screen flex-1">
+    <Localized><div className="grid-overlay flex min-h-screen flex-1">
       <main className="mx-auto flex w-full max-w-[1200px] flex-col gap-4 px-3 sm:gap-6 sm:px-6">
         <SiteHeader activePath={activePath} />
         {children}
@@ -157,6 +159,6 @@ export function PageShell({ activePath, children }: PageShellProps) {
           </div>
         </footer>
       </main>
-    </div>
+    </div></Localized>
   );
 }

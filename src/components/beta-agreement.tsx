@@ -1,8 +1,10 @@
+
+import { Localized } from "@/components/localized";
 export const BETA_AGREEMENT_VERSION = "1.0.0";
 
 export function BetaAgreementText() {
   return (
-    <div className="space-y-4 text-sm leading-relaxed text-(--foreground)/90">
+    <Localized><div className="space-y-4 text-sm leading-relaxed text-(--foreground)/90">
       <p className="text-xs uppercase tracking-[0.24em] text-(--muted)">
         Agreement v{BETA_AGREEMENT_VERSION}
       </p>
@@ -82,6 +84,6 @@ export function BetaAgreementText() {
         This agreement is governed by the laws of the Provider&apos;s jurisdiction, without
         regard to conflict-of-law principles.
       </p>
-    </div>
+    </div></Localized>
   );
 }

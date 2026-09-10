@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 /**
  * Anchor / Link wrapper that fires a `cta_clicked` analytics event on
@@ -53,15 +55,15 @@ export function TrackedLink({
 
   if (isInternal) {
     return (
-      <Link href={href} {...rest} onClick={handleClick}>
+      <Localized><Link href={href} {...rest} onClick={handleClick}>
         {children}
-      </Link>
+      </Link></Localized>
     );
   }
 
   // External by default: open in a new tab, drop opener.
   return (
-    <a
+    <Localized><a
       href={href}
       {...rest}
       target={htmlTarget ?? "_blank"}
@@ -69,6 +71,6 @@ export function TrackedLink({
       onClick={handleClick}
     >
       {children}
-    </a>
+    </a></Localized>
   );
 }

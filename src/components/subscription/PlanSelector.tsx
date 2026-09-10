@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 import { useState } from "react";
 
@@ -42,7 +44,7 @@ export function PlanSelector({
   const enterprisePlan = plans.find((p) => p.name === "enterprise");
 
   return (
-    <section className="glass-panel float-up rounded-2xl p-4 sm:rounded-3xl sm:p-6 lg:p-10">
+    <Localized><section className="glass-panel float-up rounded-2xl p-4 sm:rounded-3xl sm:p-6 lg:p-10">
       <p className="text-xs uppercase tracking-[0.28em] text-(--muted)">Choose Your Plan</p>
       <h2 className="headline-glow mt-3 text-xl font-bold sm:text-3xl lg:text-4xl">
         Pick Your Subscription
@@ -165,6 +167,6 @@ export function PlanSelector({
         )}
       </div>
 
-    </section>
+    </section></Localized>
   );
 }

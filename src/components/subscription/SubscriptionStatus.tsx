@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 type Subscription = {
   id: string;
@@ -60,7 +62,7 @@ export function SubscriptionStatus({
   };
 
   return (
-    <section className="glass-panel float-up rounded-2xl p-4 sm:rounded-3xl sm:p-6 lg:p-10">
+    <Localized><section className="glass-panel float-up rounded-2xl p-4 sm:rounded-3xl sm:p-6 lg:p-10">
       <p className="text-xs uppercase tracking-[0.28em] text-(--muted)">Current Plan</p>
       <h2 className="headline-glow mt-3 text-xl font-bold sm:text-3xl">
         {subscription.plan.display_name}
@@ -162,6 +164,6 @@ export function SubscriptionStatus({
           )}
         </div>
       </div>
-    </section>
+    </section></Localized>
   );
 }

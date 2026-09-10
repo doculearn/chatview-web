@@ -1,4 +1,6 @@
 "use client";
+import { Localized } from "@/components/localized";
+
 
 import { Suspense } from "react";
 import { SubscriptionReturnContent } from "@/components/subscription/SubscriptionReturn";
@@ -6,7 +8,7 @@ import { PageShell } from "@/components/page-shell";
 
 export default function SubscriptionReturnPage() {
   return (
-    <PageShell activePath="/subscription">
+    <Localized><PageShell activePath="/subscription">
       <Suspense
         fallback={
           <div className="glass-panel float-up rounded-3xl p-10 text-center">
@@ -16,6 +18,6 @@ export default function SubscriptionReturnPage() {
       >
         <SubscriptionReturnContent />
       </Suspense>
-    </PageShell>
+    </PageShell></Localized>
   );
 }
