@@ -1,4 +1,7 @@
-const CHATVIEW_API_BASE_URL = (process.env.CHATVIEW_API_BASE_URL ?? "https://api.chatview.app/api/v1").replace(/\/+$/, "");
+const CHATVIEW_API_BASE_URL = (
+  process.env.CHATVIEW_API_BASE_URL ?? process.env.DISKIAPP_API_BASE_URL ?? "https://api.chatview.app/api/v1"
+).replace(/\/+$/, "");
+const CHATVIEW_API_KEY = process.env.CHATVIEW_API_KEY ?? process.env.DISKIAPP_API_KEY ?? "";
 
 type Method = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
 
@@ -20,7 +23,7 @@ export async function callChatView<T>(path: string, method: Method, options?: { 
     method,
     headers: {
       "Content-Type": "application/json",
-      ...(process.env.CHATVIEW_API_KEY ? { "X-API-KEY": process.env.CHATVIEW_API_KEY } : {}),
+      ...(CHATVIEW_API_KEY ? { "X-API-KEY": CHATVIEW_API_KEY } : {}),
       ...(options?.token ? { Authorization: `Bearer ${options.token}` } : {}),
     },
     body: options?.body ? JSON.stringify(options.body) : undefined,

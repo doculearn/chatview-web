@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
 
 const CHATVIEW_API_BASE_URL = (
-  process.env.CHATVIEW_API_BASE_URL ?? "https://api.chatview.app/api/v1"
+  process.env.CHATVIEW_API_BASE_URL ?? process.env.DISKIAPP_API_BASE_URL ?? "https://api.chatview.app/api/v1"
 ).replace(/\/+$/, "");
+const CHATVIEW_API_KEY = process.env.CHATVIEW_API_KEY ?? process.env.DISKIAPP_API_KEY ?? "";
 
 export async function GET() {
   try {
@@ -10,7 +11,7 @@ export async function GET() {
       method: "GET",
       headers: {
         Accept: "application/json",
-        ...(process.env.CHATVIEW_API_KEY ? { "X-API-KEY": process.env.CHATVIEW_API_KEY } : {}),
+        ...(CHATVIEW_API_KEY ? { "X-API-KEY": CHATVIEW_API_KEY } : {}),
       },
       redirect: "manual",
     });
