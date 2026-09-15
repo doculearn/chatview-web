@@ -22,7 +22,7 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 const CONSENT_COOKIE = "cv_cookie_consent";
 const CONSENT_EVENT = "cv:cookie-consent-changed";
 const COOKIE_MAX_AGE_DAYS = 365;
-const GA_ID = "G-9603SMF2Q3";
+const GA_ID = "549665783";
 
 type ConsentValue = "accepted" | "declined";
 
