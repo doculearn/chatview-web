@@ -21,6 +21,7 @@ const menuItems = [
   { href: "/pricing", label: "Pricing" },
   { href: "/download", label: "Download" },
   { href: "/blog", label: "Blog" },
+  { href: "/games/ship-it", label: "Ship It" },
 ];
 
 export function SiteHeader({ activePath }: SiteHeaderProps) {

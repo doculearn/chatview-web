@@ -1,3 +1,5 @@
+import { gameArticles } from './game-articles';
+
 export type BlogPost = {
   slug: string;
   title: string;
@@ -16,6 +18,7 @@ export type BlogPost = {
 
 // Order = newest first. Add a new post above the previous entries.
 export const POSTS: BlogPost[] = [
+  ...gameArticles.map(article => ({ slug: article.slug, title: article.title, description: article.description, publishedAt: '2026-09-22', readMinutes: article.readMinutes, tags: ['vibe coding', 'indie founders', 'build in public'] })),
   {
     slug: "vibe-code-from-your-phone-day-12-medium",
     title: "Vibe code from your phone: what 12 days of launching ChatView taught me",

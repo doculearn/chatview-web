@@ -24,6 +24,8 @@ export function RouteShield({ children }: RouteShieldProps) {
 
   const isLoading = !hasHydrated;
 
+  if (pathname.startsWith('/games/') || pathname === '/blog' || pathname.startsWith('/blog/')) return <>{children}</>;
+
   return (
     <Localized><NextShield
       isAuth={isAuth}

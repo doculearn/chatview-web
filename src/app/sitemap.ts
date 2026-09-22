@@ -14,6 +14,7 @@ type Route = {
 // register, qr, marketplace/landing), and post-checkout callback pages
 // are deliberately excluded.
 const ROUTES: Route[] = [
+  { path: "/games/ship-it", changeFrequency: "monthly", priority: 0.8 },
   { path: "/", changeFrequency: "weekly", priority: 1.0 },
   { path: "/pricing", changeFrequency: "weekly", priority: 0.9 },
   { path: "/download", changeFrequency: "weekly", priority: 0.9 },
