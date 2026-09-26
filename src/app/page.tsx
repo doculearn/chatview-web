@@ -137,7 +137,7 @@ export default function Home() {
       <section id="hero" className="glass-panel float-up p-5 sm:p-10 lg:p-14">
         <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
           <div className="flex flex-wrap items-center justify-center gap-2 text-xs uppercase tracking-[0.24em] text-(--muted)">
-            <span className="rounded-full border border-(--accent)/40 bg-(--accent)/10 px-3 py-1 text-(--accent)">Free 7-day trial · no card</span>
+            <span className="rounded-full border border-(--accent)/40 bg-(--accent)/10 px-3 py-1 text-(--accent)">$9.99/mo · cancel anytime</span>
             <span className="rounded-full border border-(--line) bg-(--panel-soft) px-3 py-1">Every IDE</span>
             <span className="rounded-full border border-(--line) bg-(--panel-soft) px-3 py-1">Every model</span>
           </div>
@@ -163,7 +163,7 @@ export default function Home() {
               target="register"
               className="inline-flex items-center justify-center rounded-xl bg-(--accent) px-6 py-3 font-semibold text-white shadow-lg shadow-(--accent)/20 transition hover:brightness-110"
             >
-              Start your free trial →
+              Get started →
             </TrackedLink>
             <TrackedLink
               href="https://youtu.be/MXlRTRYF9L4?si=6Cufh3dZ_RIcIcgM"
@@ -176,9 +176,9 @@ export default function Home() {
           </div>
 
           <div className="mt-5 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-(--muted)">
-            <span>7-day free trial</span>
+            <span>$9.99/month</span>
             <span aria-hidden>·</span>
-            <span>No card required</span>
+            <span>Cancel anytime</span>
             <span aria-hidden>·</span>
             <span>Your keys, your laptop, your repo</span>
           </div>
@@ -303,10 +303,9 @@ export default function Home() {
               <span className="text-5xl font-extrabold">$9.99</span>
               <span className="text-(--muted)">/ month</span>
             </div>
-            <p className="mt-3 text-sm text-(--muted)">Everything you need to ship from your phone. Start free for 7 days — no card required, cancel anytime.</p>
+            <p className="mt-3 text-sm text-(--muted)">Everything you need to ship from your phone. Cancel anytime.</p>
             <ul className="mt-6 space-y-2 text-sm">
               {[
-                "Free 7-day trial — no card required",
                 "Unlimited mobile-to-IDE relay sessions",
                 "Works with VS Code Copilot, Claude Code, Codex CLI, Cursor",
                 "VS Code, Cursor, Windsurf extensions included",
@@ -326,7 +325,7 @@ export default function Home() {
               target="register"
               className="mt-7 inline-flex w-full items-center justify-center rounded-xl bg-(--accent) px-5 py-3 font-semibold text-white transition hover:brightness-110"
             >
-              Start your free trial →
+              Subscribe — $9.99/mo →
             </TrackedLink>
           </div>
 
@@ -373,7 +372,7 @@ export default function Home() {
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base text-(--muted) sm:text-lg">
             Install the VS Code extension, scan the QR with the mobile app, and ship the next PR from
-            the supermarket queue. Start free for 7 days — no card required.
+            the supermarket queue. $9.99/month, cancel anytime.
           </p>
           <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <TrackedLink

@@ -28,7 +28,7 @@ export default function PricingPage() {
             </h1>
           </div>
           <p className="mt-3 text-sm text-(--muted) sm:text-base">
-            Vibe code from your phone. Start free for 7 days — no card required. Cancel anytime, no
+            Vibe code from your phone for $9.99/month. Cancel anytime, no
             contracts, no surprises.
           </p>
         </section>

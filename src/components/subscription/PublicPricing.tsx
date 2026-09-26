@@ -8,19 +8,6 @@ import { MicrosoftMarketplaceCta } from "./MicrosoftMarketplaceCta";
 
 const PUBLIC_PLANS = [
   {
-    name: "free",
-    display_name: "Free",
-    price: "0",
-    blurb: "Try it out, no card required",
-    accent: "border-white/15",
-    cta: "Create account",
-    features: [
-      "1 mobile device",
-      "Basic prompts to your phone",
-      "Community support",
-    ],
-  },
-  {
     name: "starter",
     display_name: "Solo",
     price: "9.99",
@@ -40,8 +27,8 @@ export function PublicPricing() {
   return (
     <Localized><div className="space-y-6">
       <div className="rounded-2xl border border-(--accent)/30 bg-(--accent)/5 px-4 py-3 text-center text-sm text-(--foreground)">
-        <span className="font-semibold text-(--accent)">Free 7-day trial on every paid plan</span>
-        <span className="text-(--muted)"> — no card required. Cancel anytime.</span>
+        <span className="font-semibold text-(--accent)">One simple paid plan</span>
+        <span className="text-(--muted)"> — $9.99/month. Cancel anytime.</span>
       </div>
       <div className="grid gap-4 sm:grid-cols-2">
         {PUBLIC_PLANS.map((plan) => (
@@ -57,9 +44,7 @@ export function PublicPricing() {
             </p>
             <p className="mt-2 text-3xl font-bold">
               ${plan.price}
-              <span className="text-sm font-normal text-(--muted)">
-                {plan.price === "0" ? "" : "/mo"}
-              </span>
+              <span className="text-sm font-normal text-(--muted)">/mo</span>
             </p>
             <p className="mt-1 text-xs uppercase tracking-[0.2em] text-(--muted)">
               {plan.blurb}
@@ -72,9 +57,9 @@ export function PublicPricing() {
               ))}
             </ul>
             <TrackedLink
-              href={plan.name === "free" ? "/register" : `/login?next=/pricing`}
+              href="/login?next=/pricing"
               location="public_pricing_card"
-              target={plan.name === "free" ? "register" : "login"}
+              target="login"
               event="plan_selected"
               extra={{ plan: plan.name, price: plan.price, authed: false }}
               className="mt-5 w-full block rounded-xl bg-(--accent) px-4 py-2 text-center text-sm font-semibold text-white transition-colors hover:bg-(--accent)/80"

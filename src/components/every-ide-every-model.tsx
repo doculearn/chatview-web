@@ -85,13 +85,13 @@ export function EveryIdeEveryModel() {
       <div className="mt-8 flex flex-wrap items-center gap-3 rounded-2xl border border-(--accent)/30 bg-(--accent)/5 px-4 py-3 text-sm">
         <span className="font-semibold text-(--accent)">No vendor lock-in.</span>
         <span className="text-(--muted)">
-          One subscription, every agent, every editor, every model. Free 7-day trial, no card
-          required — then $9.99/mo, cancel anytime.
+          One subscription, every agent, every editor, every model — $9.99/mo,
+          cancel anytime.
         </span>
         <Link
-          href="/register"
+          href="/pricing"
           className="ml-auto font-semibold text-(--foreground) underline-offset-4 hover:underline">
-          Try it free →
+          See pricing →
         </Link>
       </div>
     </section></Localized>

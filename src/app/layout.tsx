@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     template: "%s | ChatView",
   },
   description:
-    "Vibe code from your phone with ChatView. Drive VS Code, Cursor, Claude Code and Codex CLI from anywhere — queue prompts, review diffs, and approve edits on the go. Start a free 7-day trial, no card required.",
+    "Vibe code from your phone with ChatView. Drive VS Code, Cursor, Claude Code and Codex CLI from anywhere — queue prompts, review diffs, and approve edits on the go. Plans from $9.99/month, cancel anytime.",
   applicationName: "ChatView",
   keywords: [
     "vibe code from your phone",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     url: "https://chat-view.xyz",
     title: "Vibe Code From Your Phone | ChatView",
     description:
-      "Vibe code from your phone. Drive Cursor, VS Code, Claude Code or Codex CLI from anywhere — prompt the agent, review diffs, approve edits. Free 7-day trial, no card required.",
+      "Vibe code from your phone. Drive Cursor, VS Code, Claude Code or Codex CLI from anywhere — prompt the agent, review diffs, approve edits. Plans from $9.99/month, cancel anytime.",
     locale: "en_US",
     images: [
       {
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     creator: "@williammbtja",
     title: "Vibe Code From Your Phone | ChatView",
     description:
-      "Vibe code from your phone. Drive Cursor, VS Code, Claude Code or Codex CLI from anywhere. Free 7-day trial, no card required.",
+      "Vibe code from your phone. Drive Cursor, VS Code, Claude Code or Codex CLI from anywhere. Plans from $9.99/month, cancel anytime.",
     images: ["/chatview-logo.png"],
   },
   robots: {
